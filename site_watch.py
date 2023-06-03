@@ -238,9 +238,3 @@ config_file = parse_arguments(sys.argv)
 
 # Verify configuration file and produce a dictionary from it
 config_to_dict(config_file)
-
-
-for i in track(['hassan', 'kero', 'yo'], description="Running Tests..."):
-    print(i)
-    time.sleep(1)
-
