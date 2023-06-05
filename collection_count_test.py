@@ -1,9 +1,14 @@
-#!/usr/bin/python3
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
+from page import CollectionPage
+from test import Test
 
-chrome_options = Options()
-chrome_options.add_argument("--headless")
-driver = webdriver.Chrome(options=chrome_options)
-driver.get("https://www.google.com")
-driver.close()
+class CollectionCountTest(Test):
+    """ A test to check that the number of collections on the collections page is correct. """    
+    def run(self, url: str, expected_value: str) -> None:
+        """ Run the test on the page at <url> and compare the result to <expected_value>."""
+        try:
+            expected_value = int(expected_value)
+        except ValueError:
+            raise ValueError(f"Expected value must be an integer, but got {expected_value}.")
+        collection_page = CollectionPage(self.driver, url)
+        actual_value = int(collection_page.get_collection_count())
+        assert actual_value == expected_value, f"Expected {expected_value}, but got {actual_value}."
