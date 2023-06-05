@@ -1,0 +1,8 @@
+config.yml
+data.csv
+geckodriver.log
+logfile.txt
+output.csv
+__pycache__/collection_count_test.cpython-310.pyc
+__pycache__/page.cpython-310.pyc
+__pycache__/test.cpython-310.pyc

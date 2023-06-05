@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+from datetime import datetime
 from typing import Optional
 
 import sys
@@ -18,6 +19,12 @@ from rich.console import Console
 from rich.theme import Theme
 import time
 import os
+
+from collection_count_test import CollectionCountTest
+from facet_load_test import FacetLoadTest
+import colorama
+from colorama import Fore
+
 
 logging.basicConfig(filename='logfile.txt', level=logging.DEBUG)
 
@@ -71,7 +78,7 @@ def extract_csv(filename: str) -> tuple[list[dict], list]:
     """Extracts the data from the CSV file at <filename> and returns it as a list of dictionaries along with the headers. """
     with open(filename, "r") as csv_file:
         reader = csv.DictReader(csv_file)
-        data = [row for row in reader]
+        data = [{k.lower(): v.lower() for k, v in row.items()} for row in reader]
     return data, reader.fieldnames
 
 def parse_arguments(arguments: list) -> str:
@@ -119,23 +126,29 @@ def config_to_dict(config_file: str) -> dict:
     """
     check_config_file_exists(config_file)
     config = extract_config(config_file)
+
+    # Check if the config file is a dictionary
+    if not isinstance(config, dict):
+        print(colored("Invalid config file. Please see log for more details.", "red"))
+        logging.error("Invalid config file format. The file must consist of lines of key-value pairs.")
+        sys.exit(127)
     
     supported_browsers = ["chrome", "firefox", "ie"]
 
     # Lowercase everything in the config dict
     config = {key.lower(): value.lower() for key, value in config.items()}
-    if "browser" not in config:
-        print(colored("Invalid config file. Please see log for more details.", "red"))
-        logging.error("Invalid config file. The config file must contain a browser field.")
-        sys.exit(127)
-    elif config["browser"] not in supported_browsers:
-        print(colored("Invalid config file. Please see log for more details.", "red"))
-        logging.error(f"Invalid config file. The browser {config['browser']} is not supported. Currently, the browsers supported are Chrome, Firefox, and Internet Explorer.")
-        sys.exit(127)
-    if "driver_path" not in config:
-        print(colored("Invalid config file. Please see log for more details.", "red"))
-        logging.error("Invalid config file. The config file must contain a driver_path field.")
-        sys.exit(127)
+    # if "browser" not in config:
+    #     print(colored("Invalid config file. Please see log for more details.", "red"))
+    #     logging.error("Invalid config file. The config file must contain a browser field.")
+    #     sys.exit(127)
+    # elif config["browser"] not in supported_browsers:
+    #     print(colored("Invalid config file. Please see log for more details.", "red"))
+    #     logging.error(f"Invalid config file. The browser {config['browser']} is not supported. Currently, the browsers supported are Chrome, Firefox, and Internet Explorer.")
+    #     sys.exit(127)
+    # if "driver_path" not in config:
+    #     print(colored("Invalid config file. Please see log for more details.", "red"))
+    #     logging.error("Invalid config file. The config file must contain a driver_path field.")
+    #     sys.exit(127)
     if "input_csv" not in config:
         print(colored("Invalid config file. Please see log for more details.", "red"))
         logging.error("Invalid config file. The config file must contain a input_csv field.")
@@ -225,7 +238,34 @@ def check_csv_file(csv_data: list[dict], csv_headers: list) -> None:
         if csv_data[i]["test type"] == "mirador_viewer_load_test" and csv_data[i]["test input"] == "":
             print(colored("Invalid CSV file. Please see log for more details.", "red"))
             logging.error(f"Invalid CSV file. Test Input column is empty in row {i + 1}")
-            sys.exit(127)    
+            sys.exit(127)
+
+def run_collection_count_test(csv_row: dict, csv_row_number: int, collection_count_test: CollectionCountTest) -> bool:
+    """ Runs a Collection Count Test. """
+    try:
+        collection_count_test.run(csv_row["url"], csv_row["test input"])
+    except ValueError:
+        print(Fore.RED, f"Invalid test input on row {csv_row_number + 1}. Please see log for more details.")
+        logging.error(f"Invalid test input on row {csv_row_number + 1}. The test input must be an integer.")
+        return False
+    except AssertionError as e:
+        # Get the assertion error message
+        error_message = str(e)
+        print(Fore.RED, f"Collection Count Test failed on row {csv_row_number + 1}. Please see log for more details.")
+        logging.error(f"Collection Count Test failed on row {csv_row_number + 1}. The expected number of collections was not found. {error_message}")
+        return False
+    except Exception as e:
+        print(Fore.RED, f"Collection Count Test failed on row {csv_row_number + 1}. Please see log for more details.")
+        logging.error(f"Collection Count Test failed on row {csv_row_number + 1}. {e}")
+        return False
+    else:
+        print(Fore.GREEN, f"Collection Count Test passed on row {csv_row_number + 1}.")
+        logging.info(f"Collection Count Test passed on row {csv_row_number + 1}.")
+        return True
+    
+def run_facet_load_test(csv_row: dict, csv_row_number: int, facet_load_test: FacetLoadTest):
+    pass
+
 
 # Greetings to user
 logging.info("SiteWatch has started.")
@@ -237,10 +277,41 @@ setup_logging()
 config_file = parse_arguments(sys.argv)
 
 # Verify configuration file and produce a dictionary from it
-config_to_dict(config_file)
+config = config_to_dict(config_file)
+
+# Produce a list of dictionaries from the CSV file
+csv_data, csv_headers = extract_csv(config["input_csv"])
 
 
-for i in track(['hassan', 'kero', 'yo'], description="Running Tests..."):
-    print(i)
-    time.sleep(1)
+options = webdriver.ChromeOptions()
+options.add_argument("--headless")
+driver = webdriver.Chrome(options=options)
+collection_count_test = CollectionCountTest(driver)
+with open(config['output_csv'], 'w') as output_csv:
+    csv_writer = csv.writer(output_csv)
+    # Write the header
+    csv_writer.writerow(csv_headers + ["test result", "total time"])
+    for csv_row_number in track(range(len(csv_data)), description="Running Tests..."):
+        test_result = None
+        # Record the current time
+        start_time = time.time()
+        if csv_data[csv_row_number]['test type'] == 'collection_count_test':
+            test_result = run_collection_count_test(csv_data[csv_row_number], csv_row_number, collection_count_test)
+        elif csv_data[csv_row_number]['test type'] == 'facet_load_test':
+            test_result = run_facet_load_test(csv_data[csv_row_number], csv_row_number, facet_load_test)
+        # Record the time after the test has finished
+        end_time = time.time()
+        # Calculate the total time taken
+        total_time = end_time - start_time
+        # Convert the total time to a string
+        total_time = str(total_time)
+        
+        if test_result is not None:
+            # Write the entire row plus the test result and total time to the output CSV file
+            csv_data[csv_row_number]['test result'] = "Passed" if test_result else "Failed"
+            csv_data[csv_row_number]['total time'] = total_time
+            csv_writer.writerow(list(csv_data[csv_row_number].values()))
+
+
+
 
