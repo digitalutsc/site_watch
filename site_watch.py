@@ -287,6 +287,7 @@ options = webdriver.ChromeOptions()
 options.add_argument("--headless")
 driver = webdriver.Chrome(options=options)
 collection_count_test = CollectionCountTest(driver)
+facet_load_test = FacetLoadTest(driver)
 with open(config['output_csv'], 'w') as output_csv:
     csv_writer = csv.writer(output_csv)
     # Write the header
