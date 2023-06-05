@@ -311,7 +311,4 @@ with open(config['output_csv'], 'w') as output_csv:
             csv_data[csv_row_number]['test result'] = "Passed" if test_result else "Failed"
             csv_data[csv_row_number]['total time'] = total_time
             csv_writer.writerow(list(csv_data[csv_row_number].values()))
-
-
-
-
+  
