@@ -2,7 +2,7 @@ from test import Test
 from page import CollectionPage
 
 class FacetLoadTest(Test):
-    def run(self, url: str, facet_type: str):
+    def run(self, url: str, facet_type: str) -> None:
         collection_page = CollectionPage(self.driver, url)
         if facet_type == "subject":
             assert collection_page.is_subject_facet_present(), "Subject facet is not present on collections page."

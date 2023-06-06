@@ -22,11 +22,12 @@ import os
 
 from collection_count_test import CollectionCountTest
 from facet_load_test import FacetLoadTest
+from availibility_test import AvailabilityTest
 import colorama
 from colorama import Fore
 
 
-logging.basicConfig(filename='logfile.txt', level=logging.DEBUG)
+logging.basicConfig(filename='logfile.log', level=logging.INFO)
 
 def print_help() -> None:
     """Prints the help message to the console. """
@@ -264,8 +265,40 @@ def run_collection_count_test(csv_row: dict, csv_row_number: int, collection_cou
         return True
     
 def run_facet_load_test(csv_row: dict, csv_row_number: int, facet_load_test: FacetLoadTest):
-    pass
+    """ Runs a Facet Load Test. """
+    try:
+        facet_load_test.run(csv_row["url"], csv_row["test input"])
+    except ValueError:
+        # The facet type is invalid.
+        print(Fore.RED, f"Invalid test input on row {csv_row_number + 1}. Please see log for more details.")
+        logging.error(f"Invalid facet type {csv_row['test input']} on row {csv_row_number + 1}. The test input must be a valid facet type.")
+    except AssertionError as e:
+        # Get the assertion error message
+        error_message = str(e)
+        print(Fore.RED, f"Facet Load Test failed on row {csv_row_number + 1}. Please see log for more details.")
+        logging.error(f"Facet Load Test failed on row {csv_row_number + 1}. The facet did not load. {error_message}")
+    except Exception as e:
+        print(Fore.RED, f"Facet Load Test failed on row {csv_row_number + 1}. Please see log for more details.")
+        logging.error(f"Facet Load Test failed on row {csv_row_number + 1}. {e}")
+    else:
+        print(Fore.GREEN, f"Facet Load Test passed on row {csv_row_number + 1}.")
+        logging.info(f"Facet Load Test passed on row {csv_row_number + 1}.")
 
+def run_availibility_test(csv_row: dict, csv_row_number: int, availability_test: AvailabilityTest):
+    """ Runs an Availability Test. """
+    try:
+        availability_test.run(csv_row["url"])
+    except AssertionError as e:
+        # Get the assertion error message
+        error_message = str(e)
+        print(Fore.RED, f"Availability Test failed on row {csv_row_number + 1}. Please see log for more details.")
+        logging.error(f"Availability Test failed on row {csv_row_number + 1}. The site was not available. {error_message}")
+    except Exception as e:
+        print(Fore.RED, f"Availability Test failed on row {csv_row_number + 1}. Please see log for more details.")
+        logging.error(f"Availability Test failed on row {csv_row_number + 1}. {e}")
+    else:
+        print(Fore.GREEN, f"Availability Test passed on row {csv_row_number + 1}.")
+        logging.info(f"Availability Test passed on row {csv_row_number + 1}.")
 
 # Greetings to user
 logging.info("SiteWatch has started.")
@@ -288,6 +321,7 @@ options.add_argument("--headless")
 driver = webdriver.Chrome(options=options)
 collection_count_test = CollectionCountTest(driver)
 facet_load_test = FacetLoadTest(driver)
+availability_test = AvailabilityTest(driver)
 with open(config['output_csv'], 'w') as output_csv:
     csv_writer = csv.writer(output_csv)
     # Write the header
@@ -300,6 +334,8 @@ with open(config['output_csv'], 'w') as output_csv:
             test_result = run_collection_count_test(csv_data[csv_row_number], csv_row_number, collection_count_test)
         elif csv_data[csv_row_number]['test type'] == 'facet_load_test':
             test_result = run_facet_load_test(csv_data[csv_row_number], csv_row_number, facet_load_test)
+        elif csv_data[csv_row_number]['test type'] == 'availability_test':
+            test_result = run_availibility_test(csv_data[csv_row_number], csv_row_number, availability_test)
         # Record the time after the test has finished
         end_time = time.time()
         # Calculate the total time taken

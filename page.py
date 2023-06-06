@@ -2,11 +2,17 @@ from selenium import webdriver
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
+import requests
 
 class BasePage(object):
     def __init__(self, driver: WebDriver, url: str) -> None:
         self.driver = driver
         self.url = url
+    
+    def is_available(self) -> bool:
+        """Return whether the page is available."""
+        return requests.get(self.url).status_code in [200, 201]
+        
     
 class CollectionPage(BasePage):
     def get_collection_count(self) -> int:

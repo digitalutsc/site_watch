@@ -1,0 +1,509 @@
+INFO:root:SiteWatch has started.
+INFO:root:Config file found at config.yml
+INFO:root:CSV file found at data.csv
+INFO:root:No output_csv field found in config file. Using default output.csv
+DEBUG:selenium.webdriver.common.service:Started executable: `/usr/local/bin/chromedriver` in a child process with pid: 1070684
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "pageLoadStrategy": "normal", "goog:chromeOptions": {"extensions": [], "args": ["--headless"]}}}}
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): localhost:34523
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session HTTP/1.1" 200 822
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":{"capabilities":{"acceptInsecureCerts":false,"browserName":"chrome","browserVersion":"114.0.5735.90","chrome":{"chromedriverVersion":"114.0.5735.90 (386bc09e8f4f2e025eddae123f36f6263096ae49-refs/branch-heads/5735@{#1052})","userDataDir":"/tmp/.com.google.Chrome.mvNKmz"},"goog:chromeOptions":{"debuggerAddress":"localhost:40319"},"networkConnectionEnabled":false,"pageLoadStrategy":"normal","platformName":"linux","proxy":{},"setWindowRect":true,"strictFileInteractability":false,"timeouts":{"implicit":0,"pageLoad":300000,"script":30000},"unhandledPromptBehavior":"dismiss and notify","webauthn:extension:credBlob":true,"webauthn:extension:largeBlob":true,"webauthn:extension:minPinLength":true,"webauthn:extension:prf":true,"webauthn:virtualAuthenticators":true},"sessionId":"d902ba4f5e44fba7d476fdb508bb4064"}} | headers=HTTPHeaderDict({'Content-Length': '822', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): memory.digital.utsc.utoronto.ca:443
+DEBUG:urllib3.connectionpool:https://memory.digital.utsc.utoronto.ca:443 "GET /collection/33463 HTTP/1.1" 200 28190
+INFO:root:Availability Test passed on row 1.
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/url {"url": "https://memory.digital.utsc.utoronto.ca/collection/33463"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/url HTTP/1.1" 200 14
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element {"using": "css selector", "value": "#block-barriodepartments-collectionsearchresultspagerforpage > div > div.pager__summary"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/element HTTP/1.1" 200 95
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"617E2D25A41CF733C151B15FB4057FE4_element_32"}} | headers=HTTPHeaderDict({'Content-Length': '95', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:GET http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element/617E2D25A41CF733C151B15FB4057FE4_element_32/text {"id": "617E2D25A41CF733C151B15FB4057FE4_element_32"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "GET /session/d902ba4f5e44fba7d476fdb508bb4064/element/617E2D25A41CF733C151B15FB4057FE4_element_32/text HTTP/1.1" 200 38
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":"Displaying 1 - 50 of 23591"} | headers=HTTPHeaderDict({'Content-Length': '38', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+ERROR:root:Collection Count Test failed on row 2. The expected number of collections was not found. Expected 2359, but got 23591.
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/url {"url": "https://memory.digital.utsc.utoronto.ca/collection/33463"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/url HTTP/1.1" 200 14
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element {"using": "css selector", "value": "#block-barriodepartments-collectionsearchresultspagerforpage > div > div.pager__summary"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/element HTTP/1.1" 200 95
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"996E22C9CD5DC000D0B7F8F58932EAB1_element_55"}} | headers=HTTPHeaderDict({'Content-Length': '95', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:GET http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element/996E22C9CD5DC000D0B7F8F58932EAB1_element_55/text {"id": "996E22C9CD5DC000D0B7F8F58932EAB1_element_55"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "GET /session/d902ba4f5e44fba7d476fdb508bb4064/element/996E22C9CD5DC000D0B7F8F58932EAB1_element_55/text HTTP/1.1" 200 38
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":"Displaying 1 - 50 of 23591"} | headers=HTTPHeaderDict({'Content-Length': '38', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Collection Count Test passed on row 3.
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/url {"url": "https://memory.digital.utsc.utoronto.ca/collection/33463"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/url HTTP/1.1" 200 14
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element {"using": "css selector", "value": "#block-barriodepartments-collectionsearchresultspagerforpage > div > div.pager__summary"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/element HTTP/1.1" 200 95
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"FC926ED7F9E127A58463183912C8DDD0_element_77"}} | headers=HTTPHeaderDict({'Content-Length': '95', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:GET http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element/FC926ED7F9E127A58463183912C8DDD0_element_77/text {"id": "FC926ED7F9E127A58463183912C8DDD0_element_77"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "GET /session/d902ba4f5e44fba7d476fdb508bb4064/element/FC926ED7F9E127A58463183912C8DDD0_element_77/text HTTP/1.1" 200 38
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":"Displaying 1 - 50 of 23591"} | headers=HTTPHeaderDict({'Content-Length': '38', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Collection Count Test passed on row 4.
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/url {"url": "https://memory.digital.utsc.utoronto.ca/collection/33463"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/url HTTP/1.1" 200 14
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element {"using": "css selector", "value": "#block-barriodepartments-collectionsearchresultspagerforpage > div > div.pager__summary"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/element HTTP/1.1" 200 95
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"625AEA36FE2E85FB3B49F3E8C6519CDE_element_99"}} | headers=HTTPHeaderDict({'Content-Length': '95', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:GET http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element/625AEA36FE2E85FB3B49F3E8C6519CDE_element_99/text {"id": "625AEA36FE2E85FB3B49F3E8C6519CDE_element_99"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "GET /session/d902ba4f5e44fba7d476fdb508bb4064/element/625AEA36FE2E85FB3B49F3E8C6519CDE_element_99/text HTTP/1.1" 200 38
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":"Displaying 1 - 50 of 23591"} | headers=HTTPHeaderDict({'Content-Length': '38', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Collection Count Test passed on row 5.
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/url {"url": "https://memory.digital.utsc.utoronto.ca/collection/33463"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/url HTTP/1.1" 200 14
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element {"using": "css selector", "value": "#block-barriodepartments-collectionsearchresultspagerforpage > div > div.pager__summary"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/element HTTP/1.1" 200 96
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"8DD3E1212E3AC299B034F70AF0A1AF0A_element_121"}} | headers=HTTPHeaderDict({'Content-Length': '96', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:GET http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element/8DD3E1212E3AC299B034F70AF0A1AF0A_element_121/text {"id": "8DD3E1212E3AC299B034F70AF0A1AF0A_element_121"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "GET /session/d902ba4f5e44fba7d476fdb508bb4064/element/8DD3E1212E3AC299B034F70AF0A1AF0A_element_121/text HTTP/1.1" 200 38
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":"Displaying 1 - 50 of 23591"} | headers=HTTPHeaderDict({'Content-Length': '38', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Collection Count Test passed on row 6.
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/url {"url": "https://memory.digital.utsc.utoronto.ca/collection/33463"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/url HTTP/1.1" 200 14
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element {"using": "css selector", "value": "#block-barriodepartments-collectionsearchresultspagerforpage > div > div.pager__summary"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/element HTTP/1.1" 200 96
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"44A20D83772029DF02118CDF4CAA46AC_element_143"}} | headers=HTTPHeaderDict({'Content-Length': '96', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:GET http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element/44A20D83772029DF02118CDF4CAA46AC_element_143/text {"id": "44A20D83772029DF02118CDF4CAA46AC_element_143"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "GET /session/d902ba4f5e44fba7d476fdb508bb4064/element/44A20D83772029DF02118CDF4CAA46AC_element_143/text HTTP/1.1" 200 38
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":"Displaying 1 - 50 of 23591"} | headers=HTTPHeaderDict({'Content-Length': '38', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Collection Count Test passed on row 7.
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/url {"url": "https://memory.digital.utsc.utoronto.ca/collection/33463"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/url HTTP/1.1" 200 14
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element {"using": "css selector", "value": "#block-barriodepartments-collectionsearchresultspagerforpage > div > div.pager__summary"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/element HTTP/1.1" 200 96
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"B5F40BDBBF5729D0B344C78E2AA898BC_element_165"}} | headers=HTTPHeaderDict({'Content-Length': '96', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:GET http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element/B5F40BDBBF5729D0B344C78E2AA898BC_element_165/text {"id": "B5F40BDBBF5729D0B344C78E2AA898BC_element_165"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "GET /session/d902ba4f5e44fba7d476fdb508bb4064/element/B5F40BDBBF5729D0B344C78E2AA898BC_element_165/text HTTP/1.1" 200 38
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":"Displaying 1 - 50 of 23591"} | headers=HTTPHeaderDict({'Content-Length': '38', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Collection Count Test passed on row 8.
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/url {"url": "https://memory.digital.utsc.utoronto.ca/collection/33463"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/url HTTP/1.1" 200 14
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element {"using": "css selector", "value": "#block-barriodepartments-collectionsearchresultspagerforpage > div > div.pager__summary"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/element HTTP/1.1" 200 96
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"3EBB753822E14B538583382A924024F6_element_187"}} | headers=HTTPHeaderDict({'Content-Length': '96', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:GET http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element/3EBB753822E14B538583382A924024F6_element_187/text {"id": "3EBB753822E14B538583382A924024F6_element_187"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "GET /session/d902ba4f5e44fba7d476fdb508bb4064/element/3EBB753822E14B538583382A924024F6_element_187/text HTTP/1.1" 200 38
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":"Displaying 1 - 50 of 23591"} | headers=HTTPHeaderDict({'Content-Length': '38', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Collection Count Test passed on row 9.
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/url {"url": "https://memory.digital.utsc.utoronto.ca/collection/33463"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/url HTTP/1.1" 200 14
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element {"using": "css selector", "value": "#block-barriodepartments-collectionsearchresultspagerforpage > div > div.pager__summary"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/element HTTP/1.1" 200 96
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"354DD641D615D236878B23091F1BA18B_element_209"}} | headers=HTTPHeaderDict({'Content-Length': '96', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:GET http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element/354DD641D615D236878B23091F1BA18B_element_209/text {"id": "354DD641D615D236878B23091F1BA18B_element_209"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "GET /session/d902ba4f5e44fba7d476fdb508bb4064/element/354DD641D615D236878B23091F1BA18B_element_209/text HTTP/1.1" 200 38
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":"Displaying 1 - 50 of 23591"} | headers=HTTPHeaderDict({'Content-Length': '38', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Collection Count Test passed on row 10.
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/url {"url": "https://memory.digital.utsc.utoronto.ca/collection/33463"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/url HTTP/1.1" 200 14
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element {"using": "css selector", "value": "#block-barriodepartments-collectionsearchresultspagerforpage > div > div.pager__summary"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/element HTTP/1.1" 200 96
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"0CAF06A35E509C111554D0AC6450FF8B_element_231"}} | headers=HTTPHeaderDict({'Content-Length': '96', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:GET http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element/0CAF06A35E509C111554D0AC6450FF8B_element_231/text {"id": "0CAF06A35E509C111554D0AC6450FF8B_element_231"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "GET /session/d902ba4f5e44fba7d476fdb508bb4064/element/0CAF06A35E509C111554D0AC6450FF8B_element_231/text HTTP/1.1" 200 38
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":"Displaying 1 - 50 of 23591"} | headers=HTTPHeaderDict({'Content-Length': '38', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Collection Count Test passed on row 11.
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/url {"url": "https://memory.digital.utsc.utoronto.ca/collection/33463"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/url HTTP/1.1" 200 14
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element {"using": "css selector", "value": "#block-barriodepartments-collectionsearchresultspagerforpage > div > div.pager__summary"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/element HTTP/1.1" 200 96
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"63FDE7210DB77259DFE0E578E77A06FA_element_253"}} | headers=HTTPHeaderDict({'Content-Length': '96', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:GET http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element/63FDE7210DB77259DFE0E578E77A06FA_element_253/text {"id": "63FDE7210DB77259DFE0E578E77A06FA_element_253"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "GET /session/d902ba4f5e44fba7d476fdb508bb4064/element/63FDE7210DB77259DFE0E578E77A06FA_element_253/text HTTP/1.1" 200 38
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":"Displaying 1 - 50 of 23591"} | headers=HTTPHeaderDict({'Content-Length': '38', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Collection Count Test passed on row 12.
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/url {"url": "https://memory.digital.utsc.utoronto.ca/collection/33463"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/url HTTP/1.1" 200 14
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element {"using": "css selector", "value": "#block-barriodepartments-collectionsearchresultspagerforpage > div > div.pager__summary"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/element HTTP/1.1" 200 96
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"61F8728ACB12C8FA96580557992C9A7F_element_275"}} | headers=HTTPHeaderDict({'Content-Length': '96', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:GET http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element/61F8728ACB12C8FA96580557992C9A7F_element_275/text {"id": "61F8728ACB12C8FA96580557992C9A7F_element_275"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "GET /session/d902ba4f5e44fba7d476fdb508bb4064/element/61F8728ACB12C8FA96580557992C9A7F_element_275/text HTTP/1.1" 200 38
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":"Displaying 1 - 50 of 23591"} | headers=HTTPHeaderDict({'Content-Length': '38', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Collection Count Test passed on row 13.
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/url {"url": "https://memory.digital.utsc.utoronto.ca/collection/33463"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/url HTTP/1.1" 200 14
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element {"using": "css selector", "value": "#block-barriodepartments-collectionsearchresultspagerforpage > div > div.pager__summary"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/element HTTP/1.1" 200 96
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"65B5BD538CCDAE382058EA9C646DD6AA_element_297"}} | headers=HTTPHeaderDict({'Content-Length': '96', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:GET http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element/65B5BD538CCDAE382058EA9C646DD6AA_element_297/text {"id": "65B5BD538CCDAE382058EA9C646DD6AA_element_297"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "GET /session/d902ba4f5e44fba7d476fdb508bb4064/element/65B5BD538CCDAE382058EA9C646DD6AA_element_297/text HTTP/1.1" 200 38
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":"Displaying 1 - 50 of 23591"} | headers=HTTPHeaderDict({'Content-Length': '38', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Collection Count Test passed on row 14.
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/url {"url": "https://memory.digital.utsc.utoronto.ca/collection/33463"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/url HTTP/1.1" 200 14
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element {"using": "css selector", "value": "#block-barriodepartments-collectionsearchresultspagerforpage > div > div.pager__summary"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/element HTTP/1.1" 200 96
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"ABF5804E5473F4C28039103D868DD28A_element_319"}} | headers=HTTPHeaderDict({'Content-Length': '96', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:GET http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element/ABF5804E5473F4C28039103D868DD28A_element_319/text {"id": "ABF5804E5473F4C28039103D868DD28A_element_319"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "GET /session/d902ba4f5e44fba7d476fdb508bb4064/element/ABF5804E5473F4C28039103D868DD28A_element_319/text HTTP/1.1" 200 38
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":"Displaying 1 - 50 of 23591"} | headers=HTTPHeaderDict({'Content-Length': '38', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Collection Count Test passed on row 15.
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/url {"url": "https://memory.digital.utsc.utoronto.ca/collection/33463"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/url HTTP/1.1" 200 14
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element {"using": "css selector", "value": "#block-barriodepartments-collectionsearchresultspagerforpage > div > div.pager__summary"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/element HTTP/1.1" 200 96
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"11380DE2C1E9AB428D7D6F00877F4E93_element_341"}} | headers=HTTPHeaderDict({'Content-Length': '96', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:GET http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element/11380DE2C1E9AB428D7D6F00877F4E93_element_341/text {"id": "11380DE2C1E9AB428D7D6F00877F4E93_element_341"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "GET /session/d902ba4f5e44fba7d476fdb508bb4064/element/11380DE2C1E9AB428D7D6F00877F4E93_element_341/text HTTP/1.1" 200 38
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":"Displaying 1 - 50 of 23591"} | headers=HTTPHeaderDict({'Content-Length': '38', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Collection Count Test passed on row 16.
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/url {"url": "https://memory.digital.utsc.utoronto.ca/collection/33463"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/url HTTP/1.1" 200 14
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element {"using": "css selector", "value": "#block-barriodepartments-collectionsearchresultspagerforpage > div > div.pager__summary"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/element HTTP/1.1" 200 96
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"DDD1029978DD884F82C6E94606FAA459_element_363"}} | headers=HTTPHeaderDict({'Content-Length': '96', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:GET http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element/DDD1029978DD884F82C6E94606FAA459_element_363/text {"id": "DDD1029978DD884F82C6E94606FAA459_element_363"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "GET /session/d902ba4f5e44fba7d476fdb508bb4064/element/DDD1029978DD884F82C6E94606FAA459_element_363/text HTTP/1.1" 200 38
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":"Displaying 1 - 50 of 23591"} | headers=HTTPHeaderDict({'Content-Length': '38', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Collection Count Test passed on row 17.
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/url {"url": "https://memory.digital.utsc.utoronto.ca/collection/33463"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/url HTTP/1.1" 200 14
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element {"using": "css selector", "value": "#block-barriodepartments-collectionsearchresultspagerforpage > div > div.pager__summary"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/element HTTP/1.1" 200 96
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"E3EBCB186A406CA6080D5B59A84C15FA_element_385"}} | headers=HTTPHeaderDict({'Content-Length': '96', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:GET http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element/E3EBCB186A406CA6080D5B59A84C15FA_element_385/text {"id": "E3EBCB186A406CA6080D5B59A84C15FA_element_385"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "GET /session/d902ba4f5e44fba7d476fdb508bb4064/element/E3EBCB186A406CA6080D5B59A84C15FA_element_385/text HTTP/1.1" 200 38
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":"Displaying 1 - 50 of 23591"} | headers=HTTPHeaderDict({'Content-Length': '38', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Collection Count Test passed on row 18.
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/url {"url": "https://memory.digital.utsc.utoronto.ca/collection/33463"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/url HTTP/1.1" 200 14
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element {"using": "css selector", "value": "#block-barriodepartments-collectionsearchresultspagerforpage > div > div.pager__summary"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/element HTTP/1.1" 200 96
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"B402FFB89FD46966F00784B06706E2EE_element_407"}} | headers=HTTPHeaderDict({'Content-Length': '96', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:GET http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element/B402FFB89FD46966F00784B06706E2EE_element_407/text {"id": "B402FFB89FD46966F00784B06706E2EE_element_407"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "GET /session/d902ba4f5e44fba7d476fdb508bb4064/element/B402FFB89FD46966F00784B06706E2EE_element_407/text HTTP/1.1" 200 38
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":"Displaying 1 - 50 of 23591"} | headers=HTTPHeaderDict({'Content-Length': '38', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Collection Count Test passed on row 19.
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/url {"url": "https://memory.digital.utsc.utoronto.ca/collection/33463"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/url HTTP/1.1" 200 14
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element {"using": "css selector", "value": "#block-barriodepartments-collectionsearchresultspagerforpage > div > div.pager__summary"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/element HTTP/1.1" 200 96
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"D699577CC48470724149C9A328DAA77B_element_429"}} | headers=HTTPHeaderDict({'Content-Length': '96', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:GET http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element/D699577CC48470724149C9A328DAA77B_element_429/text {"id": "D699577CC48470724149C9A328DAA77B_element_429"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "GET /session/d902ba4f5e44fba7d476fdb508bb4064/element/D699577CC48470724149C9A328DAA77B_element_429/text HTTP/1.1" 200 38
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":"Displaying 1 - 50 of 23591"} | headers=HTTPHeaderDict({'Content-Length': '38', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Collection Count Test passed on row 20.
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/url {"url": "https://memory.digital.utsc.utoronto.ca/collection/33463"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/url HTTP/1.1" 200 14
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element {"using": "css selector", "value": "#block-barriodepartments-collectionsearchresultspagerforpage > div > div.pager__summary"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/element HTTP/1.1" 200 96
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"0DEBE5C9D3873F172B8EF37CFDFE96F4_element_451"}} | headers=HTTPHeaderDict({'Content-Length': '96', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:GET http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element/0DEBE5C9D3873F172B8EF37CFDFE96F4_element_451/text {"id": "0DEBE5C9D3873F172B8EF37CFDFE96F4_element_451"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "GET /session/d902ba4f5e44fba7d476fdb508bb4064/element/0DEBE5C9D3873F172B8EF37CFDFE96F4_element_451/text HTTP/1.1" 200 38
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":"Displaying 1 - 50 of 23591"} | headers=HTTPHeaderDict({'Content-Length': '38', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Collection Count Test passed on row 21.
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/url {"url": "https://memory.digital.utsc.utoronto.ca/collection/33463"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/url HTTP/1.1" 200 14
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element {"using": "css selector", "value": "#block-barriodepartments-collectionsearchresultspagerforpage > div > div.pager__summary"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/element HTTP/1.1" 200 96
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"23D13428CCDDB17D8B5D4EB6BCE17182_element_473"}} | headers=HTTPHeaderDict({'Content-Length': '96', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:GET http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element/23D13428CCDDB17D8B5D4EB6BCE17182_element_473/text {"id": "23D13428CCDDB17D8B5D4EB6BCE17182_element_473"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "GET /session/d902ba4f5e44fba7d476fdb508bb4064/element/23D13428CCDDB17D8B5D4EB6BCE17182_element_473/text HTTP/1.1" 200 38
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":"Displaying 1 - 50 of 23591"} | headers=HTTPHeaderDict({'Content-Length': '38', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Collection Count Test passed on row 22.
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/url {"url": "https://memory.digital.utsc.utoronto.ca/collection/33463"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/url HTTP/1.1" 200 14
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element {"using": "css selector", "value": "#block-barriodepartments-collectionsearchresultspagerforpage > div > div.pager__summary"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/element HTTP/1.1" 200 96
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"F4186452EB0FC26BE535A23EC205B1EA_element_495"}} | headers=HTTPHeaderDict({'Content-Length': '96', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:GET http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element/F4186452EB0FC26BE535A23EC205B1EA_element_495/text {"id": "F4186452EB0FC26BE535A23EC205B1EA_element_495"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "GET /session/d902ba4f5e44fba7d476fdb508bb4064/element/F4186452EB0FC26BE535A23EC205B1EA_element_495/text HTTP/1.1" 200 38
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":"Displaying 1 - 50 of 23591"} | headers=HTTPHeaderDict({'Content-Length': '38', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Collection Count Test passed on row 23.
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/url {"url": "https://memory.digital.utsc.utoronto.ca/collection/33463"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/url HTTP/1.1" 200 14
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element {"using": "css selector", "value": "#block-barriodepartments-collectionsearchresultspagerforpage > div > div.pager__summary"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/element HTTP/1.1" 200 96
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"3FCCF2F09704D983884BE5E3D2AF8A43_element_517"}} | headers=HTTPHeaderDict({'Content-Length': '96', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:GET http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element/3FCCF2F09704D983884BE5E3D2AF8A43_element_517/text {"id": "3FCCF2F09704D983884BE5E3D2AF8A43_element_517"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "GET /session/d902ba4f5e44fba7d476fdb508bb4064/element/3FCCF2F09704D983884BE5E3D2AF8A43_element_517/text HTTP/1.1" 200 38
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":"Displaying 1 - 50 of 23591"} | headers=HTTPHeaderDict({'Content-Length': '38', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Collection Count Test passed on row 24.
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/url {"url": "https://memory.digital.utsc.utoronto.ca/collection/33463"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/url HTTP/1.1" 200 14
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element {"using": "css selector", "value": "#block-barriodepartments-collectionsearchresultspagerforpage > div > div.pager__summary"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/element HTTP/1.1" 200 96
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"00F4F1B421C3A9CEC173539B5FCA2795_element_539"}} | headers=HTTPHeaderDict({'Content-Length': '96', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:GET http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element/00F4F1B421C3A9CEC173539B5FCA2795_element_539/text {"id": "00F4F1B421C3A9CEC173539B5FCA2795_element_539"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "GET /session/d902ba4f5e44fba7d476fdb508bb4064/element/00F4F1B421C3A9CEC173539B5FCA2795_element_539/text HTTP/1.1" 200 38
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":"Displaying 1 - 50 of 23591"} | headers=HTTPHeaderDict({'Content-Length': '38', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Collection Count Test passed on row 25.
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/url {"url": "https://memory.digital.utsc.utoronto.ca/collection/33463"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/url HTTP/1.1" 200 14
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element {"using": "css selector", "value": "#block-barriodepartments-collectionsearchresultspagerforpage > div > div.pager__summary"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/element HTTP/1.1" 200 96
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"5408AFA636086A37162F08B3B091AEA3_element_561"}} | headers=HTTPHeaderDict({'Content-Length': '96', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:GET http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element/5408AFA636086A37162F08B3B091AEA3_element_561/text {"id": "5408AFA636086A37162F08B3B091AEA3_element_561"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "GET /session/d902ba4f5e44fba7d476fdb508bb4064/element/5408AFA636086A37162F08B3B091AEA3_element_561/text HTTP/1.1" 200 38
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":"Displaying 1 - 50 of 23591"} | headers=HTTPHeaderDict({'Content-Length': '38', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Collection Count Test passed on row 26.
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/url {"url": "https://memory.digital.utsc.utoronto.ca/collection/33463"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/url HTTP/1.1" 200 14
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element {"using": "css selector", "value": "#block-barriodepartments-collectionsearchresultspagerforpage > div > div.pager__summary"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/element HTTP/1.1" 200 96
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"B3DD645CD877C4E6116DDEC75B61D791_element_583"}} | headers=HTTPHeaderDict({'Content-Length': '96', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:GET http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element/B3DD645CD877C4E6116DDEC75B61D791_element_583/text {"id": "B3DD645CD877C4E6116DDEC75B61D791_element_583"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "GET /session/d902ba4f5e44fba7d476fdb508bb4064/element/B3DD645CD877C4E6116DDEC75B61D791_element_583/text HTTP/1.1" 200 38
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":"Displaying 1 - 50 of 23591"} | headers=HTTPHeaderDict({'Content-Length': '38', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Collection Count Test passed on row 27.
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/url {"url": "https://memory.digital.utsc.utoronto.ca/collection/33463"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/url HTTP/1.1" 200 14
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element {"using": "css selector", "value": "#block-barriodepartments-collectionsearchresultspagerforpage > div > div.pager__summary"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/element HTTP/1.1" 200 96
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"607943C97A4ECDFE84B83DAE0A464467_element_605"}} | headers=HTTPHeaderDict({'Content-Length': '96', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:GET http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element/607943C97A4ECDFE84B83DAE0A464467_element_605/text {"id": "607943C97A4ECDFE84B83DAE0A464467_element_605"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "GET /session/d902ba4f5e44fba7d476fdb508bb4064/element/607943C97A4ECDFE84B83DAE0A464467_element_605/text HTTP/1.1" 200 38
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":"Displaying 1 - 50 of 23591"} | headers=HTTPHeaderDict({'Content-Length': '38', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Collection Count Test passed on row 28.
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/url {"url": "https://memory.digital.utsc.utoronto.ca/collection/33463"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/url HTTP/1.1" 200 14
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element {"using": "css selector", "value": "#block-barriodepartments-collectionsearchresultspagerforpage > div > div.pager__summary"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/element HTTP/1.1" 200 96
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"0043D884D9AD396175C51FBA024F300E_element_627"}} | headers=HTTPHeaderDict({'Content-Length': '96', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:GET http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element/0043D884D9AD396175C51FBA024F300E_element_627/text {"id": "0043D884D9AD396175C51FBA024F300E_element_627"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "GET /session/d902ba4f5e44fba7d476fdb508bb4064/element/0043D884D9AD396175C51FBA024F300E_element_627/text HTTP/1.1" 200 38
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":"Displaying 1 - 50 of 23591"} | headers=HTTPHeaderDict({'Content-Length': '38', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Collection Count Test passed on row 29.
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/url {"url": "https://memory.digital.utsc.utoronto.ca/collection/33463"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/url HTTP/1.1" 200 14
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element {"using": "css selector", "value": "#block-barriodepartments-collectionsearchresultspagerforpage > div > div.pager__summary"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/element HTTP/1.1" 200 96
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"19D851B908A62CF3E3D366794EB17B2E_element_649"}} | headers=HTTPHeaderDict({'Content-Length': '96', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:GET http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element/19D851B908A62CF3E3D366794EB17B2E_element_649/text {"id": "19D851B908A62CF3E3D366794EB17B2E_element_649"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "GET /session/d902ba4f5e44fba7d476fdb508bb4064/element/19D851B908A62CF3E3D366794EB17B2E_element_649/text HTTP/1.1" 200 38
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":"Displaying 1 - 50 of 23591"} | headers=HTTPHeaderDict({'Content-Length': '38', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Collection Count Test passed on row 30.
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/url {"url": "https://memory.digital.utsc.utoronto.ca/collection/33463"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/url HTTP/1.1" 200 14
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element {"using": "css selector", "value": "#block-barriodepartments-collectionsearchresultspagerforpage > div > div.pager__summary"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/element HTTP/1.1" 200 96
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"3BA7FB66ABC476FEFE51BE9229210067_element_671"}} | headers=HTTPHeaderDict({'Content-Length': '96', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:GET http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element/3BA7FB66ABC476FEFE51BE9229210067_element_671/text {"id": "3BA7FB66ABC476FEFE51BE9229210067_element_671"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "GET /session/d902ba4f5e44fba7d476fdb508bb4064/element/3BA7FB66ABC476FEFE51BE9229210067_element_671/text HTTP/1.1" 200 38
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":"Displaying 1 - 50 of 23591"} | headers=HTTPHeaderDict({'Content-Length': '38', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Collection Count Test passed on row 31.
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/url {"url": "https://memory.digital.utsc.utoronto.ca/collection/33463"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/url HTTP/1.1" 200 14
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element {"using": "css selector", "value": "#block-barriodepartments-collectionsearchresultspagerforpage > div > div.pager__summary"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/element HTTP/1.1" 200 96
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"9646F880ACB88B20FC425F5705E73711_element_693"}} | headers=HTTPHeaderDict({'Content-Length': '96', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:GET http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element/9646F880ACB88B20FC425F5705E73711_element_693/text {"id": "9646F880ACB88B20FC425F5705E73711_element_693"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "GET /session/d902ba4f5e44fba7d476fdb508bb4064/element/9646F880ACB88B20FC425F5705E73711_element_693/text HTTP/1.1" 200 38
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":"Displaying 1 - 50 of 23591"} | headers=HTTPHeaderDict({'Content-Length': '38', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Collection Count Test passed on row 32.
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/url {"url": "https://memory.digital.utsc.utoronto.ca/collection/33463"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/url HTTP/1.1" 200 14
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element {"using": "css selector", "value": "#block-barriodepartments-collectionsearchresultspagerforpage > div > div.pager__summary"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/element HTTP/1.1" 200 96
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"D9C664D8F904271BA250171DC7945E77_element_715"}} | headers=HTTPHeaderDict({'Content-Length': '96', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:GET http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element/D9C664D8F904271BA250171DC7945E77_element_715/text {"id": "D9C664D8F904271BA250171DC7945E77_element_715"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "GET /session/d902ba4f5e44fba7d476fdb508bb4064/element/D9C664D8F904271BA250171DC7945E77_element_715/text HTTP/1.1" 200 38
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":"Displaying 1 - 50 of 23591"} | headers=HTTPHeaderDict({'Content-Length': '38', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Collection Count Test passed on row 33.
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/url {"url": "https://memory.digital.utsc.utoronto.ca/collection/33463"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/url HTTP/1.1" 200 14
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element {"using": "css selector", "value": "#block-barriodepartments-collectionsearchresultspagerforpage > div > div.pager__summary"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/element HTTP/1.1" 200 96
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"C95E2C0AAE3B11C2D17D30D1463C1196_element_737"}} | headers=HTTPHeaderDict({'Content-Length': '96', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:GET http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element/C95E2C0AAE3B11C2D17D30D1463C1196_element_737/text {"id": "C95E2C0AAE3B11C2D17D30D1463C1196_element_737"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "GET /session/d902ba4f5e44fba7d476fdb508bb4064/element/C95E2C0AAE3B11C2D17D30D1463C1196_element_737/text HTTP/1.1" 200 38
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":"Displaying 1 - 50 of 23591"} | headers=HTTPHeaderDict({'Content-Length': '38', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Collection Count Test passed on row 34.
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/url {"url": "https://memory.digital.utsc.utoronto.ca/collection/33463"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/url HTTP/1.1" 200 14
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element {"using": "css selector", "value": "#block-barriodepartments-collectionsearchresultspagerforpage > div > div.pager__summary"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "POST /session/d902ba4f5e44fba7d476fdb508bb4064/element HTTP/1.1" 200 96
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"2AAFC0AAF0F1C8551B5BF38ED6D5196C_element_759"}} | headers=HTTPHeaderDict({'Content-Length': '96', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+DEBUG:selenium.webdriver.remote.remote_connection:GET http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/element/2AAFC0AAF0F1C8551B5BF38ED6D5196C_element_759/text {"id": "2AAFC0AAF0F1C8551B5BF38ED6D5196C_element_759"}
+DEBUG:urllib3.connectionpool:http://localhost:34523 "GET /session/d902ba4f5e44fba7d476fdb508bb4064/element/2AAFC0AAF0F1C8551B5BF38ED6D5196C_element_759/text HTTP/1.1" 200 38
+DEBUG:selenium.webdriver.remote.remote_connection:Remote response: status=200 | data={"value":"Displaying 1 - 50 of 23591"} | headers=HTTPHeaderDict({'Content-Length': '38', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+DEBUG:selenium.webdriver.remote.remote_connection:Finished Request
+INFO:root:Collection Count Test passed on row 35.
+DEBUG:selenium.webdriver.remote.remote_connection:POST http://localhost:34523/session/d902ba4f5e44fba7d476fdb508bb4064/url {"url": "https://memory.digital.utsc.utoronto.ca/collection/33463"}
+INFO:root:SiteWatch has started.
+INFO:root:Config file found at config.yml
+INFO:root:CSV file found at data.csv
+INFO:root:No output_csv field found in config file. Using default output.csv
+INFO:root:Availability Test passed on row 1.
+ERROR:root:Collection Count Test failed on row 2. The expected number of collections was not found. Expected 2359, but got 23591.
+INFO:root:Collection Count Test passed on row 3.
+INFO:root:Collection Count Test passed on row 4.
+INFO:root:Collection Count Test passed on row 5.
+INFO:root:Collection Count Test passed on row 6.
+INFO:root:Collection Count Test passed on row 7.
+INFO:root:Collection Count Test passed on row 8.
+INFO:root:Collection Count Test passed on row 9.
+INFO:root:Collection Count Test passed on row 10.
+INFO:root:Collection Count Test passed on row 11.
+INFO:root:Collection Count Test passed on row 12.
+INFO:root:Collection Count Test passed on row 13.
+INFO:root:Collection Count Test passed on row 14.
+INFO:root:Collection Count Test passed on row 15.
+INFO:root:Collection Count Test passed on row 16.
+INFO:root:Collection Count Test passed on row 17.
+INFO:root:Collection Count Test passed on row 18.
+INFO:root:Collection Count Test passed on row 19.
+INFO:root:Collection Count Test passed on row 20.
+INFO:root:Collection Count Test passed on row 21.
+INFO:root:Collection Count Test passed on row 22.
+INFO:root:Collection Count Test passed on row 23.
+INFO:root:Collection Count Test passed on row 24.
+INFO:root:Collection Count Test passed on row 25.
+INFO:root:Collection Count Test passed on row 26.
+INFO:root:Collection Count Test passed on row 27.
+INFO:root:Collection Count Test passed on row 28.
+INFO:root:Collection Count Test passed on row 29.
+INFO:root:Collection Count Test passed on row 30.
+INFO:root:Collection Count Test passed on row 31.
+INFO:root:Collection Count Test passed on row 32.
+INFO:root:Collection Count Test passed on row 33.
+INFO:root:Collection Count Test passed on row 34.
+INFO:root:Collection Count Test passed on row 35.
+INFO:root:Collection Count Test passed on row 36.
+INFO:root:Collection Count Test passed on row 37.
+INFO:root:Collection Count Test passed on row 38.
+INFO:root:Collection Count Test passed on row 39.
+INFO:root:Collection Count Test passed on row 40.
+INFO:root:Collection Count Test passed on row 41.
+INFO:root:Collection Count Test passed on row 42.
+INFO:root:Collection Count Test passed on row 43.
+INFO:root:Collection Count Test passed on row 44.
+INFO:root:Collection Count Test passed on row 45.
+INFO:root:Collection Count Test passed on row 46.
+INFO:root:Collection Count Test passed on row 47.
+INFO:root:Collection Count Test passed on row 48.
+INFO:root:Collection Count Test passed on row 49.
