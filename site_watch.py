@@ -9,6 +9,8 @@ from selenium.webdriver.remote.webdriver import WebDriver
 
 import csv
 import logging
+import tempfile
+import requests
 
 from rich.progress import track
 import time
@@ -170,6 +172,38 @@ def config_to_dict(config_file: str) -> dict:
 
     return config
 
+def get_csv_from_google_sheet(link: str, gid: int) -> str:
+    """ Extract a CSV from a Google Sheet and return the path to the temporary file containing the CSV data."""
+    url_parts = link.split('/')
+    url_parts[6] = 'export?gid=' + str(gid) + '&format=csv'
+    csv_url = '/'.join(url_parts)
+    response = requests.get(url=csv_url, allow_redirects=True)
+
+    if response.status_code == 404:
+        message = 'SiteWatch cannot find the Google spreadsheet at ' + link + '. Please check the URL.'
+        print(message)
+        sys.exit('Error: ' + message)
+
+    # Sheets that aren't publicly readable return a 302 and then a 200 with a bunch of HTML for humans to look at.
+    if response.content.strip().startswith(b'<!doctype html'):
+        message = 'The Google spreadsheet at ' + link + ' is not accessible.\nPlease check its "Share" settings.'
+        print(message)
+        sys.exit('Error: ' + message)
+
+    with tempfile.NamedTemporaryFile(mode='w', suffix='.csv', delete=False) as temp_file:
+        file_path = temp_file.name
+        
+        # Convert response content to proper CSV format
+        decoded_content = response.content.decode('utf-8')
+        csv_data = csv.reader(decoded_content.splitlines(), delimiter=',')
+        
+        # Write the CSV data to the temporary file
+        with open(file_path, 'w', newline='') as csv_file:
+            writer = csv.writer(csv_file)
+            writer.writerows(csv_data)
+
+    return file_path
+
 def check_csv_file(csv_data: list[dict], csv_headers: list) -> None:
     """ Verifies the contents of the CSV file and exits the program if the CSV file is invalid. """
     suuported_test_types = ["site_availability_test", 
@@ -177,6 +211,7 @@ def check_csv_file(csv_data: list[dict], csv_headers: list) -> None:
                             "collection_count_test", 
                             "openseadragon_load_test", 
                             "mirador_viewer_load_test", 
+                            "ableplayer_load_test",
                             "ableplayer_transcript_test"]
     
     options = webdriver.ChromeOptions()
@@ -303,8 +338,10 @@ if __name__ == "__main__":
         # Print a success message
         print(Fore.GREEN, "All tests have finished running.")
         logging.info("All tests have finished running.")
-        print(Fore.GREEN, f"Results have been written to {config['output_csv']}")
-        logging.info(f"Results have been written to {config['output_csv']}")
+        print(Fore.GREEN, f"Results have been written to {output_csv_name}")
+        logging.info(f"Results have been written to {output_csv_name}")
+
+        
 
     # Tear down the test controller
     test_controller.tear_down()
