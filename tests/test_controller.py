@@ -165,7 +165,7 @@ class TestController():
     
     def run_test(self, csv_row: dict, csv_row_number: int) -> bool:
         """ Runs a test based on the test type specified in <csv_row>. """
-        test_type = csv_row["test type"]
+        test_type = csv_row["test_type"]
         if test_type == 'collection_count_test':
             test_result = self.run_collection_count_test(csv_row, csv_row_number)
         elif test_type == 'facet_load_test':
@@ -174,7 +174,7 @@ class TestController():
             test_result = self.run_site_availibility_test(csv_row, csv_row_number)
         elif test_type == 'openseadragon_load_test':
             test_result = self.run_openseadragon_load_test(csv_row, csv_row_number)
-        elif test_type == 'mirador_load_test':
+        elif test_type == 'mirador_viewer_load_test':
             test_result = self.run_mirador_load_test(csv_row, csv_row_number)
         elif test_type == 'ableplayer_load_test':
             test_result = self.run_ableplayer_load_test(csv_row, csv_row_number)

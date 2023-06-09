@@ -1,0 +1,150 @@
+#!/usr/bin/python3
+from datetime import datetime
+import sys
+from termcolor import colored
+from ruamel.yaml import YAML
+
+from selenium import webdriver
+from selenium.webdriver.remote.webdriver import WebDriver
+
+import csv
+import tempfile
+import requests
+
+from rich.progress import track
+import time
+import os
+
+from tests.site_availibility_test import SiteAvailabilityTest
+from tests.test_controller import TestController
+from colorama import Fore
+
+from utils.config_utils import *
+from utils.csv_utils import *
+
+import logging
+
+
+def setup_outputs() -> dict:
+    """ Creates the logs and output_csvs directories if they do not already exist, and creates the time-named log and output csv files.
+    Returns a dictionary containing the names of the log file and output csv file.
+    """
+    # Make the logs directory if it does not already exist
+    if not os.path.exists("logs"):
+        os.mkdir("logs")
+
+    # Make the output_csvs directory if it does not already exist
+    if not os.path.exists("output_csvs"):
+        os.mkdir("output_csvs")
+
+    # Get the current date and time
+    current_datetime = datetime.now()
+
+    # Make the log file be in the logs directory and have the format site_watch-YYYY-MM-DD-HH-MM-SS.log
+    log_file_name = current_datetime.strftime("logs/site_watch-%Y-%m-%d-%H-%M-%S.log")
+    output_csv_name = current_datetime.strftime("output_csvs/site_watch-%Y-%m-%d-%H-%M-%S.csv")
+
+    # Create the logfile and the output csv file
+    open(log_file_name, "w").close()
+    open(output_csv_name, "w").close()
+
+    return {"log_file_name": log_file_name, "output_csv_name": output_csv_name}
+
+def print_help() -> None:
+    """Prints the help message to the console. """
+    print("Usage: python3 site_watch.py <config_file>")
+    print("See the README for more information.")
+
+def display_logo() -> None:
+    """Read the ASCII logo from the logo.txt file and prints it to the console in yellow. """
+    with open("logo.txt", "r") as f:
+        logo = f.read()
+        print(Fore.YELLOW, logo, Fore.RESET)
+
+
+def parse_arguments(arguments: list) -> str:
+    """Parses the command line arguments and returns the path to the config file if it exists, or exit if it does not exist. 
+    
+    NOTE: This function exits the program if the number of arguments is invalid.
+    """
+    # Display the help message if the user requests it
+    if '--help' in arguments or '-h' in arguments:
+        print_help()
+        sys.exit(0)
+
+    if len(arguments) != 2:
+        print(Fore.RED, "Invalid number of arguments. Expected 1, but got", len(arguments) - 1, Fore.RESET)
+        logging.error(f"Invalid number of arguments. Expected 1, but got {len(arguments) - 1}")
+        sys.exit(127)
+    else:
+        return arguments[1]
+     
+
+if __name__ == "__main__":
+    # Setup the log file and output csv file
+    output_file_names = setup_outputs()
+    output_csv_name = output_file_names["output_csv_name"]
+    output_log_name = output_file_names["log_file_name"]
+    logging.basicConfig(filename=output_log_name, level=logging.INFO)
+
+    # Greetings to user
+    logging.info("SiteWatch has started.")
+    display_logo()
+
+    print(Fore.GREEN, "SiteWatch has started.")
+    print(Fore.MAGENTA, f"The output CSV will be written to {output_csv_name}")
+    print(Fore.MAGENTA, f"The log file will be written to {output_log_name}")
+
+    
+
+    # Parse command line arguments and extract the configuration file path
+    config_file = parse_arguments(sys.argv)
+
+    # Verify configuration file and produce a dictionary from it
+    config = extract_config(config_file)
+
+    # Get the DictReader from the data source
+    input_data = extract_data(config)
+
+    test_controller = TestController()
+    with open(output_csv_name, 'w') as output_csv:
+        csv_writer = csv.writer(output_csv)
+        # Write the header
+        csv_writer.writerow(list(input_data[0].keys()) + ["test result", "total time"])
+
+        csv_row_number = 1
+        for csv_row in track(input_data, description="Running Tests..."):
+            test_result = None
+            # Record the current time
+            start_time = time.time()
+            test_result = test_controller.run_test(csv_row, csv_row_number)
+            # Record the time after the test has finished
+            end_time = time.time()
+            # Calculate the total time taken
+            total_time = end_time - start_time
+            # Convert the total time to a string
+            total_time = str(total_time)
+            
+            # Write the entire row plus the test result and total time to the output CSV file
+            csv_row['test result'] = "Passed" if test_result else "Failed"
+            csv_row['total time'] = total_time
+            csv_writer.writerow(list(csv_row.values()))
+            csv_row_number += 1
+        
+        # Print a success message
+        print(Fore.GREEN, "All tests have finished running.")
+        logging.info("All tests have finished running.")
+        print(Fore.GREEN, f"Results have been written to {output_csv_name}")
+        logging.info(f"Results have been written to {output_csv_name}")
+
+        
+
+    # Tear down the test controller
+    test_controller.tear_down()
+
+    # Tear down the logger
+    logging.shutdown()
+
+    # Exit the program
+    sys.exit(0)
+    

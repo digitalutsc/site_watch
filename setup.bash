@@ -7,6 +7,8 @@ pip3 install termcolor
 pip3 install selenium
 pip3 install rich
 pip3 install ruamel.yaml
+pip3 install gspread
+pip3 install oauth2client
 
 # Install Snap
 sudo apt install snapd -y
