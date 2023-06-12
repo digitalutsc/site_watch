@@ -1,4 +1,4 @@
-from tests.test import Test
+from test_suites.test import Test
 from pages.collections_or_advanced_search_page import CollectionsOrAdvancedSearchPage
 
 class FacetLoadTest(Test):

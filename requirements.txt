@@ -1,0 +1,6 @@
+colorama==0.3.7
+openpyxl==3.0.10
+Requests==2.31.0
+rich==13.4.2
+ruamel.base==1.0.0
+selenium==3.141.0

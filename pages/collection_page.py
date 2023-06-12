@@ -29,12 +29,7 @@ class CollectionPage(BasePage):
         """Return the number of pages in the mirador viewer, None if not present."""
         self.driver.get(self.url)
         try:
-            # count = 0
-            # start_time = time.time()
-            # while count == 0 and time.time() - start_time < 40:  # Loop until either the count is found or 40 seconds have passed
-            #     count = int(self.driver.find_elements(By.XPATH, "//*[contains(text(), '1 of ')]")[0].text.split(" ")[2])
-            # return count
-            self.driver.implicitly_wait(40)
+            self.driver.implicitly_wait(40) # Wait up to 40 seconds for the element to appear
             count = self.driver.find_elements(By.XPATH, "//*[contains(text(), '1 of ') and not(contains(text(), '1 of 0'))]")[0].text.split(" ")[2]
             return int(count)
         except NoSuchElementException:

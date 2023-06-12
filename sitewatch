@@ -1,7 +1,6 @@
-#!/usr/bin/python3
+#!/opt/anaconda3/bin/python
 from datetime import datetime
 import sys
-from termcolor import colored
 from ruamel.yaml import YAML
 
 from selenium import webdriver
@@ -15,12 +14,14 @@ from rich.progress import track
 import time
 import os
 
-from tests.site_availibility_test import SiteAvailabilityTest
-from tests.test_controller import TestController
-from colorama import Fore
-
 from utils.config_utils import *
 from utils.csv_utils import *
+from utils.mail_utils import *
+from test_suites.test_controller import TestController
+
+from colorama import Fore
+
+
 
 import logging
 
@@ -95,8 +96,6 @@ if __name__ == "__main__":
     print(Fore.MAGENTA, f"The output CSV will be written to {output_csv_name}")
     print(Fore.MAGENTA, f"The log file will be written to {output_log_name}")
 
-    
-
     # Parse command line arguments and extract the configuration file path
     config_file = parse_arguments(sys.argv)
 
@@ -107,6 +106,7 @@ if __name__ == "__main__":
     input_data = extract_data(config)
 
     test_controller = TestController()
+    email_flag = False  # This becomes True if errors are detected (so an email must be sent out)
     with open(output_csv_name, 'w') as output_csv:
         csv_writer = csv.writer(output_csv)
         # Write the header
@@ -127,6 +127,7 @@ if __name__ == "__main__":
             
             # Write the entire row plus the test result and total time to the output CSV file
             csv_row['test result'] = "Passed" if test_result else "Failed"
+            email_flag = not test_result  # If the test passed, we don't send an email
             csv_row['total time'] = total_time
             csv_writer.writerow(list(csv_row.values()))
             csv_row_number += 1
@@ -136,6 +137,17 @@ if __name__ == "__main__":
         logging.info("All tests have finished running.")
         print(Fore.GREEN, f"Results have been written to {output_csv_name}")
         logging.info(f"Results have been written to {output_csv_name}")
+        
+        # Send an email if there were errors
+        if email_flag:
+            sender_email = config['email']['sender_email']
+            sender_name = config['email']['sender_name']
+            recipient_emails = config['email']['recipient_email']
+            subject = "SiteWatch Error Report"
+            body = "One or more erros have been detected in the most recent run of SiteWatch. Please check the attached CSV and log files for more information."
+            attachments = [output_csv_name, output_log_name]
+            send_email(sender_email, sender_name, recipient_emails, subject, body, attachments)
+
 
         
 

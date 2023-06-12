@@ -1,5 +1,5 @@
 from pages.collection_page import CollectionPage
-from tests.test import Test
+from test_suites.test import Test
 
 class OpenSeaDragonLoadTest(Test):
     """ A test to check that the openseadragon viewer loads on the collection page. """
@@ -9,12 +9,17 @@ class OpenSeaDragonLoadTest(Test):
 
 class MiradorLoadTest(Test):
     """ A test to check that the mirador viewer loads on the collection page. """
-    def run(self, url: str, expected_number_of_thumbnails: int) -> None:
+    def run(self, url: str) -> None:
         collection_page = CollectionPage(self.driver, url)
         assert collection_page.is_mirador_loads(), "Mirador viewer does not load on collection page."
-        # Now we also want to compare the expected number of thumbnails to the actual number of thumbnails
+
+class MiradorPageCountTest(Test):
+    """ A test to check that the mirador viewer has the expected number of thumbnails."""
+    def run(self, url: str, expected_number_of_thumbnails: int) -> None:
+        collection_page = CollectionPage(self.driver, url)
         actual_number_of_thumbnails = collection_page.get_mirador_page_count()
         assert actual_number_of_thumbnails == expected_number_of_thumbnails, f"Mirador viewer does not have the expected number of thumbnails. Expected {expected_number_of_thumbnails}, got {actual_number_of_thumbnails}."
+
 
 class AblePlayerLoadTest(Test):
     """ A test to check that the ableplayer viewer loads on the collection page. """

@@ -1,5 +1,5 @@
 from pages.collections_or_advanced_search_page import CollectionsOrAdvancedSearchPage
-from tests.test import Test
+from test_suites.test import Test
 from selenium.common.exceptions import NoSuchElementException
 
 class CollectionCountTest(Test):

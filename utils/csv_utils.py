@@ -109,7 +109,7 @@ def extract_csv(input_csv_path) -> csv.DictReader:
     csv_data_stream = io.StringIO(csv_data)
     return csv.DictReader(csv_data_stream)
 
-def dictreader_to_dictionaries(csv_data: csv.DictReader) -> list[dict]:
+def dictreader_to_dictionaries(csv_data: csv.DictReader) -> list:
     """ Convert the CSV data in <csv_data> to a list of dictionaries and return a DictReader object containing the data."""
     formatted_data = []
     for row in csv_data:
@@ -123,7 +123,7 @@ def dictreader_to_dictionaries(csv_data: csv.DictReader) -> list[dict]:
 
     return formatted_data
 
-def check_data(data: list[dict]) -> None:
+def check_data(data: list) -> None:
     """ Validate the data and exit the program if any errors are found."""
     # Check if there is no data
     if len(data) == 0:
@@ -136,6 +136,7 @@ def check_data(data: list[dict]) -> None:
                             "collection_count_test", 
                             "openseadragon_load_test", 
                             "mirador_viewer_load_test", 
+                            "mirador_page_count_test",
                             "ableplayer_load_test",
                             "ableplayer_transcript_load_test"]
     row_number = 1
@@ -179,8 +180,8 @@ def check_data(data: list[dict]) -> None:
             logging.error(f"Invalid CSV file. Test Input column is empty in row {row_number + 1}")
             sys.exit(127)
 
-        # Mirador Viewer Load Tests need an integer input representing the expected number of thumbnails
-        if row["test_type"] == "mirador_viewer_load_test" and "test_input" not in row:
+        # Mirador Viewer Page Count Tests need an integer input representing the expected number of thumbnails
+        if row["test_type"] == "mirador_page_count_test" and "test_input" not in row:
             print(Fore.RED, "Invalid CSV file. Please see log for more details.", Fore.RESET)
             logging.error(f"Invalid CSV file. Test Input column is missing from row {row_number + 1}")
             sys.exit(127)
@@ -195,7 +196,7 @@ def check_data(data: list[dict]) -> None:
     print(Fore.GREEN, "CSV file is valid.")
     logging.info("CSV file is valid.")
 
-def extract_data(config: dict) -> list[dict]:
+def extract_data(config: dict) -> list:
     """ Extract the test data from either a Google Sheet, Excel file, or CSV file (specified in <config>) and return a formatted DictReader object 
     containing the data."""
     if 'google_sheets' in config:
