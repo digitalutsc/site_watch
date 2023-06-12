@@ -20,11 +20,12 @@ class TestController():
         self.mirador_load_test = MiradorLoadTest(self.driver)
         self.ableplayer_load_test = AblePlayerLoadTest(self.driver)
         self.ableplayer_transcript_load_test = AblePlayerTranscriptLoadTest(self.driver)
+        self.driver.implicitly_wait(10)
     
     def run_collection_count_test(self, csv_row: dict, csv_row_number: int) -> bool:
         """ Runs a Collection Count Test. """
         try:
-            self.collection_count_test.run(csv_row["url"], csv_row["test input"])
+            self.collection_count_test.run(csv_row["url"], csv_row["test_input"])
         except ValueError:
             print(Fore.RED, f"Invalid test input on row {csv_row_number + 1}. Please see log for more details.")
             logging.error(f"Invalid test input on row {csv_row_number + 1}. The test input must be an integer.")
@@ -47,11 +48,11 @@ class TestController():
     def run_facet_load_test(self, csv_row: dict, csv_row_number: int) -> bool:
         """ Runs a Facet Load Test. """
         try:
-            self.facet_load_test.run(csv_row["url"], csv_row["test input"])
+            self.facet_load_test.run(csv_row["url"], csv_row["test_input"])
         except ValueError:
             # The facet type is invalid.
             print(Fore.RED, f"Invalid test input on row {csv_row_number + 1}. Please see log for more details.")
-            logging.error(f"Invalid facet type {csv_row['test input']} on row {csv_row_number + 1}. The test input must be a valid facet type.")
+            logging.error(f"Invalid facet type {csv_row['test_input']} on row {csv_row_number + 1}. The test input must be a valid facet type.")
             return False
         except AssertionError as e:
             # Get the assertion error message
@@ -109,12 +110,12 @@ class TestController():
     def run_mirador_load_test(self, csv_row: dict, csv_row_number: int):
         """ Runs a Mirador Load Test. """
         try:
-            self.mirador_load_test.run(csv_row["url"])
+            self.mirador_load_test.run(csv_row["url"], int(csv_row["test_input"]))
         except AssertionError as e:
             # Get the assertion error message
             error_message = str(e)
             print(Fore.RED, f"Mirador Load Test failed on row {csv_row_number + 1}. Please see log for more details.")
-            logging.error(f"Mirador Load Test failed on row {csv_row_number + 1}. The viewer did not load. {error_message}")
+            logging.error(f"Mirador Load Test failed on row {csv_row_number + 1}. {error_message}")
             return False
         except Exception as e:
             print(Fore.RED, f"Mirador Load Test failed on row {csv_row_number + 1}. Please see log for more details.")
