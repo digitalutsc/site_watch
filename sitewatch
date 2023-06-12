@@ -127,7 +127,8 @@ if __name__ == "__main__":
             
             # Write the entire row plus the test result and total time to the output CSV file
             csv_row['test result'] = "Passed" if test_result else "Failed"
-            email_flag = not test_result  # If the test passed, we don't send an email
+            if not test_result:
+                email_flag = True
             csv_row['total time'] = total_time
             csv_writer.writerow(list(csv_row.values()))
             csv_row_number += 1
