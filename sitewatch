@@ -139,15 +139,15 @@ if __name__ == "__main__":
         print(Fore.GREEN, f"Results have been written to {output_csv_name}")
         logging.info(f"Results have been written to {output_csv_name}")
         
-        # Send an email if there were errors
-        if email_flag:
-            sender_email = config['email']['sender_email']
-            sender_name = config['email']['sender_name']
-            recipient_emails = config['email']['recipient_emails']
-            subject = "SiteWatch Error Report"
-            body = "One or more erros have been detected in the most recent run of SiteWatch. Please check the attached CSV and log files for more information."
-            attachments = [output_csv_name, output_log_name]
-            send_email(sender_email, sender_name, recipient_emails, subject, body, attachments)
+# Send an email if there were errors
+if email_flag:
+    sender_email = config['email']['sender_email']
+    sender_name = config['email']['sender_name']
+    recipient_emails = config['email']['recipient_emails']
+    subject = "SiteWatch Error Report"
+    body = "One or more erros have been detected in the most recent run of SiteWatch. Please check the attached CSV and log files for more information."
+    attachments = [output_csv_name, output_log_name]
+    send_email(sender_email, sender_name, recipient_emails, subject, body, attachments)
 
 
         
