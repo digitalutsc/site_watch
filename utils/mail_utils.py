@@ -2,6 +2,7 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.application import MIMEApplication
+from colorama import Fore
 
 def send_email(sender_email: str, sender_name: str, recipient_emails: list, subject: str, body: str, attachment_paths: list=[]) -> bool:
     try:
@@ -34,3 +35,25 @@ def send_email(sender_email: str, sender_name: str, recipient_emails: list, subj
     except Exception as e:
         print(f"An error occurred while sending the email: {e}")
         return False
+
+def send_test_failure_email(config: dict, output_csv_name: str, output_log_name: str):
+    """ Send an email to the recipients listed in the config file containing the output CSV and log files."""
+    sender_email = config['email']['sender_email']
+    sender_name = config['email']['sender_name']
+    recipient_emails = config['email']['recipient_emails']
+    subject = "SiteWatch Error Report"
+    body = "One or more erros have been detected in the most recent run of SiteWatch. Please check the attached CSV and log files for more information."
+    attachments = [output_csv_name, output_log_name]
+    send_email(sender_email, sender_name, recipient_emails, subject, body, attachments)
+    print(Fore.GREEN, "An email has been sent to the recipients listed in the config file as errors have been detected.")
+
+def send_invalid_csv_email(config: dict, output_log_name: str):
+    """ Send an email to the recipients listed in the config file containing the output CSV and log files."""
+    sender_email = config['email']['sender_email']
+    sender_name = config['email']['sender_name']
+    recipient_emails = config['email']['recipient_emails']
+    subject = "SiteWatch Error Report"
+    body = "The CSV file provided is invalid. Please check the attached log file for more information."
+    attachments = [output_log_name]
+    send_email(sender_email, sender_name, recipient_emails, subject, body, attachments)
+    print(Fore.GREEN, "An email has been sent to the recipients listed in the config file as the CSV file you provided is invalid.")

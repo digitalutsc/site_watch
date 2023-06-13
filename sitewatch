@@ -1,35 +1,31 @@
-#!/opt/anaconda3/bin/python
-from datetime import datetime
-import sys
-from ruamel.yaml import YAML
-
-from selenium import webdriver
-from selenium.webdriver.remote.webdriver import WebDriver
-
+#!/usr/bin/env python3
 import csv
-import tempfile
-import requests
-
-from rich.progress import track
-import time
 import os
+import sys
+import time
+from datetime import datetime
+
+from colorama import Fore
+from rich.progress import track
 
 from utils.config_utils import *
 from utils.csv_utils import *
 from utils.mail_utils import *
 from test_suites.test_controller import TestController
 
-from colorama import Fore
-
-
-
 import logging
 
+log_file_name = None
+output_csv_name = None
 
-def setup_outputs() -> dict:
+
+def setup_outputs() -> None:
     """ Creates the logs and output_csvs directories if they do not already exist, and creates the time-named log and output csv files.
     Returns a dictionary containing the names of the log file and output csv file.
     """
+    global log_file_name
+    global output_csv_name
+
     # Make the logs directory if it does not already exist
     if not os.path.exists("logs"):
         os.mkdir("logs")
@@ -48,8 +44,6 @@ def setup_outputs() -> dict:
     # Create the logfile and the output csv file
     open(log_file_name, "w").close()
     open(output_csv_name, "w").close()
-
-    return {"log_file_name": log_file_name, "output_csv_name": output_csv_name}
 
 def print_help() -> None:
     """Prints the help message to the console. """
@@ -84,9 +78,7 @@ def parse_arguments(arguments: list) -> str:
 if __name__ == "__main__":
     # Setup the log file and output csv file
     output_file_names = setup_outputs()
-    output_csv_name = output_file_names["output_csv_name"]
-    output_log_name = output_file_names["log_file_name"]
-    logging.basicConfig(filename=output_log_name, level=logging.INFO)
+    logging.basicConfig(filename=log_file_name, level=logging.INFO)
 
     # Greetings to user
     logging.info("SiteWatch has started.")
@@ -94,7 +86,7 @@ if __name__ == "__main__":
 
     print(Fore.GREEN, "SiteWatch has started.")
     print(Fore.MAGENTA, f"The output CSV will be written to {output_csv_name}")
-    print(Fore.MAGENTA, f"The log file will be written to {output_log_name}")
+    print(Fore.MAGENTA, f"The log file will be written to {log_file_name}")
 
     # Parse command line arguments and extract the configuration file path
     config_file = parse_arguments(sys.argv)
@@ -103,7 +95,11 @@ if __name__ == "__main__":
     config = extract_config(config_file)
 
     # Get the DictReader from the data source
-    input_data = extract_data(config)
+    try:
+        input_data = extract_data(config)
+    except SystemExit:
+        send_invalid_csv_email(config, log_file_name)
+        sys.exit(127)
 
     test_controller = TestController()
     email_flag = False  # This becomes True if errors are detected (so an email must be sent out)
@@ -133,25 +129,16 @@ if __name__ == "__main__":
             csv_writer.writerow(list(csv_row.values()))
             csv_row_number += 1
         
-        # Print a success message
-        print(Fore.GREEN, "All tests have finished running.")
-        logging.info("All tests have finished running.")
-        print(Fore.GREEN, f"Results have been written to {output_csv_name}")
-        logging.info(f"Results have been written to {output_csv_name}")
+    # Print a success message
+    print(Fore.GREEN, "All tests have finished running.")
+    logging.info("All tests have finished running.")
+    print(Fore.GREEN, f"Results have been written to {output_csv_name}")
+    logging.info(f"Results have been written to {output_csv_name}")
+            
+    # Send an email if there were errors
+    if email_flag:
+        send_test_failure_email(config, output_csv_name, log_file_name)
         
-# Send an email if there were errors
-if email_flag:
-    sender_email = config['email']['sender_email']
-    sender_name = config['email']['sender_name']
-    recipient_emails = config['email']['recipient_emails']
-    subject = "SiteWatch Error Report"
-    body = "One or more erros have been detected in the most recent run of SiteWatch. Please check the attached CSV and log files for more information."
-    attachments = [output_csv_name, output_log_name]
-    send_email(sender_email, sender_name, recipient_emails, subject, body, attachments)
-
-
-        
-
     # Tear down the test controller
     test_controller.tear_down()
 
@@ -160,4 +147,4 @@ if email_flag:
 
     # Exit the program
     sys.exit(0)
-    
+
