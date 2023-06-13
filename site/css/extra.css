@@ -1,0 +1,7 @@
+code.text {
+    white-space: pre-wrap;
+  }
+  code.yaml {
+    white-space: pre-wrap;
+    word-break: keep-all;
+  }
