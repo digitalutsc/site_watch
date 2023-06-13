@@ -6,3 +6,8 @@
 *.csv
 *.log
 *.yml
+*.ipynb
+.ipynb_checkpoints/setup-checkpoint.bash
+.ipynb_checkpoints/site_watch-checkpoint.ipynb
+.ipynb_checkpoints/sitewatch-checkpoint
+.gitignore
