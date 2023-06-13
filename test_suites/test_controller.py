@@ -4,7 +4,7 @@ import logging
 from test_suites.collection_count_test import CollectionCountTest
 from test_suites.facet_load_test import FacetLoadTest
 from test_suites.site_availibility_test import SiteAvailabilityTest
-from test_suites.viewer_tests import OpenSeaDragonLoadTest, MiradorLoadTest, AblePlayerLoadTest, AblePlayerTranscriptLoadTest
+from test_suites.viewer_tests import OpenSeaDragonLoadTest, MiradorLoadTest, MiradorPageCountTest, AblePlayerLoadTest, AblePlayerTranscriptLoadTest
 
 logging = logging.getLogger(__name__)
 
@@ -18,6 +18,7 @@ class TestController():
         self.site_availability_test = SiteAvailabilityTest(self.driver)
         self.openseadragon_load_test = OpenSeaDragonLoadTest(self.driver)
         self.mirador_load_test = MiradorLoadTest(self.driver)
+        self.mirador_page_count_test = MiradorPageCountTest(self.driver)
         self.ableplayer_load_test = AblePlayerLoadTest(self.driver)
         self.ableplayer_transcript_load_test = AblePlayerTranscriptLoadTest(self.driver)
         self.driver.implicitly_wait(10)
@@ -129,7 +130,7 @@ class TestController():
     def run_mirador_page_count_test(self, csv_row: dict, csv_row_number: int):
         """ Runs a Mirador Page Count Test. """
         try:
-            self.mirador_page_count_test.run(csv_row["url"], csv_row["test_input"])
+            self.mirador_page_count_test.run(csv_row["url"], int(csv_row["test_input"]))
         except AssertionError as e:
             # Get the assertion error message
             error_message = str(e)
