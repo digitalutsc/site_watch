@@ -18,6 +18,8 @@ from io import StringIO
 from rich.progress import track
 import io
 
+from utils.mail_utils import *
+
 logging = logging.getLogger(__name__)
 
 def extract_google_sheet(link: str) -> csv.DictReader:
@@ -117,7 +119,7 @@ def dictreader_to_dictionaries(csv_data: csv.DictReader) -> list:
         for key, value in row.items():
             key = key.lower() if isinstance(key, str) else key
             key = key.replace(" ", "_") if isinstance(key, str) else key
-            value = value.lower().replace(" ", "_") if isinstance(value, str) and key == "test_type" else value
+            value = value.lower().replace(" ", "_") if isinstance(value, str) and key == "test_type" or "test_input" else value
             formatted_row[key] = value
         formatted_data.append(formatted_row)
 
@@ -184,10 +186,6 @@ def check_data(data: list) -> None:
         if row["test_type"] == "mirador_page_count_test" and "test_input" not in row:
             print(Fore.RED, "Invalid CSV file. Please see log for more details.", Fore.RESET)
             logging.error(f"Invalid CSV file. Test Input column is missing from row {row_number + 1}")
-            sys.exit(127)
-        if row["test_type"] == "mirador_viewer_load_test" and row["test_input"] == "":
-            print(Fore.RED, "Invalid CSV file. Please see log for more details.", Fore.RESET)
-            logging.error(f"Invalid CSV file. Test Input column is empty in row {row_number + 1}")
             sys.exit(127)
         
         row_number += 1
