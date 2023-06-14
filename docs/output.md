@@ -9,30 +9,8 @@ The first three of these are by default enabled, and the last is up to the user 
 
 ## Console Output
 SiteWatch provides a nice, human-readable summary of its results to the console. Here is an example of what that looks like:
-```text
-   _________.__  __         __      __         __         .__     
- /   _____/|__|/  |_  ____/  \    /  \_____ _/  |_  ____ |  |__  
- \_____  \ |  \   __\/ __ \   \/\/   /\__  \\   __\/ ___\|  |  \ 
- /        \|  ||  | \  ___/\        /  / __ \|  | \  \___|   Y  \
-/_______  /|__||__|  \___  >\__/\  /  (____  /__|  \___  >___|  /
-        \/               \/      \/        \/          \/     \/  
- SiteWatch has started.
- The output CSV will be written to output_csvs/site_watch-2023-06-14-13-02-23.csv
- The log file will be written to logs/site_watch-2023-06-14-13-02-23.log
-Verifying CSV File... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:00
- CSV file is valid.
- Site Availability Test passed on row 2.
- Facet Load Test passed on row 3.
- Collection Count Test passed on row 4.
- OpenSeaDragon Load Test passed on row 5.
- Mirador Load Test passed on row 6.
- AblePlayer Transcript Load Test passed on row 7.
- Mirador Load Test passed on row 8.
- Mirador Page Count Test failed on row 9. Please see log for more details.
-Running Tests... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:17
- All tests have finished running.
- Results have been written to output_csvs/site_watch-2023-06-14-13-02-23.csv
- ```
+
+![SiteWatch console output](../assets/images/console_output.png)
 
 
 ## Log File
