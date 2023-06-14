@@ -1,4 +1,4 @@
-## The configuration file
+## The Configuration File
 
 SiteWatch gets its first input from a configuration file whose path is passed to it as a command line argument. This file is a YAML file, and can be named anything you like, but it must have a `.yml` extension. For example, if your configuration file is named `my_config.yml`, you would run SiteWatch like this:
 ```bash
