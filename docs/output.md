@@ -10,7 +10,7 @@ The first three of these are by default enabled, and the last is up to the user 
 ## Console Output
 SiteWatch provides a nice, human-readable summary of its results to the console. Here is an example of what that looks like:
 
-![SiteWatch console output](../assets/images/console_output.png)
+![SiteWatch console output](assets/console_output.png)
 
 
 ## Log File
