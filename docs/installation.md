@@ -10,7 +10,7 @@
     * [selenium](https://pypi.org/project/selenium/)
     * [colorama](https://pypi.org/project/colorama/)
     * If you want to have these libraries automatically installed, you will need Python's [setuptools](https://pypi.org/project/setuptools/)
-    * Highly recommended: A Linux-based operating system (e.g. Ubuntu, Debian, Fedora, etc.)
+* Highly recommended: A Linux-based operating system (e.g. Ubuntu, Debian, Fedora, etc.)
 
 ## Installing SiteWatch
 
