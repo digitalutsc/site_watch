@@ -11,17 +11,17 @@
       
       
       
-        <link rel="prev" href="../configuration/">
+        <link rel="prev" href="../installation/">
       
       
-        <link rel="next" href="../output/">
+        <link rel="next" href="../writing-test-data/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
     
     
       
-        <title>Writing Tests - SiteWatch</title>
+        <title>Configuration - SiteWatch</title>
       
     
     
@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#the-test-file" class="md-skip">
+        <a href="#the-configuration-file" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Writing Tests
+              Configuration
             
           </span>
         </div>
@@ -144,7 +144,7 @@
     
     
       <div class="md-header__source">
-        <a href="https://github.com/digitalutsc/site_watch" title="Go to repository" class="md-source" data-md-component="source">
+        <a href="https://github.com/digitalutsc/site_watch/tree/gh-pages" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
@@ -189,7 +189,7 @@
   </label>
   
     <div class="md-nav__source">
-      <a href="https://github.com/digitalutsc/site_watch" title="Go to repository" class="md-source" data-md-component="source">
+      <a href="https://github.com/digitalutsc/site_watch/tree/gh-pages" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
@@ -238,21 +238,6 @@
 
   
   
-  
-    <li class="md-nav__item">
-      <a href="../configuration/" class="md-nav__link">
-        Configuration
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
     
   
   
@@ -261,16 +246,14 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
-      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Writing Tests
+          Configuration
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Writing Tests
+        Configuration
       </a>
       
         
@@ -278,8 +261,6 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
-  
-    
   
   
     <label class="md-nav__title" for="__toc">
@@ -289,72 +270,43 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#required-test-file-columns" class="md-nav__link">
-    Required Test File Columns
+  <a href="#the-configuration-file" class="md-nav__link">
+    The Configuration File
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#test-types" class="md-nav__link">
-    Test Types
+  <a href="#required-configuration-settings" class="md-nav__link">
+    Required Configuration Settings
   </a>
   
-    <nav class="md-nav" aria-label="Test Types">
+    <nav class="md-nav" aria-label="Required Configuration Settings">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#site_availability_test" class="md-nav__link">
-    site_availability_test:
+  <a href="#input-source" class="md-nav__link">
+    Input Source
   </a>
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#facet_load_test" class="md-nav__link">
-    facet_load_test:
-  </a>
+      </ul>
+    </nav>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#collection_count_test" class="md-nav__link">
-    collection_count_test:
+      
+        <li class="md-nav__item">
+  <a href="#optional-configuration-settings" class="md-nav__link">
+    Optional Configuration Settings
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Optional Configuration Settings">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#openseadragon_load_test" class="md-nav__link">
-    openseadragon_load_test:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mirador_viewer_load_test" class="md-nav__link">
-    mirador_viewer_load_test:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mirador_page_count_test" class="md-nav__link">
-    mirador_page_count_test:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ableplayer_load_test" class="md-nav__link">
-    ableplayer_load_test:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ableplayer_transcript_load_test" class="md-nav__link">
-    ableplayer_transcript_load_test:
+  <a href="#email-settings" class="md-nav__link">
+    Email Settings
   </a>
   
 </li>
@@ -368,6 +320,21 @@
   
 </nav>
       
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../writing-test-data/" class="md-nav__link">
+        Writing Tests
+      </a>
     </li>
   
 
@@ -404,8 +371,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -414,72 +379,43 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#required-test-file-columns" class="md-nav__link">
-    Required Test File Columns
+  <a href="#the-configuration-file" class="md-nav__link">
+    The Configuration File
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#test-types" class="md-nav__link">
-    Test Types
+  <a href="#required-configuration-settings" class="md-nav__link">
+    Required Configuration Settings
   </a>
   
-    <nav class="md-nav" aria-label="Test Types">
+    <nav class="md-nav" aria-label="Required Configuration Settings">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#site_availability_test" class="md-nav__link">
-    site_availability_test:
+  <a href="#input-source" class="md-nav__link">
+    Input Source
   </a>
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#facet_load_test" class="md-nav__link">
-    facet_load_test:
-  </a>
+      </ul>
+    </nav>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#collection_count_test" class="md-nav__link">
-    collection_count_test:
+      
+        <li class="md-nav__item">
+  <a href="#optional-configuration-settings" class="md-nav__link">
+    Optional Configuration Settings
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Optional Configuration Settings">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#openseadragon_load_test" class="md-nav__link">
-    openseadragon_load_test:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mirador_viewer_load_test" class="md-nav__link">
-    mirador_viewer_load_test:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mirador_page_count_test" class="md-nav__link">
-    mirador_page_count_test:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ableplayer_load_test" class="md-nav__link">
-    ableplayer_load_test:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ableplayer_transcript_load_test" class="md-nav__link">
-    ableplayer_transcript_load_test:
+  <a href="#email-settings" class="md-nav__link">
+    Email Settings
   </a>
   
 </li>
@@ -507,65 +443,31 @@
   
 
 
-<h1 id="the-test-file">The Test File</h1>
-<p>SiteWatch gets its second input from a CSV-like file containing the tests that SiteWatch is to run. This file specifies the URLs to test, the type of test to be run, expected values, and other information. For example, a test file might look like this:</p>
-<pre><code class="language-csv">url,test_type,input_data
-https://memory.digital.utsc.utoronto.ca/collection/33463,collection_count_test,23591
-https://memory.digital.utsc.utoronto.ca/,site availability test,
+  <h1>Configuration</h1>
+
+<h2 id="the-configuration-file">The Configuration File</h2>
+<p>SiteWatch gets its first input from a configuration file whose path is passed to it as a command line argument. This file is a YAML file, and can be named anything you like, but it must have a <code>.yml</code> extension. For example, if your configuration file is named <code>my_config.yml</code>, you would run SiteWatch like this:</p>
+<pre><code class="language-bash">$ ./sitewatch my_config.yml
 </code></pre>
-<h2 id="required-test-file-columns">Required Test File Columns</h2>
-<p>While the test file can contain any number of columns (for example, a description column), it must contain the following columns:
-* <code>url</code>: The URL to test.
-* <code>test_type</code>: The type of test to run. See <a href="#test-types">Test Types</a> below for a list of valid test types.
-* <code>input_data</code>: For some test types, this column is required, and is used to provide more information about the tests. The format of this column depends on the test type. See <a href="#test-types">Test Types</a> below for more information.</p>
-<h2 id="test-types">Test Types</h2>
-<p>SiteWatch supports the following test types:</p>
-<h3 id="site_availability_test"><code>site_availability_test</code>:</h3>
-<p>This test type checks to see if the site is available. It does not require any input data. It performs a <code>GET</code> request to the URL, and checks to see if the response code is indicative of a successful request (i.e., a 2xx response code). Then, it double-checks by scanning the response body for a string that indicates the site is not available. Then, it triple-checks by actually visiting the site in a browser and checking to see if it is available. If any of these checks fail, the test fails. Here is a sample test row for this test type:</p>
-<pre><code class="language-csv">url,test_type,input_data
-https://memory.digital.utsc.utoronto.ca/,site_availability_test,
+<p>The configuration file contains all the information SiteWatch needs to run. It contains the location of the CSV-like file containing the tests that SiteWatch is to run, the email addresses of the people who are to receive the test results, and other information. For example, one of the the simplist configuration files might look like this:</p>
+<pre><code class="language-yaml">csv: /path/to/test/csv
 </code></pre>
-<p>As you can see, the <code>input_data</code> column is empty, as this test type does not require any input data.</p>
-<h3 id="facet_load_test"><code>facet_load_test</code>:</h3>
-<p>This test type checks to see if a specific facet loads on a collection page. It requires the facet name to be passed as input. The test will then visit the page in a browser and check to see if the facet loads. Here is a sample test row for this test type that checks to see if the "Subject" facet loads on the page.</p>
-<pre><code class="language-csv">url,test_type,input_data
-https://memory.digital.utsc.utoronto.ca/collection/33463,facet_load_test,Subject
+<h2 id="required-configuration-settings">Required Configuration Settings</h2>
+<h3 id="input-source">Input Source</h3>
+<p><strong>Exactly one</strong> of the following settings must be present in the configuration file to tell SiteWatch where to find the tests to run:
+* <code>csv</code>: A path to a CSV file containing the tests to run.
+* <code>excel</code>: A path to an Excel file containing the tests to run.
+* <code>google_sheets</code>: A URL to a Google Sheets file containing the tests to run.</p>
+<h2 id="optional-configuration-settings">Optional Configuration Settings</h2>
+<h3 id="email-settings">Email Settings</h3>
+<p>SiteWatch can send email notifications to one or more recipients when it finishes running. To enable this feature, the configuration file must include the following</p>
+<pre><code class="language-yaml">email:
+  sender_name: &lt;The name to appear on the emails&gt;
+  sender_email: &lt;The email address to send from; must be an email this machine can send from&gt;
+  recipient_emails: 
+    - &lt;email address 1&gt;
+    - &lt;email address 2&gt;
 </code></pre>
-<p>By default, the test will check to see if the facet loads within 20 seconds.</p>
-<h3 id="collection_count_test"><code>collection_count_test</code>:</h3>
-<p>This test type checks to see if the number of items in a collection matches the expected number of items. It requires the expected number of items to be passed as input. The test will then visit the collection page in a browser and check to see if the number of items matches the expected number of items. Here is a sample test row for this test type that checks to see if the collection has 23,591 items.</p>
-<pre><code class="language-csv">url,test_type,input_data
-https://memory.digital.utsc.utoronto.ca/collection/33463,collection_count_test,23591
-</code></pre>
-<p>By default, the test will check to see if the collection count matches the expected count within 20 seconds.</p>
-<h3 id="openseadragon_load_test"><code>openseadragon_load_test</code>:</h3>
-<p>This test type checks to see if the OpenSeadragon viewer loads on an item page. It does not require any input data. The test will then visit the item page in a browser and check to see if the OpenSeadragon viewer loads. Here is a sample test row for this test type:</p>
-<pre><code class="language-csv">url,test_type,input_data
-https://memory.digital.utsc.utoronto.ca/61220/utsc16185,openseadragon_load_test,
-</code></pre>
-<p>By default, the test will check to see if the OpenSeadragon viewer loads within 20 seconds.</p>
-<h3 id="mirador_viewer_load_test"><code>mirador_viewer_load_test</code>:</h3>
-<p>This test type checks to see if the Mirador viewer loads on an item page. It does not require any input data. The test will then visit the item page in a browser and check to see if the Mirador viewer loads. Here is a sample test row for this test type:</p>
-<pre><code class="language-csv">url,test_type,input_data
-https://memory.digital.utsc.utoronto.ca/61220/utsc11802,mirador_viewer_load_test,4
-</code></pre>
-<p>By default, the test will check to see if the Mirador viewer loads within 40 seconds.</p>
-<h3 id="mirador_page_count_test"><code>mirador_page_count_test</code>:</h3>
-<p>This test type checks to see if the number of pages in a Mirador viewer matches the expected number of pages. It requires the expected number of pages to be passed as input. The test will then visit the item page in a browser and check to see if the number of pages matches the expected number of pages. Here is a sample test row for this test type that checks to see if the Mirador viewer has 1034 pages.</p>
-<pre><code class="language-csv">url,test_type,input_data
-https://tamil.digital.utsc.utoronto.ca/61220/utsc34439,mirador_page_count_test,1034
-</code></pre>
-<p>By default, the test will check to see if the Mirador viewer has the expected number of pages within 40 seconds.</p>
-<h3 id="ableplayer_load_test"><code>ableplayer_load_test</code>:</h3>
-<p>This test type checks to see if the AblePlayer viewer loads on an item page. It does not require any input data. The test will then visit the item page in a browser and check to see if the AblePlayer viewer loads. Here is a sample test row for this test type:</p>
-<pre><code class="language-csv">https://tamil.digital.utsc.utoronto.ca/61220/utsc34400,ableplayer_load_test,
-</code></pre>
-<p>By default, the test will check to see if the AblePlayer viewer loads within 20 seconds.</p>
-<h3 id="ableplayer_transcript_load_test"><code>ableplayer_transcript_load_test</code>:</h3>
-<p>This test type checks to see if the AblePlayer transcript loads on an item page. It does not require any input data. The test will then visit the item page in a browser and check to see if the AblePlayer transcript loads. Here is a sample test row for this test type:</p>
-<pre><code class="language-csv">https://tamil.digital.utsc.utoronto.ca/61220/utsc34400,ableplayer_transcript_load_test,
-</code></pre>
-<p>By default, the test will check to see if the AblePlayer transcript loads within 20 seconds.</p>
 
 
 
