@@ -34,6 +34,7 @@ Running Tests... ━━━━━━━━━━━━━━━━━━━━━
  Results have been written to output_csvs/site_watch-2023-06-14-13-02-23.csv
  ```
 
+
 ## Log File
 SiteWatch writes a log file to the `logs` directory. The name of the file is time-stamped to be unique. The name of the log file is the same as the name of the output CSV file (see below), but with a `.log` extension. For example, if the output CSV file is named `site_watch-2023-06-14-13-02-23.csv`, the log file will be named `site_watch-2023-06-14-13-02-23.log`. The log file serves to report important information about the results of tests and, if they failed, why they failed. Here is an example of what the log file for the above console output might look like:
 ```text
@@ -51,6 +52,7 @@ INFO:root:All tests have finished running.
 INFO:root:Results have been written to output_csvs/site_watch-2023-06-14-13-02-23.csv
 ```
 
+
 ## Output CSV
 SiteWatch writes a CSV file to the `output_csvs` directory. The name of the file is time-stamped to be unique. The name of the output CSV file is the same as the name of the log file (see above), but with a `.csv` extension. For example, if the log file is named `site_watch-2023-06-14-13-02-23.log`, the output CSV file will be named `site_watch-2023-06-14-13-02-23.csv`. The output CSV is a copy of the input test data file, but with two columns appended: 
 * `test_result`: The result of the test. This will be either `Passed` or `Failed`.
@@ -65,6 +67,7 @@ the output CSV file would look like
 url,test_type,description,test_input,test_result,total_time
 https://memory.digital.utsc.utoronto.ca/collection/33463,facet_load_test,test_subject_fact_exists,subject,Passed,0.39168238639831543
 ```
+
 
 ## Email
 SiteWatch has the capability to send an email to one or more email addresses when it finishes running, only in the event of error or failed test case. This is useful for notifying people when a test has failed. The email sent will contain a copy of the log and output CSV files. To enable this feature, see [Email Settings](configuration.md#email-settings).
