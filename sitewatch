@@ -98,7 +98,8 @@ if __name__ == "__main__":
     try:
         input_data = extract_data(config)
     except SystemExit:
-        send_invalid_csv_email(config, log_file_name)
+        if 'email' in config:
+            send_invalid_csv_email(config, log_file_name)
         sys.exit(127)
 
     test_controller = TestController()
@@ -136,7 +137,7 @@ if __name__ == "__main__":
     logging.info(f"Results have been written to {output_csv_name}")
             
     # Send an email if there were errors
-    if email_flag:
+    if email_flag and 'email' in config:
         send_test_failure_email(config, output_csv_name, log_file_name)
         
     # Tear down the test controller
