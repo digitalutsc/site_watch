@@ -106,7 +106,7 @@ if __name__ == "__main__":
     with open(output_csv_name, 'w') as output_csv:
         csv_writer = csv.writer(output_csv)
         # Write the header
-        csv_writer.writerow(list(input_data[0].keys()) + ["test result", "total time"])
+        csv_writer.writerow(list(input_data[0].keys()) + ["test_result", "total_time"])
 
         csv_row_number = 1
         for csv_row in track(input_data, description="Running Tests..."):
@@ -122,10 +122,10 @@ if __name__ == "__main__":
             total_time = str(total_time)
             
             # Write the entire row plus the test result and total time to the output CSV file
-            csv_row['test result'] = "Passed" if test_result else "Failed"
+            csv_row['test_result'] = "Passed" if test_result else "Failed"
             if not test_result:
                 email_flag = True
-            csv_row['total time'] = total_time
+            csv_row['total_time'] = total_time
             csv_writer.writerow(list(csv_row.values()))
             csv_row_number += 1
         
