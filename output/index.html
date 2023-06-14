@@ -309,6 +309,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#log-file" class="md-nav__link">
+    Log File
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#output-csv" class="md-nav__link">
     Output CSV
   </a>
@@ -364,6 +371,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#log-file" class="md-nav__link">
+    Log File
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#output-csv" class="md-nav__link">
     Output CSV
   </a>
@@ -404,35 +418,10 @@
 <p>The first three of these are by default enabled, and the last is up to the user to enable. The following sections describe each of these in detail.</p>
 <h2 id="console-output">Console Output</h2>
 <p>SiteWatch provides a nice, human-readable summary of its results to the console. Here is an example of what that looks like:</p>
-<pre><code class="language-text">   _________.__  __         __      __         __         .__     
- /   _____/|__|/  |_  ____/  \    /  \_____ _/  |_  ____ |  |__  
- \_____  \ |  \   __\/ __ \   \/\/   /\__  \\   __\/ ___\|  |  \ 
- /        \|  ||  | \  ___/\        /  / __ \|  | \  \___|   Y  \
-/_______  /|__||__|  \___  &gt;\__/\  /  (____  /__|  \___  &gt;___|  /
-        \/               \/      \/        \/          \/     \/  
- SiteWatch has started.
- The output CSV will be written to output_csvs/site_watch-2023-06-14-13-02-23.csv
- The log file will be written to logs/site_watch-2023-06-14-13-02-23.log
-Verifying CSV File... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:00
- CSV file is valid.
- Site Availability Test passed on row 2.
- Facet Load Test passed on row 3.
- Collection Count Test passed on row 4.
- OpenSeaDragon Load Test passed on row 5.
- Mirador Load Test passed on row 6.
- AblePlayer Transcript Load Test passed on row 7.
- Mirador Load Test passed on row 8.
- Mirador Page Count Test failed on row 9. Please see log for more details.
-Running Tests... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:17
- All tests have finished running.
- Results have been written to output_csvs/site_watch-2023-06-14-13-02-23.csv
- ```
-
-
-## Log File
-SiteWatch writes a log file to the `logs` directory. The name of the file is time-stamped to be unique. The name of the log file is the same as the name of the output CSV file (see below), but with a `.log` extension. For example, if the output CSV file is named `site_watch-2023-06-14-13-02-23.csv`, the log file will be named `site_watch-2023-06-14-13-02-23.log`. The log file serves to report important information about the results of tests and, if they failed, why they failed. Here is an example of what the log file for the above console output might look like:
-```text
-INFO:root:SiteWatch has started.
+<p><img alt="SiteWatch console output" src="../assets/images/console_output.png" /></p>
+<h2 id="log-file">Log File</h2>
+<p>SiteWatch writes a log file to the <code>logs</code> directory. The name of the file is time-stamped to be unique. The name of the log file is the same as the name of the output CSV file (see below), but with a <code>.log</code> extension. For example, if the output CSV file is named <code>site_watch-2023-06-14-13-02-23.csv</code>, the log file will be named <code>site_watch-2023-06-14-13-02-23.log</code>. The log file serves to report important information about the results of tests and, if they failed, why they failed. Here is an example of what the log file for the above console output might look like:</p>
+<pre><code class="language-text">INFO:root:SiteWatch has started.
 INFO:utils.csv_utils:CSV file is valid.
 INFO:test_suites.test_controller:Site Availability Test passed on row 2.
 INFO:test_suites.test_controller:Facet Load Test passed on row 3.
