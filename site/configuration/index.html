@@ -11,15 +11,17 @@
       
       
       
-        <link rel="prev" href="../writing-test-data/">
+        <link rel="prev" href="../installation/">
       
+      
+        <link rel="next" href="../writing-test-data/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
     
     
       
-        <title>Output - SiteWatch</title>
+        <title>Configuration - SiteWatch</title>
       
     
     
@@ -63,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#output-in-sitewatch" class="md-skip">
+        <a href="#the-configuration-file" class="md-skip">
           Skip to content
         </a>
       
@@ -98,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Output
+              Configuration
             
           </span>
         </div>
@@ -142,7 +144,7 @@
     
     
       <div class="md-header__source">
-        <a href="https://github.com/digitalutsc/site_watch/tree/gh-pages" title="Go to repository" class="md-source" data-md-component="source">
+        <a href="https://github.com/digitalutsc/site_watch" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
@@ -187,7 +189,7 @@
   </label>
   
     <div class="md-nav__source">
-      <a href="https://github.com/digitalutsc/site_watch/tree/gh-pages" title="Go to repository" class="md-source" data-md-component="source">
+      <a href="https://github.com/digitalutsc/site_watch" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
@@ -236,11 +238,88 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../configuration/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Configuration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Configuration
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-configuration-file" class="md-nav__link">
+    The Configuration File
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#required-configuration-settings" class="md-nav__link">
+    Required Configuration Settings
+  </a>
+  
+    <nav class="md-nav" aria-label="Required Configuration Settings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#input-source" class="md-nav__link">
+    Input Source
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optional-configuration-settings" class="md-nav__link">
+    Optional Configuration Settings
+  </a>
+  
+    <nav class="md-nav" aria-label="Optional Configuration Settings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#email-settings" class="md-nav__link">
+    Email Settings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -266,59 +345,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Output
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../output/" class="md-nav__link">
         Output
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#console-output" class="md-nav__link">
-    Console Output
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#email" class="md-nav__link">
-    Email
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -340,8 +371,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -350,16 +379,49 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#console-output" class="md-nav__link">
-    Console Output
+  <a href="#the-configuration-file" class="md-nav__link">
+    The Configuration File
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#email" class="md-nav__link">
-    Email
+  <a href="#required-configuration-settings" class="md-nav__link">
+    Required Configuration Settings
   </a>
+  
+    <nav class="md-nav" aria-label="Required Configuration Settings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#input-source" class="md-nav__link">
+    Input Source
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optional-configuration-settings" class="md-nav__link">
+    Optional Configuration Settings
+  </a>
+  
+    <nav class="md-nav" aria-label="Optional Configuration Settings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#email-settings" class="md-nav__link">
+    Email Settings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -381,70 +443,31 @@
   
 
 
-<h1 id="output-in-sitewatch">Output In SiteWatch</h1>
-<p>Sitewatch has the capability to convey the results of its tests in a variety of ways:
-* To the console (stdout)
-* To a log file
-* To a CSV file
-* To email addresses</p>
-<p>The first three of these are by default enabled, and the last is up to the user to enable. The following sections describe each of these in detail.</p>
-<h2 id="console-output">Console Output</h2>
-<p>SiteWatch provides a nice, human-readable summary of its results to the console. Here is an example of what that looks like:</p>
-<pre><code>   _________.__  __         __      __         __         .__     
- /   _____/|__|/  |_  ____/  \    /  \_____ _/  |_  ____ |  |__  
- \_____  \ |  \   __\/ __ \   \/\/   /\__  \\   __\/ ___\|  |  \ 
- /        \|  ||  | \  ___/\        /  / __ \|  | \  \___|   Y  \
-/_______  /|__||__|  \___  &gt;\__/\  /  (____  /__|  \___  &gt;___|  /
-        \/               \/      \/        \/          \/     \/  
- SiteWatch has started.
- The output CSV will be written to output_csvs/site_watch-2023-06-14-13-02-23.csv
- The log file will be written to logs/site_watch-2023-06-14-13-02-23.log
-Verifying CSV File... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:00
- CSV file is valid.
- Site Availability Test passed on row 2.
- Facet Load Test passed on row 3.
- Collection Count Test passed on row 4.
- OpenSeaDragon Load Test passed on row 5.
- Mirador Load Test passed on row 6.
- AblePlayer Transcript Load Test passed on row 7.
- Mirador Load Test passed on row 8.
- Mirador Page Count Test failed on row 9. Please see log for more details.
-Running Tests... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:17
- All tests have finished running.
- Results have been written to output_csvs/site_watch-2023-06-14-13-02-23.csv
- ```
+  <h1>Configuration</h1>
 
-## Log File
-SiteWatch writes a log file to the `logs` directory. The name of the file is time-stamped to be unique. The name of the log file is the same as the name of the output CSV file (see below), but with a `.log` extension. For example, if the output CSV file is named `site_watch-2023-06-14-13-02-23.csv`, the log file will be named `site_watch-2023-06-14-13-02-23.log`. The log file serves to report important information about the results of tests and, if they failed, why they failed. Here is an example of what the log file for the above console output might look like:
+<h2 id="the-configuration-file">The Configuration File</h2>
+<p>SiteWatch gets its first input from a configuration file whose path is passed to it as a command line argument. This file is a YAML file, and can be named anything you like, but it must have a <code>.yml</code> extension. For example, if your configuration file is named <code>my_config.yml</code>, you would run SiteWatch like this:</p>
+<pre><code class="language-bash">$ ./sitewatch my_config.yml
 </code></pre>
-<p>INFO:root:SiteWatch has started.
-INFO:utils.csv_utils:CSV file is valid.
-INFO:test_suites.test_controller:Site Availability Test passed on row 2.
-INFO:test_suites.test_controller:Facet Load Test passed on row 3.
-INFO:test_suites.test_controller:Collection Count Test passed on row 4.
-INFO:test_suites.test_controller:OpenSeaDragon Load Test passed on row 5.
-INFO:test_suites.test_controller:Mirador Load Test passed on row 6.
-INFO:test_suites.test_controller:AblePlayer Transcript Load Test passed on row 7.
-INFO:test_suites.test_controller:Mirador Load Test passed on row 8.
-ERROR:test_suites.test_controller:Mirador Page Count Test failed on row 9. Mirador viewer does not have the expected number of thumbnails. Expected 1032, got 1034.
-INFO:root:All tests have finished running.
-INFO:root:Results have been written to output_csvs/site_watch-2023-06-14-13-02-23.csv</p>
-<pre><code>
-## Output CSV
-SiteWatch writes a CSV file to the `output_csvs` directory. The name of the file is time-stamped to be unique. The name of the output CSV file is the same as the name of the log file (see above), but with a `.csv` extension. For example, if the log file is named `site_watch-2023-06-14-13-02-23.log`, the output CSV file will be named `site_watch-2023-06-14-13-02-23.csv`. The output CSV is a copy of the input test data file, but with two columns appended: 
-* `test_result`: The result of the test. This will be either `Passed` or `Failed`.
-* `total_time`: The total time it took to run the test, in seconds.
-For example, if the original input data file looked like
+<p>The configuration file contains all the information SiteWatch needs to run. It contains the location of the CSV-like file containing the tests that SiteWatch is to run, the email addresses of the people who are to receive the test results, and other information. For example, one of the the simplist configuration files might look like this:</p>
+<pre><code class="language-yaml">csv: /path/to/test/csv
 </code></pre>
-<p>url,test_type,description,test_input
-https://memory.digital.utsc.utoronto.ca/collection/33463,facet_load_test,test_subject_fact_exists,subject</p>
-<pre><code>the output CSV file would look like
+<h2 id="required-configuration-settings">Required Configuration Settings</h2>
+<h3 id="input-source">Input Source</h3>
+<p><strong>Exactly one</strong> of the following settings must be present in the configuration file to tell SiteWatch where to find the tests to run:
+* <code>csv</code>: A path to a CSV file containing the tests to run.
+* <code>excel</code>: A path to an Excel file containing the tests to run.
+* <code>google_sheets</code>: A URL to a Google Sheets file containing the tests to run.</p>
+<h2 id="optional-configuration-settings">Optional Configuration Settings</h2>
+<h3 id="email-settings">Email Settings</h3>
+<p>SiteWatch can send email notifications to one or more recipients when it finishes running. To enable this feature, the configuration file must include the following</p>
+<pre><code class="language-yaml">email:
+  sender_name: &lt;The name to appear on the emails&gt;
+  sender_email: &lt;The email address to send from; must be an email this machine can send from&gt;
+  recipient_emails: 
+    - &lt;email address 1&gt;
+    - &lt;email address 2&gt;
 </code></pre>
-<p>url,test_type,description,test_input,test_result,total_time
-https://memory.digital.utsc.utoronto.ca/collection/33463,facet_load_test,test_subject_fact_exists,subject,Passed,0.39168238639831543
-```</p>
-<h2 id="email">Email</h2>
-<p>SiteWatch has the capability to send an email to one or more email addresses when it finishes running, only in the event of error or failed test case. This is useful for notifying people when a test has failed. The email sent will contain a copy of the log and output CSV files. To enable this feature, see <a href="../configuration/#email-settings">Email Settings</a>.</p>
 
 
 

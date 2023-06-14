@@ -11,17 +11,17 @@
       
       
       
-        <link rel="prev" href="../configuration/">
+        <link rel="prev" href="..">
       
       
-        <link rel="next" href="../output/">
+        <link rel="next" href="../configuration/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
     
     
       
-        <title>Writing Tests - SiteWatch</title>
+        <title>Installation - SiteWatch</title>
       
     
     
@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#the-test-file" class="md-skip">
+        <a href="#requirements" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Writing Tests
+              Installation
             
           </span>
         </div>
@@ -144,7 +144,7 @@
     
     
       <div class="md-header__source">
-        <a href="https://github.com/digitalutsc/site_watch/tree/gh-pages" title="Go to repository" class="md-source" data-md-component="source">
+        <a href="https://github.com/digitalutsc/site_watch" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
@@ -189,7 +189,7 @@
   </label>
   
     <div class="md-nav__source">
-      <a href="https://github.com/digitalutsc/site_watch/tree/gh-pages" title="Go to repository" class="md-source" data-md-component="source">
+      <a href="https://github.com/digitalutsc/site_watch" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
@@ -223,11 +223,89 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../installation/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Installation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Installation
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    Requirements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-sitewatch" class="md-nav__link">
+    Installing SiteWatch
+  </a>
+  
+    <nav class="md-nav" aria-label="Installing SiteWatch">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-cloning-the-sitewatch-repo" class="md-nav__link">
+    Step 1: Cloning the SiteWatch Repo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-running-setuppy-to-install-the-required-python-libraries" class="md-nav__link">
+    Step 2: Running setup.py to Install the Required Python Libraries
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updating-sitewatch" class="md-nav__link">
+    Updating SiteWatch
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-google-chrome-and-chromedriver-on-linux" class="md-nav__link">
+    Installing Google Chrome and Chromedriver on Linux
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -253,121 +331,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Writing Tests
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../writing-test-data/" class="md-nav__link">
         Writing Tests
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#required-test-file-columns" class="md-nav__link">
-    Required Test File Columns
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#test-types" class="md-nav__link">
-    Test Types
-  </a>
-  
-    <nav class="md-nav" aria-label="Test Types">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#site_availability_test" class="md-nav__link">
-    site_availability_test:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#facet_load_test" class="md-nav__link">
-    facet_load_test:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#collection_count_test" class="md-nav__link">
-    collection_count_test:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#openseadragon_load_test" class="md-nav__link">
-    openseadragon_load_test:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mirador_viewer_load_test" class="md-nav__link">
-    mirador_viewer_load_test:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mirador_page_count_test" class="md-nav__link">
-    mirador_page_count_test:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ableplayer_load_test" class="md-nav__link">
-    ableplayer_load_test:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ableplayer_transcript_load_test" class="md-nav__link">
-    ableplayer_transcript_load_test:
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -404,8 +372,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -414,78 +380,50 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#required-test-file-columns" class="md-nav__link">
-    Required Test File Columns
+  <a href="#requirements" class="md-nav__link">
+    Requirements
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#test-types" class="md-nav__link">
-    Test Types
+  <a href="#installing-sitewatch" class="md-nav__link">
+    Installing SiteWatch
   </a>
   
-    <nav class="md-nav" aria-label="Test Types">
+    <nav class="md-nav" aria-label="Installing SiteWatch">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#site_availability_test" class="md-nav__link">
-    site_availability_test:
+  <a href="#step-1-cloning-the-sitewatch-repo" class="md-nav__link">
+    Step 1: Cloning the SiteWatch Repo
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#facet_load_test" class="md-nav__link">
-    facet_load_test:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#collection_count_test" class="md-nav__link">
-    collection_count_test:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#openseadragon_load_test" class="md-nav__link">
-    openseadragon_load_test:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mirador_viewer_load_test" class="md-nav__link">
-    mirador_viewer_load_test:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mirador_page_count_test" class="md-nav__link">
-    mirador_page_count_test:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ableplayer_load_test" class="md-nav__link">
-    ableplayer_load_test:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ableplayer_transcript_load_test" class="md-nav__link">
-    ableplayer_transcript_load_test:
+  <a href="#step-2-running-setuppy-to-install-the-required-python-libraries" class="md-nav__link">
+    Step 2: Running setup.py to Install the Required Python Libraries
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#updating-sitewatch" class="md-nav__link">
+    Updating SiteWatch
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-google-chrome-and-chromedriver-on-linux" class="md-nav__link">
+    Installing Google Chrome and Chromedriver on Linux
+  </a>
   
 </li>
       
@@ -507,65 +445,70 @@
   
 
 
-<h1 id="the-test-file">The Test File</h1>
-<p>SiteWatch gets its second input from a CSV-like file containing the tests that SiteWatch is to run. This file specifies the URLs to test, the type of test to be run, expected values, and other information. For example, a test file might look like this:</p>
-<pre><code class="language-csv">url,test_type,input_data
-https://memory.digital.utsc.utoronto.ca/collection/33463,collection_count_test,23591
-https://memory.digital.utsc.utoronto.ca/,site availability test,
+  <h1>Installation</h1>
+
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>Python 3.7 or higher</li>
+<li>The latest Google Chrome and Chromedriver installed to the PATH (see <a href="#installing-chrome-and-chromedriver">Installing Chrome and Chromedriver on Linux</a> or visit the Google Chrome and Chromedriver websites for instructions on installing these on other operating systems)</li>
+<li>The following Python libraries:<ul>
+<li><a href="https://yaml.readthedocs.io/en/latest/index.html">ruamel.yaml</a></li>
+<li><a href="https://2.python-requests.org/en/master/">Requests</a></li>
+<li><a href="https://pypi.org/project/openpyxl/">openpyxl</a></li>
+<li><a href="https://pypi.org/project/rich/">rich</a></li>
+<li><a href="https://pypi.org/project/selenium/">selenium</a></li>
+<li><a href="https://pypi.org/project/colorama/">colorama</a></li>
+<li>If you want to have these libraries automatically installed, you will need Python's <a href="https://pypi.org/project/setuptools/">setuptools</a></li>
+<li>Highly recommended: A Linux-based operating system (e.g. Ubuntu, Debian, Fedora, etc.)</li>
+</ul>
+</li>
+</ul>
+<h2 id="installing-sitewatch">Installing SiteWatch</h2>
+<p>Installation involves three steps:</p>
+<ol>
+<li>cloning the SiteWatch Github repo</li>
+<li>running <code>setup.py</code> to install the required Python libraries (listed above)</li>
+</ol>
+<h3 id="step-1-cloning-the-sitewatch-repo">Step 1: Cloning the SiteWatch Repo</h3>
+<p>In a terminal, run:</p>
+<p><code>git clone https://github.com/digitalutsc/site_watch.git</code></p>
+<p>This will create a directory named <code>site_watch</code> where you will run the <code>./sitewatch</code> command.</p>
+<h3 id="step-2-running-setuppy-to-install-the-required-python-libraries">Step 2: Running setup.py to Install the Required Python Libraries</h3>
+<p>For most users, the preferred place to install Python libraries is in the user directory. To do this, change into the "site_watch" directory created by cloning the repo, and run the following command:</p>
+<p><code>python3 setup.py install --user</code></p>
+<p>A less common mehtod is to install the required Python libraries into your computer's central Python environment. To do this, omit the <code>--user</code> (note: you must have administrator privileges on the computer to do this):</p>
+<p><code>sudo python3 setup.py install</code></p>
+<h2 id="updating-sitewatch">Updating SiteWatch</h2>
+<p>Since SiteWatch is under development, you will want to update it often. To do this, within the <code>site_watch</code> directory, run the following <code>git</code> command:</p>
+<p><code>git pull origin main</code></p>
+<p>After you pull in the latest changes using <code>git</code>, it's a good idea to rerun the setup tools in case new Python libraries have been added since you last ran the setup tools (same command as above):</p>
+<p><code>python3 setup.py install --user</code></p>
+<p>or if you originally installed the required Python libraries centrally, without the <code>--user</code> option (again, you will need administrator privileges on the machine):</p>
+<p><code>sudo python3 setup.py install</code></p>
+<h2 id="installing-google-chrome-and-chromedriver-on-linux">Installing Google Chrome and Chromedriver on Linux</h2>
+<p>SiteWatch uses Google Chrome and Chromedriver to run tests. You will need to install both of these on the machine where you will be running SiteWatch. </p>
+<p>To install Google Chrome, run the following in a terminal:</p>
+<pre><code class="language-bash">sudo apt-get update -y
+sudo apt-get upgrade -y
+sudo apt install wget -y
+sudo wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome-stable_current_amd64.deb
+sudo apt -f install
+sudo rm google-chrome-stable_current_amd64.deb
 </code></pre>
-<h2 id="required-test-file-columns">Required Test File Columns</h2>
-<p>While the test file can contain any number of columns (for example, a description column), it must contain the following columns:
-* <code>url</code>: The URL to test.
-* <code>test_type</code>: The type of test to run. See <a href="#test-types">Test Types</a> below for a list of valid test types.
-* <code>input_data</code>: For some test types, this column is required, and is used to provide more information about the tests. The format of this column depends on the test type. See <a href="#test-types">Test Types</a> below for more information.</p>
-<h2 id="test-types">Test Types</h2>
-<p>SiteWatch supports the following test types:</p>
-<h3 id="site_availability_test"><code>site_availability_test</code>:</h3>
-<p>This test type checks to see if the site is available. It does not require any input data. It performs a <code>GET</code> request to the URL, and checks to see if the response code is indicative of a successful request (i.e., a 2xx response code). Then, it double-checks by scanning the response body for a string that indicates the site is not available. Then, it triple-checks by actually visiting the site in a browser and checking to see if it is available. If any of these checks fail, the test fails. Here is a sample test row for this test type:</p>
-<pre><code class="language-csv">url,test_type,input_data
-https://memory.digital.utsc.utoronto.ca/,site_availability_test,
+<p>To install Chromedriver, run the following in a terminal:</p>
+<pre><code class="language-bash">sudo apt-get update -y
+sudo apt-get upgrade -y
+sudo apt-get install unzip -y
+sudo apt-get install curl -y
+latest_version=$(curl -sL https://chromedriver.chromium.org/downloads | grep -oP 'ChromeDriver \K([0-9]+.[0-9]+.[0-9]+.[0-9]+)' | head -n 1)
+download_url=&quot;https://chromedriver.storage.googleapis.com/$latest_version/chromedriver_linux64.zip&quot;
+temp_dir=$(mktemp -d)
+sudo curl -sL &quot;$download_url&quot; -o &quot;$temp_dir/chromedriver.zip&quot;
+sudo unzip &quot;$temp_dir/chromedriver.zip&quot; -d &quot;$temp_dir&quot;
+sudo mv &quot;$temp_dir/chromedriver&quot; /usr/local/bin/
+sudo rm -rf &quot;$temp_dir&quot;
 </code></pre>
-<p>As you can see, the <code>input_data</code> column is empty, as this test type does not require any input data.</p>
-<h3 id="facet_load_test"><code>facet_load_test</code>:</h3>
-<p>This test type checks to see if a specific facet loads on a collection page. It requires the facet name to be passed as input. The test will then visit the page in a browser and check to see if the facet loads. Here is a sample test row for this test type that checks to see if the "Subject" facet loads on the page.</p>
-<pre><code class="language-csv">url,test_type,input_data
-https://memory.digital.utsc.utoronto.ca/collection/33463,facet_load_test,Subject
-</code></pre>
-<p>By default, the test will check to see if the facet loads within 20 seconds.</p>
-<h3 id="collection_count_test"><code>collection_count_test</code>:</h3>
-<p>This test type checks to see if the number of items in a collection matches the expected number of items. It requires the expected number of items to be passed as input. The test will then visit the collection page in a browser and check to see if the number of items matches the expected number of items. Here is a sample test row for this test type that checks to see if the collection has 23,591 items.</p>
-<pre><code class="language-csv">url,test_type,input_data
-https://memory.digital.utsc.utoronto.ca/collection/33463,collection_count_test,23591
-</code></pre>
-<p>By default, the test will check to see if the collection count matches the expected count within 20 seconds.</p>
-<h3 id="openseadragon_load_test"><code>openseadragon_load_test</code>:</h3>
-<p>This test type checks to see if the OpenSeadragon viewer loads on an item page. It does not require any input data. The test will then visit the item page in a browser and check to see if the OpenSeadragon viewer loads. Here is a sample test row for this test type:</p>
-<pre><code class="language-csv">url,test_type,input_data
-https://memory.digital.utsc.utoronto.ca/61220/utsc16185,openseadragon_load_test,
-</code></pre>
-<p>By default, the test will check to see if the OpenSeadragon viewer loads within 20 seconds.</p>
-<h3 id="mirador_viewer_load_test"><code>mirador_viewer_load_test</code>:</h3>
-<p>This test type checks to see if the Mirador viewer loads on an item page. It does not require any input data. The test will then visit the item page in a browser and check to see if the Mirador viewer loads. Here is a sample test row for this test type:</p>
-<pre><code class="language-csv">url,test_type,input_data
-https://memory.digital.utsc.utoronto.ca/61220/utsc11802,mirador_viewer_load_test,4
-</code></pre>
-<p>By default, the test will check to see if the Mirador viewer loads within 40 seconds.</p>
-<h3 id="mirador_page_count_test"><code>mirador_page_count_test</code>:</h3>
-<p>This test type checks to see if the number of pages in a Mirador viewer matches the expected number of pages. It requires the expected number of pages to be passed as input. The test will then visit the item page in a browser and check to see if the number of pages matches the expected number of pages. Here is a sample test row for this test type that checks to see if the Mirador viewer has 1034 pages.</p>
-<pre><code class="language-csv">url,test_type,input_data
-https://tamil.digital.utsc.utoronto.ca/61220/utsc34439,mirador_page_count_test,1034
-</code></pre>
-<p>By default, the test will check to see if the Mirador viewer has the expected number of pages within 40 seconds.</p>
-<h3 id="ableplayer_load_test"><code>ableplayer_load_test</code>:</h3>
-<p>This test type checks to see if the AblePlayer viewer loads on an item page. It does not require any input data. The test will then visit the item page in a browser and check to see if the AblePlayer viewer loads. Here is a sample test row for this test type:</p>
-<pre><code class="language-csv">https://tamil.digital.utsc.utoronto.ca/61220/utsc34400,ableplayer_load_test,
-</code></pre>
-<p>By default, the test will check to see if the AblePlayer viewer loads within 20 seconds.</p>
-<h3 id="ableplayer_transcript_load_test"><code>ableplayer_transcript_load_test</code>:</h3>
-<p>This test type checks to see if the AblePlayer transcript loads on an item page. It does not require any input data. The test will then visit the item page in a browser and check to see if the AblePlayer transcript loads. Here is a sample test row for this test type:</p>
-<pre><code class="language-csv">https://tamil.digital.utsc.utoronto.ca/61220/utsc34400,ableplayer_transcript_load_test,
-</code></pre>
-<p>By default, the test will check to see if the AblePlayer transcript loads within 20 seconds.</p>
 
 
 
