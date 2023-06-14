@@ -9,7 +9,7 @@ The first three of these are by default enabled, and the last is up to the user 
 
 ## Console Output
 SiteWatch provides a nice, human-readable summary of its results to the console. Here is an example of what that looks like:
-```
+```text
    _________.__  __         __      __         __         .__     
  /   _____/|__|/  |_  ____/  \    /  \_____ _/  |_  ____ |  |__  
  \_____  \ |  \   __\/ __ \   \/\/   /\__  \\   __\/ ___\|  |  \ 
@@ -36,7 +36,7 @@ Running Tests... ━━━━━━━━━━━━━━━━━━━━━
 
 ## Log File
 SiteWatch writes a log file to the `logs` directory. The name of the file is time-stamped to be unique. The name of the log file is the same as the name of the output CSV file (see below), but with a `.log` extension. For example, if the output CSV file is named `site_watch-2023-06-14-13-02-23.csv`, the log file will be named `site_watch-2023-06-14-13-02-23.log`. The log file serves to report important information about the results of tests and, if they failed, why they failed. Here is an example of what the log file for the above console output might look like:
-```
+```text
 INFO:root:SiteWatch has started.
 INFO:utils.csv_utils:CSV file is valid.
 INFO:test_suites.test_controller:Site Availability Test passed on row 2.
@@ -56,12 +56,12 @@ SiteWatch writes a CSV file to the `output_csvs` directory. The name of the file
 * `test_result`: The result of the test. This will be either `Passed` or `Failed`.
 * `total_time`: The total time it took to run the test, in seconds.
 For example, if the original input data file looked like
-```
+```text
 url,test_type,description,test_input
 https://memory.digital.utsc.utoronto.ca/collection/33463,facet_load_test,test_subject_fact_exists,subject
 ```
 the output CSV file would look like
-```
+```text
 url,test_type,description,test_input,test_result,total_time
 https://memory.digital.utsc.utoronto.ca/collection/33463,facet_load_test,test_subject_fact_exists,subject,Passed,0.39168238639831543
 ```
