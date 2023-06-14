@@ -1,2 +1,0 @@
-INFO:root:SiteWatch has started.
-ERROR:utils.csv_utils:Invalid CSV file. Test Type column contains an invalid test type (site_availability_) in row 10
