@@ -1,0 +1,2 @@
+INFO:root:SiteWatch has started.
+ERROR:utils.config_utils:No sender email was specified in the configuration file. The sender_email key must be present under the email key.
