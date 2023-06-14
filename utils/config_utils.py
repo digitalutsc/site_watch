@@ -43,6 +43,28 @@ def check_config(config: dict) -> None:
         print(Fore.RED, "There are errors in the configuration file. See log for more details.", Fore.RESET)
         logging.error("Both Excel and Google Sheets data inputs were specified in the configuration file. Only one of the following keys may be present: csv, excel, google sheets")
         exit(127)
+
+    # Next check the email information. If an email is specified, we need to check that the following keys are present under the email key:
+    #   - sender_email
+    #   - sender_name
+    #   - recipient_emails (must be a list)
+    if "email" in config:
+        if "sender_email" not in config["email"]:
+            print(Fore.RED, "There are errors in the configuration file. See log for more details.", Fore.RESET)
+            logging.error("No sender email was specified in the configuration file. The sender_email key must be present under the email key.")
+            exit(127)
+        if "sender_name" not in config["email"]:
+            print(Fore.RED, "There are errors in the configuration file. See log for more details.", Fore.RESET)
+            logging.error("No sender name was specified in the configuration file. The sender_name key must be present under the email key.")
+            exit(127)
+        if "recipient_emails" not in config["email"]:
+            print(Fore.RED, "There are errors in the configuration file. See log for more details.", Fore.RESET)
+            logging.error("No recipient emails were specified in the configuration file. The recipient_emails key must be present under the email key.")
+            exit(127)
+        if not isinstance(config["email"]["recipient_emails"], list):
+            print(Fore.RED, "There are errors in the configuration file. See log for more details.", Fore.RESET)
+            logging.error("The recipient_emails key must be a list of email addresses.")
+            exit(127)
     
 def extract_config(filename: str) -> dict:
     """Extracts the configuration from the YAML file at <filename> and returns it as a dictionary. """
