@@ -140,7 +140,8 @@ def check_data(data: list) -> None:
                             "mirador_viewer_load_test", 
                             "mirador_page_count_test",
                             "ableplayer_load_test",
-                            "ableplayer_transcript_load_test"]
+                            "ableplayer_transcript_load_test",
+                            "pdf_load_test"]
     row_number = 1
     for row in track(data, description="Verifying CSV File..."):
         # Check if the CSV file contains the required fields

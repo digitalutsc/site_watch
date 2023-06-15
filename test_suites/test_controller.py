@@ -21,6 +21,7 @@ class TestController():
         self.mirador_page_count_test = MiradorPageCountTest(self.driver)
         self.ableplayer_load_test = AblePlayerLoadTest(self.driver)
         self.ableplayer_transcript_load_test = AblePlayerTranscriptLoadTest(self.driver)
+        self.pdf_load_test = PDFLoadTest(self.driver)
         self.driver.implicitly_wait(10)
     
     def run_collection_count_test(self, csv_row: dict, csv_row_number: int) -> bool:
@@ -203,6 +204,8 @@ class TestController():
             test_result = self.run_ableplayer_load_test(csv_row, csv_row_number)
         elif test_type == 'ableplayer_transcript_load_test':
             test_result = self.run_ableplayer_transcript_load_test(csv_row, csv_row_number)
+        elif test_type == 'pdf_load_test':
+            test_result = self.run_pdf_load_test(csv_row, csv_row_number)
         else:
             print(Fore.RED, f"Test type on row {csv_row_number + 1} is not supported. Please see log for more details.")
             logging.error(f"Test type {test_type} on row {csv_row_number + 1} is not supported.")

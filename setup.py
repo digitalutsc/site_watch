@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name='SiteWatch',
@@ -10,7 +10,8 @@ setup(
         'openpyxl',
         'requests',
         'rich',
-        'ruamel.base',
+        "ruamel.yaml<=0.17.21",
         'selenium',
     ],
+    packages=find_packages(),
 )
