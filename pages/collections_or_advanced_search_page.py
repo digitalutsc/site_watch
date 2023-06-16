@@ -8,7 +8,7 @@ class CollectionsOrAdvancedSearchPage(BasePage):
         """Return the number of collections on the collections page."""
         self.driver.get(self.url)
         try:
-            pager_summary = self.driver.find_element(By.CSS_SELECTOR, "#block-barriodepartments-collectionsearchresultspagerforpage > div > div.pager__summary")
+            pager_summary = self.driver.find_element(By.CLASS_NAME, "pager__summary")
             return int(pager_summary.text.split(" ")[-1])
         except NoSuchElementException:
             return None

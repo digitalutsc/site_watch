@@ -1,10 +1,7 @@
-from selenium import webdriver
 from selenium.webdriver.remote.webdriver import WebDriver
-from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 import requests
-from typing import Optional
 
 class BasePage(object):
     def __init__(self, driver: WebDriver, url: str) -> None:
@@ -22,3 +19,21 @@ class BasePage(object):
             except:
                 return False
         return False
+    
+    def is_contains_element(self, method: str, selector: str) -> bool:
+        """Return whether the page contains an element with the given selector."""
+        self.driver.get(self.url)
+        try:
+            if method == "id":
+                self.driver.find_element(By.ID, selector)
+            elif method == "class":
+                self.driver.find_element(By.CLASS_NAME, selector)
+            elif method == "css":
+                self.driver.find_element(By.CSS_SELECTOR, selector)
+            elif method == "xpath":
+                self.driver.find_element(By.XPATH, selector)
+            else:
+                raise ValueError("Invalid method.")
+            return True
+        except NoSuchElementException:
+            return False

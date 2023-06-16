@@ -1,10 +1,11 @@
 from selenium import webdriver
 from colorama import Fore
 import logging
-from test_suites.collection_count_test import CollectionCountTest
-from test_suites.facet_load_test import FacetLoadTest
-from test_suites.site_availibility_test import SiteAvailabilityTest
-from test_suites.viewer_tests import OpenSeaDragonLoadTest, MiradorLoadTest, MiradorPageCountTest, AblePlayerLoadTest, AblePlayerTranscriptLoadTest
+from test_suites.collection_count_test import *
+from test_suites.facet_load_test import *
+from test_suites.site_availibility_test import *
+from test_suites.viewer_tests import *
+from test_suites.element_present_test import *
 
 logging = logging.getLogger(__name__)
 
@@ -12,6 +13,7 @@ class TestController():
     def __init__(self):
         options = webdriver.ChromeOptions()
         options.add_argument("--headless")
+        options.add_experimental_option("excludeSwitches", ["test-type"])
         self.driver = webdriver.Chrome(options=options)
         self.collection_count_test = CollectionCountTest(self.driver)
         self.facet_load_test = FacetLoadTest(self.driver)
@@ -20,8 +22,8 @@ class TestController():
         self.mirador_load_test = MiradorLoadTest(self.driver)
         self.mirador_page_count_test = MiradorPageCountTest(self.driver)
         self.ableplayer_load_test = AblePlayerLoadTest(self.driver)
-        self.ableplayer_transcript_load_test = AblePlayerTranscriptLoadTest(self.driver)
-        self.pdf_load_test = PDFLoadTest(self.driver)
+        self.ableplayer_transcript_load_test = AblePlayerTranscriptLoadTest(self.drive
+        self.element_present_test = ElementPresentTest(self.driver)
         self.driver.implicitly_wait(10)
     
     def run_collection_count_test(self, csv_row: dict, csv_row_number: int) -> bool:
@@ -185,6 +187,31 @@ class TestController():
             logging.info(f"AblePlayer Transcript Load Test passed on row {csv_row_number + 1}.")
             return True
     
+    def run_element_present_test(self, csv_row: dict, csv_row_number: int):
+        """ Runs an Element Present Test. """
+        try:
+            self.element_present_test.run(csv_row["url"], *(csv_row["test_input"].split('|')))
+        except AssertionError as e:
+            # Get the assertion error message
+            error_message = str(e)
+            print(Fore.RED, f"Element Present Test failed on row {csv_row_number + 1}. Please see log for more details.")
+            logging.error(f"Element Present Test failed on row {csv_row_number + 1}. {error_message}")
+            return False
+        except ValueError as e:
+            # Get the ValueError message
+            error_message = str(e)
+            print(Fore.RED, f"Element Present Test failed on row {csv_row_number + 1}. Please see log for more details.")
+            logging.error(f"Element Present Test failed on row {csv_row_number + 1}. {error_message}")
+            return False
+        except Exception as e:
+            print(Fore.RED, f"Element Present Test failed on row {csv_row_number + 1}. Please see log for more details.")
+            logging.error(f"Element Present Test failed on row {csv_row_number + 1}. {e}")
+            return False
+        else:
+            print(Fore.GREEN, f"Element Present Test passed on row {csv_row_number + 1}.")
+            logging.info(f"Element Present Test passed on row {csv_row_number + 1}.")
+            return True
+    
     def run_test(self, csv_row: dict, csv_row_number: int) -> bool:
         """ Runs a test based on the test type specified in <csv_row>. """
         test_type = csv_row["test_type"]
@@ -204,8 +231,8 @@ class TestController():
             test_result = self.run_ableplayer_load_test(csv_row, csv_row_number)
         elif test_type == 'ableplayer_transcript_load_test':
             test_result = self.run_ableplayer_transcript_load_test(csv_row, csv_row_number)
-        elif test_type == 'pdf_load_test':
-            test_result = self.run_pdf_load_test(csv_row, csv_row_number)
+        elif test_type == 'element_present_test':
+            test_result = self.run_element_present_test(csv_row, csv_row_number)
         else:
             print(Fore.RED, f"Test type on row {csv_row_number + 1} is not supported. Please see log for more details.")
             logging.error(f"Test type {test_type} on row {csv_row_number + 1} is not supported.")

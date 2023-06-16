@@ -34,9 +34,3 @@ class AblePlayerTranscriptLoadTest(Test):
         assert collection_page.is_ableplayer_loads(), "Ableplayer viewer does not load on collection page."
         # Then check that the transcript loads
         assert collection_page.is_ableplayer_transcript_loads(), "Ableplayer transcript does not load on collection page."
-
-class PDFLoadTest(Test):
-    """ A test to check that the PDF viewer loads on the collection page. """
-    def run(self, url: str) -> None:
-        collection_page = CollectionPage(self.driver, url)
-        assert collection_page.is_pdf_loads(), "PDF viewer does not load on collection page."
