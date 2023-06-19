@@ -11,6 +11,7 @@ nav:
     - Configuration: configuration.md
     - Writing Tests: writing-test-data.md
     - Output: output.md
+    - Contributing: contributing.md
 markdown_extensions:
   - admonition
 extra_css:
