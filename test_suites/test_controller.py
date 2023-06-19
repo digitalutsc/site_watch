@@ -6,6 +6,7 @@ from test_suites.facet_load_test import *
 from test_suites.site_availibility_test import *
 from test_suites.viewer_tests import *
 from test_suites.element_present_test import *
+from test_suites.invalid_links_test import *
 
 logging = logging.getLogger(__name__)
 
@@ -22,9 +23,10 @@ class TestController():
         self.mirador_load_test = MiradorLoadTest(self.driver)
         self.mirador_page_count_test = MiradorPageCountTest(self.driver)
         self.ableplayer_load_test = AblePlayerLoadTest(self.driver)
-        self.ableplayer_transcript_load_test = AblePlayerTranscriptLoadTest(self.drive
+        self.ableplayer_transcript_load_test = AblePlayerTranscriptLoadTest(self.driver)
         self.element_present_test = ElementPresentTest(self.driver)
-        self.driver.implicitly_wait(10)
+        self.invalid_links_test = InvalidLinksTest(self.driver)
+        self.driver.implicitly_wait(20)
     
     def run_collection_count_test(self, csv_row: dict, csv_row_number: int) -> bool:
         """ Runs a Collection Count Test. """
@@ -212,6 +214,25 @@ class TestController():
             logging.info(f"Element Present Test passed on row {csv_row_number + 1}.")
             return True
     
+    def run_invalid_links_test(self, csv_row: dict, csv_row_number: int):
+        """ Runs an Invalid Links Test. """
+        try:
+            self.invalid_links_test.run(csv_row["url"])
+        except AssertionError as e:
+            # Get the assertion error message
+            error_message = str(e)
+            print(Fore.RED, f"Invalid Links Test failed on row {csv_row_number + 1}. Please see log for more details.")
+            logging.error(f"Invalid Links Test failed on row {csv_row_number + 1}. {error_message}")
+            return False
+        # except Exception as e:
+        #     print(Fore.RED, f"Invalid Links Test failed on row {csv_row_number + 1}. Please see log for more details.")
+        #     logging.error(f"Invalid Links Test failed on row {csv_row_number + 1}. {e}")
+        #     return False
+        else:
+            print(Fore.GREEN, f"Invalid Links Test passed on row {csv_row_number + 1}.")
+            logging.info(f"Invalid Links Test passed on row {csv_row_number + 1}.")
+            return True
+    
     def run_test(self, csv_row: dict, csv_row_number: int) -> bool:
         """ Runs a test based on the test type specified in <csv_row>. """
         test_type = csv_row["test_type"]
@@ -233,6 +254,8 @@ class TestController():
             test_result = self.run_ableplayer_transcript_load_test(csv_row, csv_row_number)
         elif test_type == 'element_present_test':
             test_result = self.run_element_present_test(csv_row, csv_row_number)
+        elif test_type == 'invalid_links_test':
+            test_result = self.run_invalid_links_test(csv_row, csv_row_number)
         else:
             print(Fore.RED, f"Test type on row {csv_row_number + 1} is not supported. Please see log for more details.")
             logging.error(f"Test type {test_type} on row {csv_row_number + 1} is not supported.")

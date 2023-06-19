@@ -1,7 +1,8 @@
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.common.by import By
-from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import NoSuchElementException, StaleElementReferenceException
 import requests
+import time
 
 class BasePage(object):
     def __init__(self, driver: WebDriver, url: str) -> None:
@@ -12,7 +13,7 @@ class BasePage(object):
     def is_available(self) -> bool:
         """Return whether the page is available."""
         response = requests.get(self.url)
-        if response.status_code in [200, 201] and "Page not found" in response.text:
+        if response.status_code in [200, 201] and "Page not found" not in response.text.lower():
             try:
                 self.driver.get(self.url)
                 return True
@@ -37,3 +38,15 @@ class BasePage(object):
             return True
         except NoSuchElementException:
             return False
+    
+    def invalid_links(self) -> list:
+        """Return a list of invalid links on the page."""
+        self.driver.get(self.url)
+        invalid_links = []
+        links = [link.get_attribute("href") for link in self.driver.find_elements(By.TAG_NAME, "a")]
+        for link in links:
+            if link and not link.startswith("mailto:"):
+                page = BasePage(self.driver, link)
+                if not page.is_available():
+                    invalid_links.append(link)
+        return invalid_links
