@@ -19,6 +19,7 @@ This directory contains logic for interacting with web pages. The main file to m
 To better illustrate the process of adding a new test, we will walk through the process of adding a test. Specifically, let's test the number of results when accessing a search page or a collections page. For example, on [this page](https://griot.digital.utsc.utoronto.ca/search-results?a%5B0%5D%5Bf%5D=all&a%5B0%5D%5Bi%5D=IS&a%5B0%5D%5Bv%5D=griot), there are 3 results, and on [this page](https://memory.digital.utsc.utoronto.ca/collection/33463), there are 23591 results. We want to design a test that compares the number of results on the page to the expected number of results that the user specifies in the CSV file, and fails if the numbers do not match.
 
 There are several steps involved in adding a new test:
+
 * Find an appropriate element to test
 * Decide if you need a new page module and create one if necessary (must inherit from `BasePage`)
 * In the page class you are testing, create logic to interact with the element you are testing
@@ -49,6 +50,7 @@ This will open the DevTools and highlight the element we are looking for in blue
 ![Alt text](image-4.png)
 
 This is indeed the element we are looking for since it clearly says "Displaying 1 - 3 of 3". Now, we need to find something that we can use to identify this element. Typically, the following order for choosing what to identify the element by should be selected as follows:
+
 * ID
 * Class Name (if it is unique)
 * XPath
@@ -61,7 +63,7 @@ At the time of writing, the only module in the `page` directory is `page.py`, an
 ### In the Page Class You Are Testing, Create Logic to Interact with the Element You Are Testing
 We'll cut to the chase and show the code we wrote straight away, and then explain it.
 
-```python
+```py
 from pages.page import BasePage
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
@@ -70,7 +72,7 @@ from typing import Optional
 class CollectionsOrAdvancedSearchPage(BasePage):
     def get_collection_count(self) -> Optional[int]:
         """Return the number of collections on the collections page."""
-        self.driver.get(self.url)
+        self.driver.get(self.url) # (1)
         try:
             pager_summary = self.driver.find_element(By.CLASS_NAME, "pager__summary")
             return int(pager_summary.text.split(" ")[-1])
@@ -78,7 +80,10 @@ class CollectionsOrAdvancedSearchPage(BasePage):
             return None
 ```
 
+1. How does the function know which page to navigate to? The `BasePage` class has a constructor that takes in a URL (along with other parameters), and the `get_collection_count` function uses this URL to navigate to the page. See the `BasePage` class for more details.
+
 As you can see, we have a class called `CollectionsOrAdvancedSearchPage` that inherits from `BasePage`. We have a function called `get_collection_count` that returns the number of collections on the page. This function does the following:
+
 * Navigates to the page
 * Finds the element we are looking for
 * Gets the text of the element
@@ -87,7 +92,6 @@ As you can see, we have a class called `CollectionsOrAdvancedSearchPage` that in
 * Converts the number of collections to an integer
 * Returns the number of collections
 
-How does the function know which page to navigate to? The `BasePage` class has a constructor that takes in a URL (along with other parameters), and the `get_collection_count` function uses this URL to navigate to the page. See the `BasePage` class for more details.
 
 ### Decide if You Need a New Test Suite and Create One if Necessary
 At the time of writing, the only module in the `test_suites` directory is `test.py`, and as that module contains only the abstract `Test` class, we'll make a new module `collection_count_test.py`.
@@ -95,7 +99,7 @@ At the time of writing, the only module in the `test_suites` directory is `test.
 ### In the Test Suite, Create a New Test Function with Assert Statements
 We'll cut to the chase and show the code we wrote straight away, and then explain it.
 
-```python
+```py
 from pages.collections_or_advanced_search_page import CollectionsOrAdvancedSearchPage
 from test_suites.test import Test
 from selenium.common.exceptions import NoSuchElementException
@@ -117,6 +121,7 @@ class CollectionCountTest(Test):
 ```
 
 As you can see, we have a class called `CollectionCountTest` that inherits from `Test`. We have a function called `run` that runs the test. This function does the following:
+
 * Tries to convert the expected value to an integer
 * Creates a `CollectionsOrAdvancedSearchPage` object
 * Tries to get the number of collections on the page
@@ -124,24 +129,25 @@ As you can see, we have a class called `CollectionCountTest` that inherits from 
 
 ### Add the Test to the `test_controller.py` File
 This itself contains multiple steps:
+
 * Import the test suite
 * Make an attribute for the `TestController` that points to an instance of your new test suite
 * Make a function that runs your test suite
 * Add your test to the `TestController`'s `run_test` function
 
 We'll first import test suite: 
-```python
+```py
 from test_suites.collection_count_test import CollectionCountTest
 ```
 
 Then, we'll add the following line to the bottom of the initializer of the `TestController` class:
 
-```python
+```py
 self.collection_count_test = CollectionCountTest(self.driver)
 ```
 So now the initializer looks like this:
 
-```python
+```py
 class TestController():
     def __init__(self):
         options = webdriver.ChromeOptions()
@@ -152,7 +158,7 @@ class TestController():
 ```
 
 Then, we'll make a function that runs the test suite:
-```python
+```py
 def run_collection_count_test(self, csv_row: dict, csv_row_number: int) -> bool:
         """ Runs a Collection Count Test. """
         try:
@@ -179,7 +185,7 @@ def run_collection_count_test(self, csv_row: dict, csv_row_number: int) -> bool:
 We must make sure that under no circumstances does the test suite crash, so we have a try-except block that catches all exceptions. If the test passes, we print a green message to the console and log a message to the log file. If the test fails, we print a red message to the console and log a message to the log file.
 
 Finally, we'll add the following line to the `run_test` function:
-```python
+```py
 if test_type == 'collection_count_test':
     test_result = self.run_collection_count_test(csv_row, csv_row_number)
 ```

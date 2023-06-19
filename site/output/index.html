@@ -437,35 +437,32 @@
 <p>SiteWatch provides a nice, human-readable summary of its results to the console. Here is an example of what that looks like:</p>
 <p><img alt="SiteWatch console output" src="../assets/console_output.png" /></p>
 <h2 id="log-file">Log File</h2>
-<p>SiteWatch writes a log file to the <code>logs</code> directory. The name of the file is time-stamped to be unique. The name of the log file is the same as the name of the output CSV file (see below), but with a <code>.log</code> extension. For example, if the output CSV file is named <code>site_watch-2023-06-14-13-02-23.csv</code>, the log file will be named <code>site_watch-2023-06-14-13-02-23.log</code>. The log file serves to report important information about the results of tests and, if they failed, why they failed. Here is an example of what the log file for the above console output might look like:</p>
-<div class="codehilite"><pre><span></span><code>INFO:root:SiteWatch has started.
-INFO:utils.csv_utils:CSV file is valid.
-INFO:test_suites.test_controller:Site Availability Test passed on row 2.
-INFO:test_suites.test_controller:Facet Load Test passed on row 3.
-INFO:test_suites.test_controller:Collection Count Test passed on row 4.
-INFO:test_suites.test_controller:OpenSeaDragon Load Test passed on row 5.
-INFO:test_suites.test_controller:Mirador Load Test passed on row 6.
-INFO:test_suites.test_controller:AblePlayer Transcript Load Test passed on row 7.
-INFO:test_suites.test_controller:Mirador Load Test passed on row 8.
-ERROR:test_suites.test_controller:Mirador Page Count Test failed on row 9. Mirador viewer does not have the expected number of thumbnails. Expected 1032, got 1034.
-INFO:root:All tests have finished running.
-INFO:root:Results have been written to output_csvs/site_watch-2023-06-14-13-02-23.csv
-</code></pre></div>
-
+<p>SiteWatch writes a log file to the <code>logs</code> directory. The name of the file is time-stamped to be unique. The name of the log file is the same as the name of the output CSV file (see below), but with a <code>.log</code> extension. For example, if the output CSV file is named <code>site_watch-2023-06-14-13-02-23.csv</code>, the log file will be named <code>site_watch-2023-06-14-13-02-23.log</code>. The log file serves to report important information about the results of tests and, if they failed, why they failed. Here is an example of what the log file for the above console output might look like:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>INFO:root:SiteWatch has started.
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>INFO:utils.csv_utils:CSV file is valid.
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>INFO:test_suites.test_controller:Site Availability Test passed on row 2.
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>INFO:test_suites.test_controller:Facet Load Test passed on row 3.
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>INFO:test_suites.test_controller:Collection Count Test passed on row 4.
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>INFO:test_suites.test_controller:OpenSeaDragon Load Test passed on row 5.
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>INFO:test_suites.test_controller:Mirador Load Test passed on row 6.
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>INFO:test_suites.test_controller:AblePlayer Transcript Load Test passed on row 7.
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>INFO:test_suites.test_controller:Mirador Load Test passed on row 8.
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>ERROR:test_suites.test_controller:Mirador Page Count Test failed on row 9. Mirador viewer does not have the expected number of thumbnails. Expected 1032, got 1034.
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>INFO:root:All tests have finished running.
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>INFO:root:Results have been written to output_csvs/site_watch-2023-06-14-13-02-23.csv
+</span></code></pre></div></p>
 <h2 id="output-csv">Output CSV</h2>
 <p>SiteWatch writes a CSV file to the <code>output_csvs</code> directory. The name of the file is time-stamped to be unique. The name of the output CSV file is the same as the name of the log file (see above), but with a <code>.csv</code> extension. For example, if the log file is named <code>site_watch-2023-06-14-13-02-23.log</code>, the output CSV file will be named <code>site_watch-2023-06-14-13-02-23.csv</code>. The output CSV is a copy of the input test data file, but with two columns appended: 
 * <code>test_result</code>: The result of the test. This will be either <code>Passed</code> or <code>Failed</code>.
 * <code>total_time</code>: The total time it took to run the test, in seconds.
-For example, if the original input data file looked like</p>
-<div class="codehilite"><pre><span></span><code>url,test_type,description,test_input
-https://memory.digital.utsc.utoronto.ca/collection/33463,facet_load_test,test_subject_fact_exists,subject
-</code></pre></div>
-
-<p>the output CSV file would look like</p>
-<div class="codehilite"><pre><span></span><code>url,test_type,description,test_input,test_result,total_time
-https://memory.digital.utsc.utoronto.ca/collection/33463,facet_load_test,test_subject_fact_exists,subject,Passed,0.39168238639831543
-</code></pre></div>
-
+For example, if the original input data file looked like
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>url,test_type,description,test_input
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>https://memory.digital.utsc.utoronto.ca/collection/33463,facet_load_test,test_subject_fact_exists,subject
+</span></code></pre></div>
+the output CSV file would look like
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>url,test_type,description,test_input,test_result,total_time
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>https://memory.digital.utsc.utoronto.ca/collection/33463,facet_load_test,test_subject_fact_exists,subject,Passed,0.39168238639831543
+</span></code></pre></div></p>
 <h2 id="email">Email</h2>
 <p>SiteWatch has the capability to send an email to one or more email addresses when it finishes running, only in the event of error or failed test case. This is useful for notifying people when a test has failed. The email sent will contain a copy of the log and output CSV files. To enable this feature, see <a href="../configuration/#email-settings">Email Settings</a>.</p>
 
@@ -505,7 +502,7 @@ https://memory.digital.utsc.utoronto.ca/collection/33463,facet_load_test,test_su
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "content.code.select", "content.code.annotate", "content.code.annotate"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../assets/javascripts/bundle.b4d07000.min.js"></script>

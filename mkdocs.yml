@@ -4,7 +4,14 @@ docs_dir: docs
 site_description: Documentation for SiteWatch
 dev_addr: 'localhost:8111'
 repo_url: https://github.com/digitalutsc/site_watch/tree/gh-pages
-theme: material
+theme: 
+    name: material
+    features:
+      - content.code.copy
+      - content.code.select
+      - content.code.annotate
+      - content.code.annotate
+      
 nav:
     - Home: index.md
     - Installation: installation.md
@@ -14,8 +21,13 @@ nav:
     - Contributing: contributing.md
 markdown_extensions:
   - admonition
-  - codehilite:
-      guess_lang: false
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
 extra_css:
     - css/extra.css
 edit_uri: 'edit/main/docs/'
