@@ -503,27 +503,28 @@
 <h2 id="installing-google-chrome-and-chromedriver-on-linux">Installing Google Chrome and Chromedriver on Linux</h2>
 <p>SiteWatch uses Google Chrome and Chromedriver to run tests. You will need to install both of these on the machine where you will be running SiteWatch. </p>
 <p>To install Google Chrome, run the following in a terminal:</p>
-<pre><code class="language-bash">sudo apt-get update -y
-sudo apt-get upgrade -y
-sudo apt install wget -y
-sudo wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo dpkg -i google-chrome-stable_current_amd64.deb
-sudo apt -f install
-sudo rm google-chrome-stable_current_amd64.deb
-</code></pre>
+<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span>-y
+sudo<span class="w"> </span>apt-get<span class="w"> </span>upgrade<span class="w"> </span>-y
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>wget<span class="w"> </span>-y
+sudo<span class="w"> </span>wget<span class="w"> </span>https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo<span class="w"> </span>dpkg<span class="w"> </span>-i<span class="w"> </span>google-chrome-stable_current_amd64.deb
+sudo<span class="w"> </span>apt<span class="w"> </span>-f<span class="w"> </span>install
+sudo<span class="w"> </span>rm<span class="w"> </span>google-chrome-stable_current_amd64.deb
+</code></pre></div>
+
 <p>To install Chromedriver, run the following in a terminal:</p>
-<pre><code class="language-bash">sudo apt-get update -y
-sudo apt-get upgrade -y
-sudo apt-get install unzip -y
-sudo apt-get install curl -y
-latest_version=$(curl -sL https://chromedriver.chromium.org/downloads | grep -oP 'ChromeDriver \K([0-9]+.[0-9]+.[0-9]+.[0-9]+)' | head -n 1)
-download_url=&quot;https://chromedriver.storage.googleapis.com/$latest_version/chromedriver_linux64.zip&quot;
-temp_dir=$(mktemp -d)
-sudo curl -sL &quot;$download_url&quot; -o &quot;$temp_dir/chromedriver.zip&quot;
-sudo unzip &quot;$temp_dir/chromedriver.zip&quot; -d &quot;$temp_dir&quot;
-sudo mv &quot;$temp_dir/chromedriver&quot; /usr/local/bin/
-sudo rm -rf &quot;$temp_dir&quot;
-</code></pre>
+<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span>-y
+sudo<span class="w"> </span>apt-get<span class="w"> </span>upgrade<span class="w"> </span>-y
+sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>unzip<span class="w"> </span>-y
+sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>curl<span class="w"> </span>-y
+<span class="nv">latest_version</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-sL<span class="w"> </span>https://chromedriver.chromium.org/downloads<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-oP<span class="w"> </span><span class="s1">&#39;ChromeDriver \K([0-9]+.[0-9]+.[0-9]+.[0-9]+)&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="k">)</span>
+<span class="nv">download_url</span><span class="o">=</span><span class="s2">&quot;https://chromedriver.storage.googleapis.com/</span><span class="nv">$latest_version</span><span class="s2">/chromedriver_linux64.zip&quot;</span>
+<span class="nv">temp_dir</span><span class="o">=</span><span class="k">$(</span>mktemp<span class="w"> </span>-d<span class="k">)</span>
+sudo<span class="w"> </span>curl<span class="w"> </span>-sL<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$download_url</span><span class="s2">&quot;</span><span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$temp_dir</span><span class="s2">/chromedriver.zip&quot;</span>
+sudo<span class="w"> </span>unzip<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$temp_dir</span><span class="s2">/chromedriver.zip&quot;</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$temp_dir</span><span class="s2">&quot;</span>
+sudo<span class="w"> </span>mv<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$temp_dir</span><span class="s2">/chromedriver&quot;</span><span class="w"> </span>/usr/local/bin/
+sudo<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$temp_dir</span><span class="s2">&quot;</span>
+</code></pre></div>
 
 
 
