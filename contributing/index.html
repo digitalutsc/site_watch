@@ -617,21 +617,22 @@ We can see that the element has a class name of <code>pager__summary</code>, and
 <p>At the time of writing, the only module in the <code>page</code> directory is <code>page.py</code>, and as that module contains logic for interacting with a general page, and this test pertains only to search and collections pages, we'll make a new module <code>collections_or_advanced_search_page.py</code>. </p>
 <h3 id="in-the-page-class-you-are-testing-create-logic-to-interact-with-the-element-you-are-testing">In the Page Class You Are Testing, Create Logic to Interact with the Element You Are Testing</h3>
 <p>We'll cut to the chase and show the code we wrote straight away, and then explain it.</p>
-<pre><code class="language-python">from pages.page import BasePage
-from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver.common.by import By
-from typing import Optional
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">pages.page</span> <span class="kn">import</span> <span class="n">BasePage</span>
+<span class="kn">from</span> <span class="nn">selenium.common.exceptions</span> <span class="kn">import</span> <span class="n">NoSuchElementException</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.common.by</span> <span class="kn">import</span> <span class="n">By</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
 
-class CollectionsOrAdvancedSearchPage(BasePage):
-    def get_collection_count(self) -&gt; Optional[int]:
-        &quot;&quot;&quot;Return the number of collections on the collections page.&quot;&quot;&quot;
-        self.driver.get(self.url)
-        try:
-            pager_summary = self.driver.find_element(By.CLASS_NAME, &quot;pager__summary&quot;)
-            return int(pager_summary.text.split(&quot; &quot;)[-1])
-        except NoSuchElementException:
-            return None
-</code></pre>
+<span class="k">class</span> <span class="nc">CollectionsOrAdvancedSearchPage</span><span class="p">(</span><span class="n">BasePage</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_collection_count</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the number of collections on the collections page.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">pager_summary</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">&quot;pager__summary&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">pager_summary</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">except</span> <span class="n">NoSuchElementException</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+</code></pre></div>
+
 <p>As you can see, we have a class called <code>CollectionsOrAdvancedSearchPage</code> that inherits from <code>BasePage</code>. We have a function called <code>get_collection_count</code> that returns the number of collections on the page. This function does the following:
 * Navigates to the page
 * Finds the element we are looking for
@@ -645,25 +646,26 @@ class CollectionsOrAdvancedSearchPage(BasePage):
 <p>At the time of writing, the only module in the <code>test_suites</code> directory is <code>test.py</code>, and as that module contains only the abstract <code>Test</code> class, we'll make a new module <code>collection_count_test.py</code>.</p>
 <h3 id="in-the-test-suite-create-a-new-test-function-with-assert-statements">In the Test Suite, Create a New Test Function with Assert Statements</h3>
 <p>We'll cut to the chase and show the code we wrote straight away, and then explain it.</p>
-<pre><code class="language-python">from pages.collections_or_advanced_search_page import CollectionsOrAdvancedSearchPage
-from test_suites.test import Test
-from selenium.common.exceptions import NoSuchElementException
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">pages.collections_or_advanced_search_page</span> <span class="kn">import</span> <span class="n">CollectionsOrAdvancedSearchPage</span>
+<span class="kn">from</span> <span class="nn">test_suites.test</span> <span class="kn">import</span> <span class="n">Test</span>
+<span class="kn">from</span> <span class="nn">selenium.common.exceptions</span> <span class="kn">import</span> <span class="n">NoSuchElementException</span>
 
-class CollectionCountTest(Test):
-    &quot;&quot;&quot; A test to check that the number of collections on the collections page is correct. &quot;&quot;&quot;    
-    def run(self, url: str, expected_value: str) -&gt; None:
-        &quot;&quot;&quot; Run the test on the page at &lt;url&gt; and compare the result to &lt;expected_value&gt;.&quot;&quot;&quot;
-        try:
-            expected_value = int(expected_value)
-        except ValueError:
-            raise ValueError(f&quot;Expected value must be an integer, but got {expected_value}.&quot;)
-        collection_page = CollectionsOrAdvancedSearchPage(self.driver, url)
-        try:
-            actual_value = int(collection_page.get_collection_count())
-        except NoSuchElementException:
-            raise NoSuchElementException(f&quot;Could not find the collections count on {url}.&quot;)
-        assert actual_value == expected_value, f&quot;Expected {expected_value}, but got {actual_value}.&quot;
-</code></pre>
+<span class="k">class</span> <span class="nc">CollectionCountTest</span><span class="p">(</span><span class="n">Test</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; A test to check that the number of collections on the collections page is correct. &quot;&quot;&quot;</span>    
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">expected_value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Run the test on the page at &lt;url&gt; and compare the result to &lt;expected_value&gt;.&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">expected_value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">expected_value</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expected value must be an integer, but got </span><span class="si">{</span><span class="n">expected_value</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+        <span class="n">collection_page</span> <span class="o">=</span> <span class="n">CollectionsOrAdvancedSearchPage</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">actual_value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">collection_page</span><span class="o">.</span><span class="n">get_collection_count</span><span class="p">())</span>
+        <span class="k">except</span> <span class="n">NoSuchElementException</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">NoSuchElementException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Could not find the collections count on </span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">actual_value</span> <span class="o">==</span> <span class="n">expected_value</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Expected </span><span class="si">{</span><span class="n">expected_value</span><span class="si">}</span><span class="s2">, but got </span><span class="si">{</span><span class="n">actual_value</span><span class="si">}</span><span class="s2">.&quot;</span>
+</code></pre></div>
+
 <p>As you can see, we have a class called <code>CollectionCountTest</code> that inherits from <code>Test</code>. We have a function called <code>run</code> that runs the test. This function does the following:
 * Tries to convert the expected value to an integer
 * Creates a <code>CollectionsOrAdvancedSearchPage</code> object
@@ -676,49 +678,54 @@ class CollectionCountTest(Test):
 * Make a function that runs your test suite
 * Add your test to the <code>TestController</code>'s <code>run_test</code> function</p>
 <p>We'll first import test suite: </p>
-<pre><code class="language-python">from test_suites.collection_count_test import CollectionCountTest
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">test_suites.collection_count_test</span> <span class="kn">import</span> <span class="n">CollectionCountTest</span>
+</code></pre></div>
+
 <p>Then, we'll add the following line to the bottom of the initializer of the <code>TestController</code> class:</p>
-<pre><code class="language-python">self.collection_count_test = CollectionCountTest(self.driver)
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">collection_count_test</span> <span class="o">=</span> <span class="n">CollectionCountTest</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">)</span>
+</code></pre></div>
+
 <p>So now the initializer looks like this:</p>
-<pre><code class="language-python">class TestController():
-    def __init__(self):
-        options = webdriver.ChromeOptions()
-        options.add_argument(&quot;--headless&quot;)
-        self.driver.implicitly_wait(20)
-        self.driver = webdriver.Chrome(options=options)
-        self.collection_count_test = CollectionCountTest(self.driver)
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">TestController</span><span class="p">():</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">options</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">ChromeOptions</span><span class="p">()</span>
+        <span class="n">options</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--headless&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">implicitly_wait</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">collection_count_test</span> <span class="o">=</span> <span class="n">CollectionCountTest</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">)</span>
+</code></pre></div>
+
 <p>Then, we'll make a function that runs the test suite:</p>
-<pre><code class="language-python">def run_collection_count_test(self, csv_row: dict, csv_row_number: int) -&gt; bool:
-        &quot;&quot;&quot; Runs a Collection Count Test. &quot;&quot;&quot;
-        try:
-            self.collection_count_test.run(csv_row[&quot;url&quot;], csv_row[&quot;test_input&quot;])
-        except ValueError:
-            print(Fore.RED, f&quot;Invalid test input on row {csv_row_number + 1}. Please see log for more details.&quot;)
-            logging.error(f&quot;Invalid test input on row {csv_row_number + 1}. The test input must be an integer.&quot;)
-            return False
-        except AssertionError as e:
-            # Get the assertion error message
-            error_message = str(e)
-            print(Fore.RED, f&quot;Collection Count Test failed on row {csv_row_number + 1}. Please see log for more details.&quot;)
-            logging.error(f&quot;Collection Count Test failed on row {csv_row_number + 1}. The expected number of collections was not found. {error_message}&quot;)
-            return False
-        except Exception as e:
-            print(Fore.RED, f&quot;Collection Count Test failed on row {csv_row_number + 1}. Please see log for more details.&quot;)
-            logging.error(f&quot;Collection Count Test failed on row {csv_row_number + 1}. {e}&quot;)
-            return False
-        else:
-            print(Fore.GREEN, f&quot;Collection Count Test passed on row {csv_row_number + 1}.&quot;)
-            logging.info(f&quot;Collection Count Test passed on row {csv_row_number + 1}.&quot;)
-            return True
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">run_collection_count_test</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">csv_row</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">csv_row_number</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Runs a Collection Count Test. &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">collection_count_test</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">csv_row</span><span class="p">[</span><span class="s2">&quot;url&quot;</span><span class="p">],</span> <span class="n">csv_row</span><span class="p">[</span><span class="s2">&quot;test_input&quot;</span><span class="p">])</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">Fore</span><span class="o">.</span><span class="n">RED</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Invalid test input on row </span><span class="si">{</span><span class="n">csv_row_number</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">. Please see log for more details.&quot;</span><span class="p">)</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid test input on row </span><span class="si">{</span><span class="n">csv_row_number</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">. The test input must be an integer.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">except</span> <span class="ne">AssertionError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="c1"># Get the assertion error message</span>
+            <span class="n">error_message</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">Fore</span><span class="o">.</span><span class="n">RED</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Collection Count Test failed on row </span><span class="si">{</span><span class="n">csv_row_number</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">. Please see log for more details.&quot;</span><span class="p">)</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Collection Count Test failed on row </span><span class="si">{</span><span class="n">csv_row_number</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">. The expected number of collections was not found. </span><span class="si">{</span><span class="n">error_message</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">Fore</span><span class="o">.</span><span class="n">RED</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Collection Count Test failed on row </span><span class="si">{</span><span class="n">csv_row_number</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">. Please see log for more details.&quot;</span><span class="p">)</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Collection Count Test failed on row </span><span class="si">{</span><span class="n">csv_row_number</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">. </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">Fore</span><span class="o">.</span><span class="n">GREEN</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Collection Count Test passed on row </span><span class="si">{</span><span class="n">csv_row_number</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Collection Count Test passed on row </span><span class="si">{</span><span class="n">csv_row_number</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">True</span>
+</code></pre></div>
+
 <p>We must make sure that under no circumstances does the test suite crash, so we have a try-except block that catches all exceptions. If the test passes, we print a green message to the console and log a message to the log file. If the test fails, we print a red message to the console and log a message to the log file.</p>
 <p>Finally, we'll add the following line to the <code>run_test</code> function:</p>
-<pre><code class="language-python">if test_type == 'collection_count_test':
-    test_result = self.run_collection_count_test(csv_row, csv_row_number)
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="k">if</span> <span class="n">test_type</span> <span class="o">==</span> <span class="s1">&#39;collection_count_test&#39;</span><span class="p">:</span>
+    <span class="n">test_result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">run_collection_count_test</span><span class="p">(</span><span class="n">csv_row</span><span class="p">,</span> <span class="n">csv_row_number</span><span class="p">)</span>
+</code></pre></div>
+
 <h3 id="whitelist-the-test-in-the-csv-checks">Whitelist the Test in the CSV Checks</h3>
 <p>Go to <code>csv_utils.py</code> and find the <code>check_data</code> function. There will be a variable <code>supported_test_types</code> that contains a list of all the test types that are supported. Add your test type to this list. We'll just add a new element `collection_count_test' to the list.</p>
 <p>And that's it! You've added a new test to the test suite. Now, you can run the test suite and see if it works. If it doesn't, you can debug it and fix it.</p>

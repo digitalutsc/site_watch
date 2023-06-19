@@ -462,11 +462,13 @@
 
 <h2 id="the-configuration-file">The Configuration File</h2>
 <p>SiteWatch gets its first input from a configuration file whose path is passed to it as a command line argument. This file is a YAML file, and can be named anything you like, but it must have a <code>.yml</code> extension. For example, if your configuration file is named <code>my_config.yml</code>, you would run SiteWatch like this:</p>
-<pre><code class="language-bash">$ ./sitewatch my_config.yml
-</code></pre>
+<div class="codehilite"><pre><span></span><code>$<span class="w"> </span>./sitewatch<span class="w"> </span>my_config.yml
+</code></pre></div>
+
 <p>The configuration file contains all the information SiteWatch needs to run. It contains the location of the CSV-like file containing the tests that SiteWatch is to run, the email addresses of the people who are to receive the test results, and other information. For example, one of the the simplist configuration files might look like this:</p>
-<pre><code class="language-yaml">csv: /path/to/test/csv
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="nt">csv</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path/to/test/csv</span>
+</code></pre></div>
+
 <h2 id="required-configuration-settings">Required Configuration Settings</h2>
 <h3 id="input-source">Input Source</h3>
 <p><strong>Exactly one</strong> of the following settings must be present in the configuration file to tell SiteWatch where to find the tests to run:
@@ -476,13 +478,13 @@
 <h2 id="optional-configuration-settings">Optional Configuration Settings</h2>
 <h3 id="email-settings">Email Settings</h3>
 <p>SiteWatch can send email notifications to one or more recipients when it finishes running. To enable this feature, the configuration file must include the following</p>
-<pre><code class="language-yaml">email:
-  sender_name: &lt;The name to appear on the emails&gt;
-  sender_email: &lt;The email address to send from; must be an email this machine can send from&gt;
-  recipient_emails: 
-    - &lt;email address 1&gt;
-    - &lt;email address 2&gt;
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="nt">email</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">sender_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;The name to appear on the emails&gt;</span>
+<span class="w">  </span><span class="nt">sender_email</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;The email address to send from; must be an email this machine can send from&gt;</span>
+<span class="w">  </span><span class="nt">recipient_emails</span><span class="p">:</span><span class="w"> </span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;email address 1&gt;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;email address 2&gt;</span>
+</code></pre></div>
 
 
 

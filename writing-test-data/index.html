@@ -524,10 +524,11 @@
 
 <h1 id="the-test-file">The Test File</h1>
 <p>SiteWatch gets its second input from a CSV-like file containing the tests that SiteWatch is to run. This file specifies the URLs to test, the type of test to be run, expected values, and other information. For example, a test file might look like this:</p>
-<pre><code class="language-csv">url,test_type,input_data
+<div class="codehilite"><pre><span></span><code>url,test_type,input_data
 https://memory.digital.utsc.utoronto.ca/collection/33463,collection_count_test,23591
 https://memory.digital.utsc.utoronto.ca/,site availability test,
-</code></pre>
+</code></pre></div>
+
 <h2 id="required-test-file-columns">Required Test File Columns</h2>
 <p>While the test file can contain any number of columns (for example, a description column), it must contain the following columns:
 * <code>url</code>: The URL to test.
@@ -537,49 +538,57 @@ https://memory.digital.utsc.utoronto.ca/,site availability test,
 <p>SiteWatch supports the following test types:</p>
 <h3 id="site_availability_test"><code>site_availability_test</code>:</h3>
 <p>This test type checks to see if the site is available. It does not require any input data. It performs a <code>GET</code> request to the URL, and checks to see if the response code is indicative of a successful request (i.e., a 2xx response code). Then, it double-checks by scanning the response body for a string that indicates the site is not available. Then, it triple-checks by actually visiting the site in a browser and checking to see if it is available. If any of these checks fail, the test fails. Here is a sample test row for this test type:</p>
-<pre><code class="language-csv">url,test_type,input_data
+<div class="codehilite"><pre><span></span><code>url,test_type,input_data
 https://memory.digital.utsc.utoronto.ca/,site_availability_test,
-</code></pre>
+</code></pre></div>
+
 <p>As you can see, the <code>input_data</code> column is empty, as this test type does not require any input data.</p>
 <h3 id="facet_load_test"><code>facet_load_test</code>:</h3>
 <p>This test type checks to see if a specific facet loads on a collection page. It requires the facet name to be passed as input. The test will then visit the page in a browser and check to see if the facet loads. Here is a sample test row for this test type that checks to see if the "Subject" facet loads on the page.</p>
-<pre><code class="language-csv">url,test_type,input_data
+<div class="codehilite"><pre><span></span><code>url,test_type,input_data
 https://memory.digital.utsc.utoronto.ca/collection/33463,facet_load_test,Subject
-</code></pre>
+</code></pre></div>
+
 <p>By default, the test will check to see if the facet loads within 20 seconds.</p>
 <h3 id="collection_count_test"><code>collection_count_test</code>:</h3>
 <p>This test type checks to see if the number of items in a collection matches the expected number of items. It requires the expected number of items to be passed as input. The test will then visit the collection page in a browser and check to see if the number of items matches the expected number of items. Here is a sample test row for this test type that checks to see if the collection has 23,591 items.</p>
-<pre><code class="language-csv">url,test_type,input_data
+<div class="codehilite"><pre><span></span><code>url,test_type,input_data
 https://memory.digital.utsc.utoronto.ca/collection/33463,collection_count_test,23591
-</code></pre>
+</code></pre></div>
+
 <p>By default, the test will check to see if the collection count matches the expected count within 20 seconds.</p>
 <h3 id="openseadragon_load_test"><code>openseadragon_load_test</code>:</h3>
 <p>This test type checks to see if the OpenSeadragon viewer loads on an item page. It does not require any input data. The test will then visit the item page in a browser and check to see if the OpenSeadragon viewer loads. Here is a sample test row for this test type:</p>
-<pre><code class="language-csv">url,test_type,input_data
+<div class="codehilite"><pre><span></span><code>url,test_type,input_data
 https://memory.digital.utsc.utoronto.ca/61220/utsc16185,openseadragon_load_test,
-</code></pre>
+</code></pre></div>
+
 <p>By default, the test will check to see if the OpenSeadragon viewer loads within 20 seconds.</p>
 <h3 id="mirador_viewer_load_test"><code>mirador_viewer_load_test</code>:</h3>
 <p>This test type checks to see if the Mirador viewer loads on an item page. It does not require any input data. The test will then visit the item page in a browser and check to see if the Mirador viewer loads. Here is a sample test row for this test type:</p>
-<pre><code class="language-csv">url,test_type,input_data
+<div class="codehilite"><pre><span></span><code>url,test_type,input_data
 https://memory.digital.utsc.utoronto.ca/61220/utsc11802,mirador_viewer_load_test,4
-</code></pre>
+</code></pre></div>
+
 <p>By default, the test will check to see if the Mirador viewer loads within 40 seconds.</p>
 <h3 id="mirador_page_count_test"><code>mirador_page_count_test</code>:</h3>
 <p>This test type checks to see if the number of pages in a Mirador viewer matches the expected number of pages. It requires the expected number of pages to be passed as input. The test will then visit the item page in a browser and check to see if the number of pages matches the expected number of pages. Here is a sample test row for this test type that checks to see if the Mirador viewer has 1034 pages.</p>
-<pre><code class="language-csv">url,test_type,input_data
+<div class="codehilite"><pre><span></span><code>url,test_type,input_data
 https://tamil.digital.utsc.utoronto.ca/61220/utsc34439,mirador_page_count_test,1034
-</code></pre>
+</code></pre></div>
+
 <p>By default, the test will check to see if the Mirador viewer has the expected number of pages within 40 seconds.</p>
 <h3 id="ableplayer_load_test"><code>ableplayer_load_test</code>:</h3>
 <p>This test type checks to see if the AblePlayer viewer loads on an item page. It does not require any input data. The test will then visit the item page in a browser and check to see if the AblePlayer viewer loads. Here is a sample test row for this test type:</p>
-<pre><code class="language-csv">https://tamil.digital.utsc.utoronto.ca/61220/utsc34400,ableplayer_load_test,
-</code></pre>
+<div class="codehilite"><pre><span></span><code>https://tamil.digital.utsc.utoronto.ca/61220/utsc34400,ableplayer_load_test,
+</code></pre></div>
+
 <p>By default, the test will check to see if the AblePlayer viewer loads within 20 seconds.</p>
 <h3 id="ableplayer_transcript_load_test"><code>ableplayer_transcript_load_test</code>:</h3>
 <p>This test type checks to see if the AblePlayer transcript loads on an item page. It does not require any input data. The test will then visit the item page in a browser and check to see if the AblePlayer transcript loads. Here is a sample test row for this test type:</p>
-<pre><code class="language-csv">https://tamil.digital.utsc.utoronto.ca/61220/utsc34400,ableplayer_transcript_load_test,
-</code></pre>
+<div class="codehilite"><pre><span></span><code>https://tamil.digital.utsc.utoronto.ca/61220/utsc34400,ableplayer_transcript_load_test,
+</code></pre></div>
+
 <p>By default, the test will check to see if the AblePlayer transcript loads within 20 seconds.</p>
 
 
