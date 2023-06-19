@@ -1,0 +1,615 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for SiteWatch">
+      
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
+    
+    
+      
+        <title>Contributing to SiteWatch - SiteWatch</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.26e3688c.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#contributing-to-sitewatch" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="SiteWatch" class="md-header__button md-logo" aria-label="SiteWatch" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SiteWatch
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Contributing to SiteWatch
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/digitalutsc/site_watch/tree/gh-pages" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="SiteWatch" class="md-nav__button md-logo" aria-label="SiteWatch" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    SiteWatch
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/digitalutsc/site_watch/tree/gh-pages" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        Installation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        Configuration
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../writing-test-data/" class="md-nav__link">
+        Writing Tests
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../output/" class="md-nav__link">
+        Output
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-sitewatch-structure" class="md-nav__link">
+    The SiteWatch Structure
+  </a>
+  
+    <nav class="md-nav" aria-label="The SiteWatch Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-sitewatch-file" class="md-nav__link">
+    The sitewatch file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-utils-directory" class="md-nav__link">
+    The utils Directory
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-test_suites-directory" class="md-nav__link">
+    The test_suites Directory
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-pages-directory" class="md-nav__link">
+    The pages Directory
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-a-new-test" class="md-nav__link">
+    Adding a New Test
+  </a>
+  
+    <nav class="md-nav" aria-label="Adding a New Test">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#find-an-appropriate-element-to-test" class="md-nav__link">
+    Find an Appropriate Element to Test
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decide-if-you-need-a-new-page-module-and-create-one-if-necessary" class="md-nav__link">
+    Decide if You Need a New Page Module and Create One if Necessary
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in-the-page-class-you-are-testing-create-logic-to-interact-with-the-element-you-are-testing" class="md-nav__link">
+    In the Page Class You Are Testing, Create Logic to Interact with the Element You Are Testing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decide-if-you-need-a-new-test-suite-and-create-one-if-necessary" class="md-nav__link">
+    Decide if You Need a New Test Suite and Create One if Necessary
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in-the-test-suite-create-a-new-test-function-with-assert-statements" class="md-nav__link">
+    In the Test Suite, Create a New Test Function with Assert Statements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-the-test-to-the-test_controllerpy-file" class="md-nav__link">
+    Add the Test to the test_controller.py File
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#whitelist-the-test-in-the-csv-checks" class="md-nav__link">
+    Whitelist the Test in the CSV Checks
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="contributing-to-sitewatch">Contributing to SiteWatch</h1>
+<p>SiteWatch is an open-source tool, and we welcome contributions from the community. This document outlines the process for contributing to SiteWatch.</p>
+<h2 id="the-sitewatch-structure">The SiteWatch Structure</h2>
+<p>SiteWatch is written in Python for readability and portability. The code structrue is as follows</p>
+<h3 id="the-sitewatch-file">The <code>sitewatch</code> file</h3>
+<p>This file is the entry point for the application. It contains the logic for greeting and parsing command line arguments, verifying the config and CSV files, and looping over each test and initiating it. It also contains the logic for writing the results to the output file and initiating the email process. This file is the only file that should be run directly, and it has been setup to be an executable file. As this file is relatively short (all other logic is packed into other files), it shouldn't need to be modified often.</p>
+<h3 id="the-utils-directory">The <code>utils</code> Directory</h3>
+<p>This directory contains various useful files with many utility functions. The <code>config_utils.py</code> module contains the logic for reading the config file and verifying that it is valid. The <code>csv_utils.py</code> module contains the logic for reading the CSV file and verifying that it is valid. The <code>email_utils.py</code> module contains the logic for sending emails. The documentation for the functions contained in these files is contained in the docstrings of the functions themselves, which makes it easy to use if you are editing the code in an IDE.</p>
+<h3 id="the-test_suites-directory">The <code>test_suites</code> Directory</h3>
+<p>This directory contains logic for running tests. The main file to make note of here is <code>test_controller.py</code>, as this is the module which contains the <code>TestController</code> class, which can run tests given the name of the test and a CSV row. </p>
+<h3 id="the-pages-directory">The <code>pages</code> Directory</h3>
+<p>This directory contains logic for interacting with web pages. The main file to make note of here is <code>page.py</code>, as this is the module which contains the <code>BasePage</code> class, which is the base class for all pages (and it contains several useful functions applicable to all pages). When a page module is added to this directory, it should contain logic that is specific to that page. For example, the <code>collection_page.py</code> contains several functions that interact with viewers, which are specific to the collection page.</p>
+<h2 id="adding-a-new-test">Adding a New Test</h2>
+<p>To better illustrate the process of adding a new test, we will walk through the process of adding a test. Specifically, let's test the number of results when accessing a search page or a collections page. For example, on <a href="https://griot.digital.utsc.utoronto.ca/search-results?a%5B0%5D%5Bf%5D=all&amp;a%5B0%5D%5Bi%5D=IS&amp;a%5B0%5D%5Bv%5D=griot">this page</a>, there are 3 results, and on <a href="https://memory.digital.utsc.utoronto.ca/collection/33463">this page</a>, there are 23591 results. We want to design a test that compares the number of results on the page to the expected number of results that the user specifies in the CSV file, and fails if the numbers do not match.</p>
+<p>There are several steps involved in adding a new test:
+* Find an appropriate element to test
+* Decide if you need a new page module and create one if necessary (must inherit from <code>BasePage</code>)
+* In the page class you are testing, create logic to interact with the element you are testing
+* Decide if you need a new test suite and create one if necessary (must inherit from <code>Test</code>)
+* In the test suite, create a new test function with assert statements
+* Add the test to the <code>test_controller.py</code> file
+* Whitelist the test in the CSV checks</p>
+<h3 id="find-an-appropriate-element-to-test">Find an Appropriate Element to Test</h3>
+<p>Let's consider the <a href="https://griot.digital.utsc.utoronto.ca/search-results?a%5B0%5D%5Bf%5D=all&amp;a%5B0%5D%5Bi%5D=IS&amp;a%5B0%5D%5Bv%5D=griot">first page</a> above. Here is a screenshot of the page</p>
+<p><img alt="Alt text" src="../image.png" /></p>
+<p>We want to confirm that there are 3 results on the page. First, ask yourself: "How would I, as a human, confirm that there are 3 results on the page?" You would probably look for something that says the total number of results. Indeed, find the element we are looking for</p>
+<p><img alt="Alt text" src="../image-1.png" /></p>
+<p>If we can get to the "3" part, then we'll know how many results we have.</p>
+<p>We now use the Chrome DevTools to inspect this element and find something (like a class name, ID, XPath, or CSS selector) that we can use to identify this element, so that we can search for it in our code. To do this, right click on the element and click "Inspect". </p>
+<p><img alt="Alt text" src="../image-2.png" /></p>
+<p>This will open the DevTools and highlight the element we are looking for in blue.</p>
+<p><img alt="Alt text" src="../image-3.png" />
+<img alt="Alt text" src="../image-4.png" /></p>
+<p>This is indeed the element we are looking for since it clearly says "Displaying 1 - 3 of 3". Now, we need to find something that we can use to identify this element. Typically, the following order for choosing what to identify the element by should be selected as follows:
+* ID
+* Class Name (if it is unique)
+* XPath
+* CSS Selector
+We can see that the element has a class name of <code>pager__summary</code>, and this is unique to this element, so we will use this to identify the element. That's all we need from the webpage! We can close the entire browser if we want now.</p>
+<h3 id="decide-if-you-need-a-new-page-module-and-create-one-if-necessary">Decide if You Need a New Page Module and Create One if Necessary</h3>
+<p>At the time of writing, the only module in the <code>page</code> directory is <code>page.py</code>, and as that module contains logic for interacting with a general page, and this test pertains only to search and collections pages, we'll make a new module <code>collections_or_advanced_search_page.py</code>. </p>
+<h3 id="in-the-page-class-you-are-testing-create-logic-to-interact-with-the-element-you-are-testing">In the Page Class You Are Testing, Create Logic to Interact with the Element You Are Testing</h3>
+<p>We'll cut to the chase and show the code we wrote straight away, and then explain it.</p>
+<pre><code class="language-python">from pages.page import BasePage
+from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.common.by import By
+from typing import Optional
+
+class CollectionsOrAdvancedSearchPage(BasePage):
+    def get_collection_count(self) -&gt; Optional[int]:
+        &quot;&quot;&quot;Return the number of collections on the collections page.&quot;&quot;&quot;
+        self.driver.get(self.url)
+        try:
+            pager_summary = self.driver.find_element(By.CLASS_NAME, &quot;pager__summary&quot;)
+            return int(pager_summary.text.split(&quot; &quot;)[-1])
+        except NoSuchElementException:
+            return None
+</code></pre>
+<p>As you can see, we have a class called <code>CollectionsOrAdvancedSearchPage</code> that inherits from <code>BasePage</code>. We have a function called <code>get_collection_count</code> that returns the number of collections on the page. This function does the following:
+* Navigates to the page
+* Finds the element we are looking for
+* Gets the text of the element
+* Splits the text by spaces
+* Gets the last element of the list (which is the number of collections)
+* Converts the number of collections to an integer
+* Returns the number of collections</p>
+<p>How does the function know which page to navigate to? The <code>BasePage</code> class has a constructor that takes in a URL (along with other parameters), and the <code>get_collection_count</code> function uses this URL to navigate to the page. See the <code>BasePage</code> class for more details.</p>
+<h3 id="decide-if-you-need-a-new-test-suite-and-create-one-if-necessary">Decide if You Need a New Test Suite and Create One if Necessary</h3>
+<p>At the time of writing, the only module in the <code>test_suites</code> directory is <code>test.py</code>, and as that module contains only the abstract <code>Test</code> class, we'll make a new module <code>collection_count_test.py</code>.</p>
+<h3 id="in-the-test-suite-create-a-new-test-function-with-assert-statements">In the Test Suite, Create a New Test Function with Assert Statements</h3>
+<p>We'll cut to the chase and show the code we wrote straight away, and then explain it.</p>
+<pre><code class="language-python">from pages.collections_or_advanced_search_page import CollectionsOrAdvancedSearchPage
+from test_suites.test import Test
+from selenium.common.exceptions import NoSuchElementException
+
+class CollectionCountTest(Test):
+    &quot;&quot;&quot; A test to check that the number of collections on the collections page is correct. &quot;&quot;&quot;    
+    def run(self, url: str, expected_value: str) -&gt; None:
+        &quot;&quot;&quot; Run the test on the page at &lt;url&gt; and compare the result to &lt;expected_value&gt;.&quot;&quot;&quot;
+        try:
+            expected_value = int(expected_value)
+        except ValueError:
+            raise ValueError(f&quot;Expected value must be an integer, but got {expected_value}.&quot;)
+        collection_page = CollectionsOrAdvancedSearchPage(self.driver, url)
+        try:
+            actual_value = int(collection_page.get_collection_count())
+        except NoSuchElementException:
+            raise NoSuchElementException(f&quot;Could not find the collections count on {url}.&quot;)
+        assert actual_value == expected_value, f&quot;Expected {expected_value}, but got {actual_value}.&quot;
+</code></pre>
+<p>As you can see, we have a class called <code>CollectionCountTest</code> that inherits from <code>Test</code>. We have a function called <code>run</code> that runs the test. This function does the following:
+* Tries to convert the expected value to an integer
+* Creates a <code>CollectionsOrAdvancedSearchPage</code> object
+* Tries to get the number of collections on the page
+* Asserts that the actual value is equal to the expected value</p>
+<h3 id="add-the-test-to-the-test_controllerpy-file">Add the Test to the <code>test_controller.py</code> File</h3>
+<p>This itself contains multiple steps:
+* Import the test suite
+* Make an attribute for the <code>TestController</code> that points to an instance of your new test suite
+* Make a function that runs your test suite
+* Add your test to the <code>TestController</code>'s <code>run_test</code> function</p>
+<p>We'll first import test suite: </p>
+<pre><code class="language-python">from test_suites.collection_count_test import CollectionCountTest
+</code></pre>
+<p>Then, we'll add the following line to the bottom of the initializer of the <code>TestController</code> class:</p>
+<pre><code class="language-python">self.collection_count_test = CollectionCountTest(self.driver)
+</code></pre>
+<p>So now the initializer looks like this:</p>
+<pre><code class="language-python">class TestController():
+    def __init__(self):
+        options = webdriver.ChromeOptions()
+        options.add_argument(&quot;--headless&quot;)
+        self.driver.implicitly_wait(20)
+        self.driver = webdriver.Chrome(options=options)
+        self.collection_count_test = CollectionCountTest(self.driver)
+</code></pre>
+<p>Then, we'll make a function that runs the test suite:</p>
+<pre><code class="language-python">def run_collection_count_test(self, csv_row: dict, csv_row_number: int) -&gt; bool:
+        &quot;&quot;&quot; Runs a Collection Count Test. &quot;&quot;&quot;
+        try:
+            self.collection_count_test.run(csv_row[&quot;url&quot;], csv_row[&quot;test_input&quot;])
+        except ValueError:
+            print(Fore.RED, f&quot;Invalid test input on row {csv_row_number + 1}. Please see log for more details.&quot;)
+            logging.error(f&quot;Invalid test input on row {csv_row_number + 1}. The test input must be an integer.&quot;)
+            return False
+        except AssertionError as e:
+            # Get the assertion error message
+            error_message = str(e)
+            print(Fore.RED, f&quot;Collection Count Test failed on row {csv_row_number + 1}. Please see log for more details.&quot;)
+            logging.error(f&quot;Collection Count Test failed on row {csv_row_number + 1}. The expected number of collections was not found. {error_message}&quot;)
+            return False
+        except Exception as e:
+            print(Fore.RED, f&quot;Collection Count Test failed on row {csv_row_number + 1}. Please see log for more details.&quot;)
+            logging.error(f&quot;Collection Count Test failed on row {csv_row_number + 1}. {e}&quot;)
+            return False
+        else:
+            print(Fore.GREEN, f&quot;Collection Count Test passed on row {csv_row_number + 1}.&quot;)
+            logging.info(f&quot;Collection Count Test passed on row {csv_row_number + 1}.&quot;)
+            return True
+</code></pre>
+<p>We must make sure that under no circumstances does the test suite crash, so we have a try-except block that catches all exceptions. If the test passes, we print a green message to the console and log a message to the log file. If the test fails, we print a red message to the console and log a message to the log file.</p>
+<p>Finally, we'll add the following line to the <code>run_test</code> function:</p>
+<pre><code class="language-python">if test_type == 'collection_count_test':
+    test_result = self.run_collection_count_test(csv_row, csv_row_number)
+</code></pre>
+<h3 id="whitelist-the-test-in-the-csv-checks">Whitelist the Test in the CSV Checks</h3>
+<p>Go to <code>csv_utils.py</code> and find the <code>check_data</code> function. There will be a variable <code>supported_test_types</code> that contains a list of all the test types that are supported. Add your test type to this list. We'll just add a new element `collection_count_test' to the list.</p>
+<p>And that's it! You've added a new test to the test suite. Now, you can run the test suite and see if it works. If it doesn't, you can debug it and fix it.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.b4d07000.min.js"></script>
+      
+    
+  </body>
+</html>
