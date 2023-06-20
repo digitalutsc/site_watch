@@ -31,3 +31,10 @@ email:
     - <email address 1>
     - <email address 2>
 ```
+
+# The Setup Wizard
+Instead of creating your own configuration file, you can use the setup wizard to create one for you. To run the setup wizard, run the following command:
+```bash
+$ ./setupwizard
+```
+The setup wizard will ask you a series of questions, and then create a configuration file for you. You can then edit the configuration file to add any additional settings you need.

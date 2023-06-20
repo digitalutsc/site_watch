@@ -25,7 +25,14 @@ In a terminal, run:
 
 `git clone https://github.com/digitalutsc/site_watch.git`
 
-This will create a directory named `site_watch` where you will run the `./sitewatch` command.
+This will create a directory named `site_watch` where you will run the `./sitewatch` command. Change into this directory:
+```bash
+cd site_watch
+```
+and run the following command to make the `./sitewatch` and `./setupwizard` commands executable:
+```bash
+chmod +x sitewatch setupwizard
+```
 
 ### Step 2: Running setup.py to Install the Required Python Libraries
 
