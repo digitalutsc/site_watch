@@ -77,3 +77,37 @@ This test type checks to see if the AblePlayer transcript loads on an item page.
 https://tamil.digital.utsc.utoronto.ca/61220/utsc34400,ableplayer_transcript_load_test,
 ```
 By default, the test will check to see if the AblePlayer transcript loads within 20 seconds.
+
+### `element_present_test`:
+This test takes allows the checking of the presence of any element on a page. It requires two inputs: the method to search by, and the search term. The method can be one of the following:
+* `id`: Search by element ID.
+* `class`: Search by element class.
+* `xpath`: Search by XPath.
+* `css`: Search by CSS selector.
+
+The search term is the value to search for. The two inputs must be provided in the CSV file "test_input" column and be separated by a subdelimeter "|" (pipe). Here is a sample test row for this test type:
+```csv
+url,test_type,test_input
+https://tamil.digital.utsc.utoronto.ca/collection/2855,element_present_test,xpath|/html/body/div/div[2]/div/div[2]/div/div/div/div/div/div[2]/div/aside/div[3]/h2
+```
+
+### `invalid_links_test`:
+This test (non-recursively) tests all links present on the given URL to see if they are broken. It does not require any input data. Here is a sample test row for this test type:
+```csv
+url,test_type,input_data
+https://digital.utsc.utoronto.ca/basic-page/systems-and-software,invalid_links_test,
+```
+
+### `permalink_redirect_test`:
+This test checks to see if the ARK resolver correctly redirects the permalink on a collection page to the correct location. It requires the expected redirect URL to be passed as input. The test will then visit the collection page in a browser and check to see if the permalink redirects to the expected URL. Here is a sample test row for this test type:
+```csv
+url,test_type,input_data
+https://ark.digital.utsc.utoronto.ca/ark:/61220/utsc11324,permalink_redirect_test,https://tamil.digital.utsc.utoronto.ca/61220/utsc11324
+```
+
+### `rest_oai_pmh_xml_validity_test`:
+This test checks if the XML on the OAI-PMH endpoint is valid. It does not require any input data. Here is a sample test row for this test type:
+```csv
+url,test_type,input_data
+https://memory.digital.utsc.utoronto.ca/oai/request?identifier=oai%3Amemory.digital.utsc.utoronto.ca%3Anode-10262&metadataPrefix=mods&verb=GetRecord,permalink_redirect_test,
+```
