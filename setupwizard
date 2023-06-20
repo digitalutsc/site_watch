@@ -1,0 +1,57 @@
+#!/usr/bin/env python3
+import yaml
+
+def setup_wizard():
+    config = {}
+
+    # Ask the user what they want the config file to be named
+    config_file_name = input("What do you want the config file to be named? (default: config.yml): ")
+    if not config_file_name:
+        config_file_name = "config.yml"
+
+    # Ask the user what the source of input is
+    print("What is the source of input?")
+    print("1. Google Sheets")
+    print("2. Excel file")
+    print("3. CSV")
+    source_choice = input("Enter your choice (1-3): ")
+
+    # Get the URL or path based on the user's choice
+    if source_choice == "1":
+        url = input("Enter the Google Sheets URL: ")
+        config["google_sheets"] = url
+    elif source_choice == "2":
+        path = input("Enter the path to the Excel file: ")
+        config["excel"] = path
+    elif source_choice == "3":
+        path = input("Enter the path to the CSV file: ")
+        config["csv"] = path
+    else:
+        print("Invalid choice. Please try again.")
+        return
+
+    # Ask if the user wants to include email information
+    include_email = input("Do you want to include email information? (y/n): ")
+    if include_email.lower() == "y":
+        sender_name = input("Sender name (the name to appear on the emails sent to recipients): ")
+        sender_email = input("Sender email (the email to send from): ")
+        recipient_emails = []
+        while True:
+            recipient_email = input("Recipient email (leave blank to finish): ")
+            if not recipient_email:
+                break
+            recipient_emails.append(recipient_email)
+        config["email"] = {
+            "sender_name": sender_name,
+            "sender_email": sender_email,
+            "recipient_emails": recipient_emails
+        }
+
+    # Write the config file
+    with open(config_file_name, "w") as f:
+        yaml.dump(config, f)
+
+    print(f"Configuration file {config_file_name} written successfully.")
+
+if __name__ == "__main__":
+    setup_wizard()
