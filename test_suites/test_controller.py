@@ -7,6 +7,8 @@ from test_suites.site_availibility_test import *
 from test_suites.viewer_tests import *
 from test_suites.element_present_test import *
 from test_suites.invalid_links_test import *
+from test_suites.permalink_redirect_test import *
+from test_suites.rest_oai_pmh_xml_validity_test import *
 
 logging = logging.getLogger(__name__)
 
@@ -14,8 +16,8 @@ class TestController():
     def __init__(self):
         options = webdriver.ChromeOptions()
         options.add_argument("--headless")
-        options.add_experimental_option("excludeSwitches", ["test-type"])
         self.driver = webdriver.Chrome(options=options)
+        self.driver.implicitly_wait(20)
         self.collection_count_test = CollectionCountTest(self.driver)
         self.facet_load_test = FacetLoadTest(self.driver)
         self.site_availability_test = SiteAvailabilityTest(self.driver)
@@ -25,8 +27,9 @@ class TestController():
         self.ableplayer_load_test = AblePlayerLoadTest(self.driver)
         self.ableplayer_transcript_load_test = AblePlayerTranscriptLoadTest(self.driver)
         self.element_present_test = ElementPresentTest(self.driver)
-        self.invalid_links_test = InvalidLinksTest(self.driver)
-        self.driver.implicitly_wait(20)
+        self.invalid_links_test = InvalidLinksTest(self.driver) 
+        self.permalink_redirect_test = PermalinkRedirectTest(self.driver)
+        self.rest_oai_pmh_xml_validity_test = RestOAIPMHXMLValidityTest(self.driver)
     
     def run_collection_count_test(self, csv_row: dict, csv_row_number: int) -> bool:
         """ Runs a Collection Count Test. """
@@ -224,13 +227,51 @@ class TestController():
             print(Fore.RED, f"Invalid Links Test failed on row {csv_row_number + 1}. Please see log for more details.")
             logging.error(f"Invalid Links Test failed on row {csv_row_number + 1}. {error_message}")
             return False
-        # except Exception as e:
-        #     print(Fore.RED, f"Invalid Links Test failed on row {csv_row_number + 1}. Please see log for more details.")
-        #     logging.error(f"Invalid Links Test failed on row {csv_row_number + 1}. {e}")
-        #     return False
+        except Exception as e:
+            print(Fore.RED, f"Invalid Links Test failed on row {csv_row_number + 1}. Please see log for more details.")
+            logging.error(f"Invalid Links Test failed on row {csv_row_number + 1}. {e}")
+            return False
         else:
             print(Fore.GREEN, f"Invalid Links Test passed on row {csv_row_number + 1}.")
             logging.info(f"Invalid Links Test passed on row {csv_row_number + 1}.")
+            return True
+    
+    def run_permalink_redirect_test(self, csv_row: dict, csv_row_number: int):
+        """ Runs a Permalink Redirect Test. """
+        try:
+            self.permalink_redirect_test.run(csv_row["url"], csv_row["test_input"])
+        except AssertionError as e:
+            # Get the assertion error message
+            error_message = str(e)
+            print(Fore.RED, f"Permalink Redirect Test failed on row {csv_row_number + 1}. Please see log for more details.")
+            logging.error(f"Permalink Redirect Test failed on row {csv_row_number + 1}. {error_message}")
+            return False
+        except Exception as e:
+            print(Fore.RED, f"Permalink Redirect Test failed on row {csv_row_number + 1}. Please see log for more details.")
+            logging.error(f"Permalink Redirect Test failed on row {csv_row_number + 1}. {e}")
+            return False
+        else:
+            print(Fore.GREEN, f"Permalink Redirect Test passed on row {csv_row_number + 1}.")
+            logging.info(f"Permalink Redirect Test passed on row {csv_row_number + 1}.")
+            return True
+    
+    def run_rest_oai_pmh_xml_validity_test(self, csv_row: dict, csv_row_number: int):
+        """ Runs a REST OAI-PMH XML Validity Test. """
+        try:
+            self.rest_oai_pmh_xml_validity_test.run(csv_row["url"])
+        except AssertionError as e:
+            # Get the assertion error message
+            error_message = str(e)
+            print(Fore.RED, f"REST OAI-PMH XML Validity Test failed on row {csv_row_number + 1}. Please see log for more details.")
+            logging.error(f"REST OAI-PMH XML Validity Test failed on row {csv_row_number + 1}. {error_message}")
+            return False
+        except Exception as e:
+            print(Fore.RED, f"REST OAI-PMH XML Validity Test failed on row {csv_row_number + 1}. Please see log for more details.")
+            logging.error(f"REST OAI-PMH XML Validity Test failed on row {csv_row_number + 1}. {e}")
+            return False
+        else:
+            print(Fore.GREEN, f"REST OAI-PMH XML Validity Test passed on row {csv_row_number + 1}.")
+            logging.info(f"REST OAI-PMH XML Validity Test passed on row {csv_row_number + 1}.")
             return True
     
     def run_test(self, csv_row: dict, csv_row_number: int) -> bool:
@@ -256,6 +297,10 @@ class TestController():
             test_result = self.run_element_present_test(csv_row, csv_row_number)
         elif test_type == 'invalid_links_test':
             test_result = self.run_invalid_links_test(csv_row, csv_row_number)
+        elif test_type == 'permalink_redirect_test':
+            test_result = self.run_permalink_redirect_test(csv_row, csv_row_number)
+        elif test_type == 'rest_oai_pmh_xml_validity_test':
+            test_result = self.run_rest_oai_pmh_xml_validity_test(csv_row, csv_row_number)
         else:
             print(Fore.RED, f"Test type on row {csv_row_number + 1} is not supported. Please see log for more details.")
             logging.error(f"Test type {test_type} on row {csv_row_number + 1} is not supported.")

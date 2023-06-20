@@ -119,7 +119,7 @@ def dictreader_to_dictionaries(csv_data: csv.DictReader) -> list:
         for key, value in row.items():
             key = key.lower() if isinstance(key, str) else key
             key = key.replace(" ", "_") if isinstance(key, str) else key
-            value = value.lower().replace(" ", "_") if isinstance(value, str) and key == "test_type" or "test_input" else value
+            value = value.lower().replace(" ", "_") if isinstance(value, str) and key != "url" else value
             formatted_row[key] = value
         formatted_data.append(formatted_row)
 
@@ -142,7 +142,9 @@ def check_data(data: list) -> None:
                             "ableplayer_load_test",
                             "ableplayer_transcript_load_test",
                             "element_present_test",
-                            "invalid_links_test"]
+                            "invalid_links_test",
+                            "permalink_redirect_test",
+                            "rest_oai_pmh_xml_validity_test"]
     row_number = 1
     for row in track(data, description="Verifying CSV File..."):
         # Check if the CSV file contains the required fields

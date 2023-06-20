@@ -54,3 +54,17 @@ class CollectionPage(BasePage):
             return True
         except NoSuchElementException:
             return False
+        
+    def get_permalink_redirect_url(self) -> Optional[str]:
+        """Return the url that the permalink redirects to, None if not present."""
+        self.driver.get(self.url)
+        try:
+            permalink_url = self.driver.find_element(By.XPATH, 
+                                                     "/html/body/div/div[2]/div/div[2]/div/div/div/div/div/div[2]/main/section/section/div[5]/div/div/div/div/div/div/span/div/div[3]/a").get_attribute("href")
+            self.driver.get(permalink_url)
+            # Wait for the page to load
+            self.driver.implicitly_wait(20)
+            return self.driver.current_url
+        except NoSuchElementException:
+            return None
+
