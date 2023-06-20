@@ -31,23 +31,23 @@ There are several steps involved in adding a new test:
 ### Find an Appropriate Element to Test
 Let's consider the [first page](https://griot.digital.utsc.utoronto.ca/search-results?a%5B0%5D%5Bf%5D=all&a%5B0%5D%5Bi%5D=IS&a%5B0%5D%5Bv%5D=griot) above. Here is a screenshot of the page
 
-![Alt text](image.png)
+![Alt text](assets/image.png)
 
 We want to confirm that there are 3 results on the page. First, ask yourself: "How would I, as a human, confirm that there are 3 results on the page?" You would probably look for something that says the total number of results. Indeed, find the element we are looking for
 
-![Alt text](image-1.png)
+![Alt text](assets/image-1.png)
 
 If we can get to the "3" part, then we'll know how many results we have.
 
 We now use the Chrome DevTools to inspect this element and find something (like a class name, ID, XPath, or CSS selector) that we can use to identify this element, so that we can search for it in our code. To do this, right click on the element and click "Inspect". 
 
-![Alt text](image-2.png)
+![Alt text](assets/image-2.png)
 
 
 This will open the DevTools and highlight the element we are looking for in blue.
 
-![Alt text](image-3.png)
-![Alt text](image-4.png)
+![Alt text](assets/image-3.png)
+![Alt text](assets/image-4.png)
 
 This is indeed the element we are looking for since it clearly says "Displaying 1 - 3 of 3". Now, we need to find something that we can use to identify this element. Typically, the following order for choosing what to identify the element by should be selected as follows:
 
