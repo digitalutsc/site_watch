@@ -84,44 +84,48 @@ def extract_excel(input_excel_path) -> csv.DictReader:
                 record[headers[index]] = cell.value
         records.append(record)
 
-    csv_data = StringIO()
-    csv_writer = csv.DictWriter(csv_data, fieldnames=headers)
-    csv_writer.writeheader()
+    csv_data = StringIO()  # Create a StringIO object to hold the CSV data
+    csv_writer = csv.DictWriter(csv_data, fieldnames=headers)  # Create a DictWriter object to write the CSV data
+    csv_writer.writeheader()  # Write the header row
+    # Write each record to the CSV file
     for record in records:
         csv_writer.writerow(record)
 
-    csv_data.seek(0)
-    return csv.DictReader(csv_data)
+    csv_data.seek(0)  # Move the cursor to the beginning of the StringIO object
+    return csv.DictReader(csv_data)  # Return a DictReader object containing the CSV data
 
 def extract_csv(input_csv_path) -> csv.DictReader:
     """Open the CSV file at <input_csv_path> and return a DictReader object containing the CSV data."""
+    # First check if the file exists
     if not os.path.exists(input_csv_path):
         print(Fore.RED, "Invalid CSV file path. Please see the log for more details.", Fore.RESET)
         logging.error(f"Invalid CSV file path: {input_csv_path}")
         sys.exit(127)
 
+    # Then check if the file is a CSV file
     if not input_csv_path.lower().endswith('.csv'):
         print(Fore.RED, "Invalid CSV file. Please see the log for more details.", Fore.RESET)
         logging.error(f"Invalid CSV file: {input_csv_path}")
         sys.exit(127)
 
+    # Open the CSV file and return a DictReader object containing the CSV data
     with open(input_csv_path, "r", newline='') as csv_file:
         csv_data = csv_file.read()
 
-    csv_data_stream = io.StringIO(csv_data)
-    return csv.DictReader(csv_data_stream)
+    csv_data_stream = io.StringIO(csv_data)  # Convert the CSV data to a stream
+    return csv.DictReader(csv_data_stream)  # Return a DictReader object containing the CSV data
 
 def dictreader_to_dictionaries(csv_data: csv.DictReader) -> list:
     """ Convert the CSV data in <csv_data> to a list of dictionaries and return a DictReader object containing the data."""
     formatted_data = []
     for row in csv_data:
-        formatted_row = {}
+        formatted_row = {}  # Each row has its own dictionary in the formatatted data list
         for key, value in row.items():
-            key = key.lower() if isinstance(key, str) else key
-            key = key.replace(" ", "_") if isinstance(key, str) else key
-            value = value.lower().replace(" ", "_") if isinstance(value, str) and key != "url" else value
-            formatted_row[key] = value
-        formatted_data.append(formatted_row)
+            key = key.lower() if isinstance(key, str) else key  # Convert key to lowercase if it's a string
+            key = key.replace(" ", "_") if isinstance(key, str) else key  # Replace spaces with underscores if key is a string
+            value = value.lower().replace(" ", "_") if isinstance(value, str) and key != "url" else value  # Convert value to lowercase and replace spaces with underscores if value is a string and key is not "url"
+            formatted_row[key] = value  # Add the key-value pair to the formatted row
+        formatted_data.append(formatted_row)  # Add the formatted row to the formatted data list
 
     return formatted_data
 
@@ -133,7 +137,10 @@ def check_data(data: list) -> None:
         logging.error("Invalid CSV file. The CSV file is empty.")
         sys.exit(127)
 
-    supported_test_types = ["site_availability_test", 
+    required_fields = {"url", "test_type"}
+
+    # Set of test types that are valid
+    supported_test_types = {"site_availability_test", 
                             "facet_load_test", 
                             "collection_count_test", 
                             "openseadragon_load_test", 
@@ -144,54 +151,42 @@ def check_data(data: list) -> None:
                             "element_present_test",
                             "invalid_links_test",
                             "permalink_redirect_test",
-                            "rest_oai_pmh_xml_validity_test"]
+                            "rest_oai_pmh_xml_validity_test"}
+    
+    # Set of test types that require an input
+    test_types_with_input = {"facet_load_test",
+                             "collection_count_test",
+                             "mirador_page_count_test",
+                             "element_present_test",
+                             "permalink_redirect_test"}
+    
     row_number = 1
     for row in track(data, description="Verifying CSV File..."):
-        # Check if the CSV file contains the required fields
-        if "url" not in row:
-            print(Fore.RED, "Invalid CSV file. Please see log for more details.", Fore.RESET)
-            logging.error(f"Invalid CSV file. URL column is missing from row {row_number + 1}")
-            sys.exit(127)
-        if row["url"] == "":
-            print(Fore.RED, "Invalid CSV file. Please see log for more details.", Fore.RESET)
-            logging.error(f"Invalid CSV file. URL column is empty in row {row_number + 1}")
-            sys.exit(127)
-        if "test_type" not in row:
-            print(Fore.RED, "Invalid CSV file. Please see log for more details.", Fore.RESET)
-            logging.error(f"Invalid CSV file. Test Type column is missing from row {row_number + 1}")
-            sys.exit(127)
+        # Check if the row has the required fields
+        for required_field in required_fields:
+            if required_field not in row or not row[required_field]:
+                print(Fore.RED, "Invalid CSV file. Please see log for more details.", Fore.RESET)
+                logging.error(f"Invalid CSV file. {required_field} column is missing from row {row_number}")
+                sys.exit(127)
+        
+        # Check if the test type is valid
         if row["test_type"] not in supported_test_types:
             print(Fore.RED, "Invalid CSV file. Please see log for more details.", Fore.RESET)
-            logging.error(f"Invalid CSV file. Test Type column contains an invalid test type ({row['test_type']}) in row {row_number + 1}")
-            sys.exit(127)
-        
-        # Check specific fields for specific test types
-        # Facet Load Tests need a string input representing the facet name
-        if row["test_type"] == "facet_load_test" and "test_input" not in row:
-            print(Fore.RED, "Invalid CSV file. Please see log for more details.", Fore.RESET)
-            logging.error(f"Invalid CSV file. Test Input column is missing from row {row_number + 1}")
-            sys.exit(127)
-        if row["test_type"] == "facet_load_test" and row["test_input"] == "":
-            print(Fore.RED, "Invalid CSV file. Please see log for more details.", Fore.RESET)
-            logging.error(f"Invalid CSV file. Test Input column is empty in row {row_number + 1}")
-            sys.exit(127)
-        
-        # Collection Count Tests need an integer input representing the expected number of collections
-        if row["test_type"] == "collection_count_test" and "test_input" not in row:
-            print(Fore.RED, "Invalid CSV file. Please see log for more details.", Fore.RESET)
-            logging.error(f"Invalid CSV file. Test Input column is missing from row {row_number + 1}")
-            sys.exit(127)
-        if row["test_type"] == "collection_count_test" and row["test_input"] == "":
-            print(Fore.RED, "Invalid CSV file. Please see log for more details.", Fore.RESET)
-            logging.error(f"Invalid CSV file. Test Input column is empty in row {row_number + 1}")
+            logging.error(f"Invalid CSV file. {row['test_type']} is not a valid test type in row {row_number}")
             sys.exit(127)
 
-        # Mirador Viewer Page Count Tests need an integer input representing the expected number of thumbnails
-        if row["test_type"] == "mirador_page_count_test" and "test_input" not in row:
+        # Check if the test type requires an input and if the input is missing if it does require an input
+        if row["test_type"] in test_types_with_input and "test_input" not in row:
             print(Fore.RED, "Invalid CSV file. Please see log for more details.", Fore.RESET)
-            logging.error(f"Invalid CSV file. Test Input column is missing from row {row_number + 1}")
+            logging.error(f"Invalid CSV file. Test Input column is missing from row {row_number}")
             sys.exit(127)
         
+        # Specific to the element_present_test, two inputs separated by a "|" are required
+        if row["test_type"] == "element_present_test" and len(row["test_input"].split("|")) != 2:
+            print(Fore.RED, "Invalid CSV file. Please see log for more details.", Fore.RESET)
+            logging.error(f"Invalid CSV file. The test input for element_present_test must be two inputs separated by a '|' {row_number}")
+            sys.exit(127)
+
         row_number += 1
     
     # If the CSV file is valid, print a success message
@@ -199,8 +194,9 @@ def check_data(data: list) -> None:
     logging.info("CSV file is valid.")
 
 def extract_data(config: dict) -> list:
-    """ Extract the test data from either a Google Sheet, Excel file, or CSV file (specified in <config>) and return a formatted DictReader object 
+    """ Extract the test data from either a Google Sheet, Excel file, or CSV file (specified in <config>) and return a list of dictionaries 
     containing the data."""
+    # We check if the data is coming from one of the three accepted sources, extract the data, check it, and then return it
     if 'google_sheets' in config:
         data = dictreader_to_dictionaries(extract_google_sheet(config['google_sheets']))
         check_data(data)

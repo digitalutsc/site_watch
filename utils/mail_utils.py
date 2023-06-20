@@ -1,3 +1,10 @@
+"""
+csv_utils.py - A collection of functions for sending emails.
+
+This module contains logic for sending a generic email from a particular email to a list of recipients.
+It also contains logic specific to SiteWatch for sending out emails to users when tests fail or errors occur in the checks.
+"""
+
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -5,6 +12,8 @@ from email.mime.application import MIMEApplication
 from colorama import Fore
 
 def send_email(sender_email: str, sender_name: str, recipient_emails: list, subject: str, body: str, attachment_paths: list=[]) -> bool:
+    """ Send an email from <sender_email> to <recipient_emails> with the given <subject> and <body> and optional 
+    attachments located at <attachment_paths>."""
     try:
         # Create a multipart message object
         message = MIMEMultipart()
@@ -33,7 +42,7 @@ def send_email(sender_email: str, sender_name: str, recipient_emails: list, subj
         return True
 
     except Exception as e:
-        print(f"An error occurred while sending the email: {e}")
+        print(Fore.RED, f"An error occurred while sending the email: {e}", Fore.RESET)
         return False
 
 def send_test_failure_email(config: dict, output_csv_name: str, output_log_name: str):
@@ -48,7 +57,7 @@ def send_test_failure_email(config: dict, output_csv_name: str, output_log_name:
     print(Fore.GREEN, "An email has been sent to the recipients listed in the config file as errors have been detected.")
 
 def send_invalid_csv_email(config: dict, output_log_name: str):
-    """ Send an email to the recipients listed in the config file containing the output CSV and log files."""
+    """ Send an email to the recipients listed in the config file containing the log file."""
     sender_email = config['email']['sender_email']
     sender_name = config['email']['sender_name']
     recipient_emails = config['email']['recipient_emails']

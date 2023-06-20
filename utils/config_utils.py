@@ -1,3 +1,8 @@
+"""
+config_utils.py - A collection of functions for validating and formatting the configuration file.
+This module contains logic for validating the configuration file and formatting the data in the configuration file whcih SiteWatch uses to run tests.
+"""
+
 from ruamel.yaml import YAML
 from colorama import Fore
 import logging
@@ -27,44 +32,35 @@ def check_config(config: dict) -> None:
     #   - csv
     #   - excel
     #   - google_sheets
-    if "csv" not in config and "excel" not in config and "google_sheets" not in config:
+    data_inputs = {"csv", "excel", "google_sheets"}
+    present_inputs = [key for key in data_inputs if key in config]
+    num_present_inputs = len(present_inputs)
+    if num_present_inputs > 1:
         print(Fore.RED, "There are errors in the configuration file. See log for more details.", Fore.RESET)
-        logging.error("No data input was specified in the configuration file. One of the following keys must be present: csv, excel, google_sheets")
+        logging.error(f"Invalid data inputs in the configuration file: {present_inputs}. Only one of the following keys may be present: csv, excel, google_sheets")
         exit(127)
-    elif "csv" in config and "excel" in config:
+    elif num_present_inputs == 0:
         print(Fore.RED, "There are errors in the configuration file. See log for more details.", Fore.RESET)
-        logging.error("Both CSV and Excel data inputs were specified in the configuration file. Only one of the following keys may be present: csv, excel, google sheets")
-        exit(127)
-    elif "csv" in config and "google_sheets" in config:
-        print(Fore.RED, "There are errors in the configuration file. See log for more details.", Fore.RESET)
-        logging.error("Both CSV and Google Sheets data inputs were specified in the configuration file. Only one of the following keys may be present: csv, excel, google sheets")
-        exit(127)
-    elif "excel" in config and "google_sheets" in config:
-        print(Fore.RED, "There are errors in the configuration file. See log for more details.", Fore.RESET)
-        logging.error("Both Excel and Google Sheets data inputs were specified in the configuration file. Only one of the following keys may be present: csv, excel, google sheets")
+        logging.error(f"No data inputs were specified in the configuration file. One of the following keys must be present: csv, excel, google_sheets")
         exit(127)
 
     # Next check the email information. If an email is specified, we need to check that the following keys are present under the email key:
-    #   - sender_email
-    #   - sender_name
+    #   - sender_email (must be a string)
+    #   - sender_name (must be a string)
     #   - recipient_emails (must be a list)
     if "email" in config:
-        if "sender_email" not in config["email"]:
+        # The email key must be a dictionary
+        if not isinstance(config["email"], dict):
             print(Fore.RED, "There are errors in the configuration file. See log for more details.", Fore.RESET)
-            logging.error("No sender email was specified in the configuration file. The sender_email key must be present under the email key.")
+            logging.error("The email key must be a dictionary.")
             exit(127)
-        if "sender_name" not in config["email"]:
-            print(Fore.RED, "There are errors in the configuration file. See log for more details.", Fore.RESET)
-            logging.error("No sender name was specified in the configuration file. The sender_name key must be present under the email key.")
-            exit(127)
-        if "recipient_emails" not in config["email"]:
-            print(Fore.RED, "There are errors in the configuration file. See log for more details.", Fore.RESET)
-            logging.error("No recipient emails were specified in the configuration file. The recipient_emails key must be present under the email key.")
-            exit(127)
-        if not isinstance(config["email"]["recipient_emails"], list):
-            print(Fore.RED, "There are errors in the configuration file. See log for more details.", Fore.RESET)
-            logging.error("The recipient_emails key must be a list of email addresses.")
-            exit(127)
+        # Check if all required keys are present and of correct type
+        required_email_keys = {"sender_email": str, "sender_name": str, "recipient_emails": list}
+        for key, value_type in required_email_keys.items():
+            if key not in config["email"] or not isinstance(config["email"][key], value_type):
+                print(Fore.RED, "There are errors in the configuration file. See log for more details.", Fore.RESET)
+                logging.error(f"The {key} key is missing or has an invalid value in the configuration file. The {key} key must be present under the email key and have a value of type {value_type}.")
+                exit(127)
     
 def extract_config(filename: str) -> dict:
     """Extracts the configuration from the YAML file at <filename> and returns it as a dictionary. """
