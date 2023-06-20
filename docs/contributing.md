@@ -33,7 +33,7 @@ Let's consider the [first page](https://griot.digital.utsc.utoronto.ca/search-re
 
 ![Alt text](assets/image.png)
 
-We want to confirm that there are 3 results on the page. First, ask yourself: "How would I, as a human, confirm that there are 3 results on the page?" You would probably look for something that says the total number of results. Indeed, find the element we are looking for
+We want to confirm that there are 3 results on the page. First, ask yourself: "How would I, as a human, confirm that there are 3 results on the page?" You would probably look for something that says the total number of results. Indeed, the element we are looking for is right in front of us!
 
 ![Alt text](assets/image-1.png)
 
