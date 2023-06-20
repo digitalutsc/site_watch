@@ -414,6 +414,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#add-required-test-input-checks-to-the-csv-checks" class="md-nav__link">
+    Add Required Test Input Checks to the CSV Checks
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -551,6 +558,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#add-required-test-input-checks-to-the-csv-checks" class="md-nav__link">
+    Add Required Test Input Checks to the CSV Checks
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -597,6 +611,7 @@
 <li>In the test suite, create a new test function with assert statements</li>
 <li>Add the test to the <code>test_controller.py</code> file</li>
 <li>Whitelist the test in the CSV checks</li>
+<li>Add required test input checks to the CSV checks</li>
 </ul>
 <h3 id="find-an-appropriate-element-to-test">Find an Appropriate Element to Test</h3>
 <p>Let's consider the <a href="https://griot.digital.utsc.utoronto.ca/search-results?a%5B0%5D%5Bf%5D=all&amp;a%5B0%5D%5Bi%5D=IS&amp;a%5B0%5D%5Bv%5D=griot">first page</a> above. Here is a screenshot of the page</p>
@@ -727,12 +742,23 @@ So now the initializer looks like this:</p>
 </span><span id="__span-5-22"><a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>            <span class="k">return</span> <span class="kc">True</span>
 </span></code></pre></div>
 We must make sure that under no circumstances does the test suite crash, so we have a try-except block that catches all exceptions. If the test passes, we print a green message to the console and log a message to the log file. If the test fails, we print a red message to the console and log a message to the log file.</p>
-<p>Finally, we'll add the following line to the <code>run_test</code> function:
-<div class="language-py highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">if</span> <span class="n">test_type</span> <span class="o">==</span> <span class="s1">&#39;collection_count_test&#39;</span><span class="p">:</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="n">test_result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">run_collection_count_test</span><span class="p">(</span><span class="n">csv_row</span><span class="p">,</span> <span class="n">csv_row_number</span><span class="p">)</span>
+<p>Finally, we'll add the following to the <code>run_test</code> function's <code>test_methods</code> dictionary:
+<div class="language-py highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">test_methods</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="o">...</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="s1">&#39;collection_count_test&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">run_collection_count_test</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="p">}</span>
 </span></code></pre></div></p>
 <h3 id="whitelist-the-test-in-the-csv-checks">Whitelist the Test in the CSV Checks</h3>
 <p>Go to <code>csv_utils.py</code> and find the <code>check_data</code> function. There will be a variable <code>supported_test_types</code> that contains a list of all the test types that are supported. Add your test type to this list. We'll just add a new element `collection_count_test' to the list.</p>
+<h3 id="add-required-test-input-checks-to-the-csv-checks">Add Required Test Input Checks to the CSV Checks</h3>
+<p>As this test requires the user to input the expected number of results in the CSV, we must add it to the CSV checks. Go to <code>csv_utils.py</code> and find the <code>check_data</code> function. There will be a variable <code>test_types_with_input</code> that contains a dictionary of all the test types that require test input. Add your test type to this dictionary. We'll just add a new key-value pair <code>collection_count_test''</code> to the dictionary.
+<div class="language-py highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">test_types_with_input</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="o">...</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="s1">&#39;collection_count_test&#39;</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="p">}</span>
+</span></code></pre></div>
+If your test requires more extensive checks (like if the test input must contain two elements separated by a "|"), you can add those checks to the <code>check_data</code> function.</p>
+<p>And that's it! You've added a new test to the test suite. Now, you can run the test suite and see if it works. If it doesn't, you can debug it and fix it.</p>
 <p>And that's it! You've added a new test to the test suite. Now, you can run the test suite and see if it works. If it doesn't, you can debug it and fix it.</p>
 
 

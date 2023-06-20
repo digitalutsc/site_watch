@@ -27,6 +27,7 @@ There are several steps involved in adding a new test:
 * In the test suite, create a new test function with assert statements
 * Add the test to the `test_controller.py` file
 * Whitelist the test in the CSV checks
+* Add required test input checks to the CSV checks
 
 ### Find an Appropriate Element to Test
 Let's consider the [first page](https://griot.digital.utsc.utoronto.ca/search-results?a%5B0%5D%5Bf%5D=all&a%5B0%5D%5Bi%5D=IS&a%5B0%5D%5Bv%5D=griot) above. Here is a screenshot of the page
@@ -184,13 +185,30 @@ def run_collection_count_test(self, csv_row: dict, csv_row_number: int) -> bool:
 ```
 We must make sure that under no circumstances does the test suite crash, so we have a try-except block that catches all exceptions. If the test passes, we print a green message to the console and log a message to the log file. If the test fails, we print a red message to the console and log a message to the log file.
 
-Finally, we'll add the following line to the `run_test` function:
+Finally, we'll add the following to the `run_test` function's `test_methods` dictionary:
 ```py
-if test_type == 'collection_count_test':
-    test_result = self.run_collection_count_test(csv_row, csv_row_number)
+test_methods = {
+    ...
+    'collection_count_test': self.run_collection_count_test
+}
 ```
 
 ### Whitelist the Test in the CSV Checks
 Go to `csv_utils.py` and find the `check_data` function. There will be a variable `supported_test_types` that contains a list of all the test types that are supported. Add your test type to this list. We'll just add a new element `collection_count_test' to the list.
+
+
+### Add Required Test Input Checks to the CSV Checks
+As this test requires the user to input the expected number of results in the CSV, we must add it to the CSV checks. Go to `csv_utils.py` and find the `check_data` function. There will be a variable `test_types_with_input` that contains a dictionary of all the test types that require test input. Add your test type to this dictionary. We'll just add a new key-value pair `collection_count_test''` to the dictionary.
+```py
+test_types_with_input = {
+    ...
+    'collection_count_test'
+}
+```
+If your test requires more extensive checks (like if the test input must contain two elements separated by a "|"), you can add those checks to the `check_data` function.
+
+And that's it! You've added a new test to the test suite. Now, you can run the test suite and see if it works. If it doesn't, you can debug it and fix it.
+
+
 
 And that's it! You've added a new test to the test suite. Now, you can run the test suite and see if it works. If it doesn't, you can debug it and fix it.
