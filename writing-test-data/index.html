@@ -659,6 +659,10 @@ By default, the test will check to see if the AblePlayer transcript loads within
 <div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>url,test_type,input_data
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>https://digital.utsc.utoronto.ca/basic-page/systems-and-software,invalid_links_test,
 </span></code></pre></div></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This test can take a long time to run, depending on the number of links on the page, since it opens each link in a browser and waits for the page to load. As the implementation of this test is multi-threaded, it is recommended to run this test on a machine with a higher number of threads in its processor.</p>
+</div>
 <h3 id="permalink_redirect_test"><code>permalink_redirect_test</code>:</h3>
 <p>This test checks to see if the ARK resolver correctly redirects the permalink on a collection page to the correct location. It requires the expected redirect URL to be passed as input. The test will then visit the collection page in a browser and check to see if the permalink redirects to the expected URL. Here is a sample test row for this test type:
 <div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>url,test_type,input_data
