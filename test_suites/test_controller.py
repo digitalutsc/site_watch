@@ -20,6 +20,9 @@ class TestController():
         self.driver = webdriver.Chrome(options=options)
         self.driver.implicitly_wait(20)
 
+        # Warm up the driver
+        self.driver.get("https://google.com")
+
         # Initialize the tests
         self.collection_count_test = CollectionCountTest(self.driver)
         self.facet_load_test = FacetLoadTest(self.driver)
@@ -46,7 +49,7 @@ class TestController():
             # Get the assertion error message
             error_message = str(e)
             print(Fore.RED, f"Collection Count Test failed on row {csv_row_number + 1}. Please see log for more details.")
-            logging.error(f"Collection Count Test failed on row {csv_row_number + 1}. The expected number of collections was not found. {error_message}", Fore.RESET)
+            logging.error(f"Collection Count Test failed on row {csv_row_number + 1}. The expected number of collections was not found. {error_message}")
             return False
         except Exception as e:
             print(Fore.RED, f"Collection Count Test failed on row {csv_row_number + 1}. Please see log for more details.", Fore.RESET)
