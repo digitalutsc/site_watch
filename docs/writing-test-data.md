@@ -24,7 +24,14 @@ https://memory.digital.utsc.utoronto.ca/,site_availability_test,
 As you can see, the `input_data` column is empty, as this test type does not require any input data.
 
 ### `facet_load_test`:
-This test type checks to see if a specific facet loads on a collection page. It requires the facet name to be passed as input. The test will then visit the page in a browser and check to see if the facet loads. Here is a sample test row for this test type that checks to see if the "Subject" facet loads on the page.
+This test type checks to see if a specific facet loads on a collection page. It requires the facet name to be passed as input. The supported facets are
+
+* Subject
+* Genre
+* Publication Date
+* Related Archival Fonts
+
+The test will then visit the page in a browser and check to see if the facet loads. Here is a sample test row for this test type that checks to see if the "Subject" facet loads on the page.
 ```csv
 url,test_type,input_data
 https://memory.digital.utsc.utoronto.ca/collection/33463,facet_load_test,Subject

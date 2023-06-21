@@ -28,12 +28,6 @@ csv: /path/to/test/csv
 * `excel`: A path to an Excel file containing the tests to run.
 * `google_sheets`: A URL to a Google Sheets file containing the tests to run.
 
-### Minimum Age of Output Files to Delete
-SiteWatch produces output `.log` and `.csv` files (see [Output](./output.md)) for each test it runs. These files are stored in the `output` directory. By default, SiteWatch will delete these files if they are older than 30 days. To change this, add the following to your configuration file:
-```yaml
-delete_stale_files_after: <number of days>
-```
-
 ## Optional Configuration Settings
 
 ### Email Settings
@@ -46,4 +40,10 @@ email:
   recipient_emails: 
     - <email address 1>
     - <email address 2>
+```
+
+### Minimum Age of Output Files to Delete
+SiteWatch produces output `.log` and `.csv` files (see [Output](./output.md)) for each test it runs. These files are stored in the `output` directory. By default, SiteWatch will delete these files if they are older than 30 days. To change this, add the following to your configuration file:
+```yaml
+delete_stale_files_after: <number of days>
 ```

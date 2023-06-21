@@ -11,7 +11,7 @@ theme:
       - content.code.select
       - content.code.annotate
       - content.code.annotate
-      
+      - meta.author
 nav:
     - Home: index.md
     - Installation: installation.md
