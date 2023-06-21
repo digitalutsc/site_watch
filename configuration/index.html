@@ -302,13 +302,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#minimum-age-of-output-files-to-delete" class="md-nav__link">
-    Minimum Age of Output Files to Delete
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -325,6 +318,13 @@
           <li class="md-nav__item">
   <a href="#email-settings" class="md-nav__link">
     Email Settings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minimum-age-of-output-files-to-delete" class="md-nav__link">
+    Minimum Age of Output Files to Delete
   </a>
   
 </li>
@@ -442,13 +442,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#minimum-age-of-output-files-to-delete" class="md-nav__link">
-    Minimum Age of Output Files to Delete
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -465,6 +458,13 @@
           <li class="md-nav__item">
   <a href="#email-settings" class="md-nav__link">
     Email Settings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minimum-age-of-output-files-to-delete" class="md-nav__link">
+    Minimum Age of Output Files to Delete
   </a>
   
 </li>
@@ -511,19 +511,19 @@ The configuration file contains all the information SiteWatch needs to run. It c
 * <code>csv</code>: A path to a CSV file containing the tests to run.
 * <code>excel</code>: A path to an Excel file containing the tests to run.
 * <code>google_sheets</code>: A URL to a Google Sheets file containing the tests to run.</p>
-<h3 id="minimum-age-of-output-files-to-delete">Minimum Age of Output Files to Delete</h3>
-<p>SiteWatch produces output <code>.log</code> and <code>.csv</code> files (see <a href="../output/">Output</a>) for each test it runs. These files are stored in the <code>output</code> directory. By default, SiteWatch will delete these files if they are older than 30 days. To change this, add the following to your configuration file:
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">delete_stale_files_after</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;number of days&gt;</span>
-</span></code></pre></div></p>
 <h2 id="optional-configuration-settings">Optional Configuration Settings</h2>
 <h3 id="email-settings">Email Settings</h3>
 <p>SiteWatch can send email notifications to one or more recipients when it finishes running. To enable this feature, the configuration file must include the following
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">email</span><span class="p">:</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nt">sender_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;The name to appear on the emails&gt;</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="nt">sender_email</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;The email address to send from; must be an email this machine can send from&gt;</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="nt">recipient_emails</span><span class="p">:</span><span class="w"> </span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;email address 1&gt;</span>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;email address 2&gt;</span>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">email</span><span class="p">:</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nt">sender_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;The name to appear on the emails&gt;</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="nt">sender_email</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;The email address to send from; must be an email this machine can send from&gt;</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="nt">recipient_emails</span><span class="p">:</span><span class="w"> </span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;email address 1&gt;</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;email address 2&gt;</span>
+</span></code></pre></div></p>
+<h3 id="minimum-age-of-output-files-to-delete">Minimum Age of Output Files to Delete</h3>
+<p>SiteWatch produces output <code>.log</code> and <code>.csv</code> files (see <a href="../output/">Output</a>) for each test it runs. These files are stored in the <code>output</code> directory. By default, SiteWatch will delete these files if they are older than 30 days. To change this, add the following to your configuration file:
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">delete_stale_files_after</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;number of days&gt;</span>
 </span></code></pre></div></p>
 
 
@@ -562,7 +562,7 @@ The configuration file contains all the information SiteWatch needs to run. It c
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "content.code.select", "content.code.annotate", "content.code.annotate"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "content.code.select", "content.code.annotate", "content.code.annotate", "meta.author"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../assets/javascripts/bundle.b4d07000.min.js"></script>
