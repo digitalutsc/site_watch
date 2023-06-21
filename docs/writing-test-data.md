@@ -29,7 +29,7 @@ This test type checks to see if a specific facet loads on a collection page. It 
 * Subject
 * Genre
 * Publication Date
-* Related Archival Fonts
+* Related Archival Fonds
 
 The test will then visit the page in a browser and check to see if the facet loads. Here is a sample test row for this test type that checks to see if the "Subject" facet loads on the page.
 ```csv
