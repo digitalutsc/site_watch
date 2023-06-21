@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#the-configuration-file" class="md-skip">
+        <a href="#configuration" class="md-skip">
           Skip to content
         </a>
       
@@ -246,6 +246,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           Configuration
@@ -262,12 +264,21 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-setup-wizard" class="md-nav__link">
+    The Setup Wizard
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#the-configuration-file" class="md-nav__link">
@@ -287,6 +298,13 @@
           <li class="md-nav__item">
   <a href="#input-source" class="md-nav__link">
     Input Source
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minimum-age-of-output-files-to-delete" class="md-nav__link">
+    Minimum Age of Output Files to Delete
   </a>
   
 </li>
@@ -386,12 +404,21 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-setup-wizard" class="md-nav__link">
+    The Setup Wizard
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#the-configuration-file" class="md-nav__link">
@@ -411,6 +438,13 @@
           <li class="md-nav__item">
   <a href="#input-source" class="md-nav__link">
     Input Source
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minimum-age-of-output-files-to-delete" class="md-nav__link">
+    Minimum Age of Output Files to Delete
   </a>
   
 </li>
@@ -458,14 +492,18 @@
   
 
 
-  <h1>Configuration</h1>
-
+<h1 id="configuration">Configuration</h1>
+<h2 id="the-setup-wizard">The Setup Wizard</h2>
+<p>Instead of creating your own configuration file, you can use the setup wizard to create one for you. To run the setup wizard, run the following command:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>$<span class="w"> </span>./setupwizard
+</span></code></pre></div>
+The setup wizard will ask you a series of questions, and then create a configuration file for you. You can then edit the configuration file to add any additional settings you need.</p>
 <h2 id="the-configuration-file">The Configuration File</h2>
 <p>SiteWatch gets its first input from a configuration file whose path is passed to it as a command line argument. This file is a YAML file, and can be named anything you like, but it must have a <code>.yml</code> extension. For example, if your configuration file is named <code>my_config.yml</code>, you would run SiteWatch like this:
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>$<span class="w"> </span>./sitewatch<span class="w"> </span>my_config.yml
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>$<span class="w"> </span>./sitewatch<span class="w"> </span>my_config.yml
 </span></code></pre></div>
 The configuration file contains all the information SiteWatch needs to run. It contains the location of the CSV-like file containing the tests that SiteWatch is to run, the email addresses of the people who are to receive the test results, and other information. For example, one of the the simplist configuration files might look like this:
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">csv</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path/to/test/csv</span>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">csv</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path/to/test/csv</span>
 </span></code></pre></div></p>
 <h2 id="required-configuration-settings">Required Configuration Settings</h2>
 <h3 id="input-source">Input Source</h3>
@@ -473,15 +511,19 @@ The configuration file contains all the information SiteWatch needs to run. It c
 * <code>csv</code>: A path to a CSV file containing the tests to run.
 * <code>excel</code>: A path to an Excel file containing the tests to run.
 * <code>google_sheets</code>: A URL to a Google Sheets file containing the tests to run.</p>
+<h3 id="minimum-age-of-output-files-to-delete">Minimum Age of Output Files to Delete</h3>
+<p>SiteWatch produces output <code>.log</code> and <code>.csv</code> files (see <a href="../output/">Output</a>) for each test it runs. These files are stored in the <code>output</code> directory. By default, SiteWatch will delete these files if they are older than 30 days. To change this, add the following to your configuration file:
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">delete_stale_files_after</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;number of days&gt;</span>
+</span></code></pre></div></p>
 <h2 id="optional-configuration-settings">Optional Configuration Settings</h2>
 <h3 id="email-settings">Email Settings</h3>
 <p>SiteWatch can send email notifications to one or more recipients when it finishes running. To enable this feature, the configuration file must include the following
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">email</span><span class="p">:</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">sender_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;The name to appear on the emails&gt;</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nt">sender_email</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;The email address to send from; must be an email this machine can send from&gt;</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="nt">recipient_emails</span><span class="p">:</span><span class="w"> </span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;email address 1&gt;</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;email address 2&gt;</span>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">email</span><span class="p">:</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nt">sender_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;The name to appear on the emails&gt;</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="nt">sender_email</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;The email address to send from; must be an email this machine can send from&gt;</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="nt">recipient_emails</span><span class="p">:</span><span class="w"> </span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;email address 1&gt;</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;email address 2&gt;</span>
 </span></code></pre></div></p>
 
 

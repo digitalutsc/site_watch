@@ -1,3 +1,13 @@
+# Configuration
+
+## The Setup Wizard
+Instead of creating your own configuration file, you can use the setup wizard to create one for you. To run the setup wizard, run the following command:
+```bash
+$ ./setupwizard
+```
+The setup wizard will ask you a series of questions, and then create a configuration file for you. You can then edit the configuration file to add any additional settings you need.
+
+
 ## The Configuration File
 
 SiteWatch gets its first input from a configuration file whose path is passed to it as a command line argument. This file is a YAML file, and can be named anything you like, but it must have a `.yml` extension. For example, if your configuration file is named `my_config.yml`, you would run SiteWatch like this:
@@ -18,6 +28,12 @@ csv: /path/to/test/csv
 * `excel`: A path to an Excel file containing the tests to run.
 * `google_sheets`: A URL to a Google Sheets file containing the tests to run.
 
+### Minimum Age of Output Files to Delete
+SiteWatch produces output `.log` and `.csv` files (see [Output](./output.md)) for each test it runs. These files are stored in the `output` directory. By default, SiteWatch will delete these files if they are older than 30 days. To change this, add the following to your configuration file:
+```yaml
+delete_stale_files_after: <number of days>
+```
+
 ## Optional Configuration Settings
 
 ### Email Settings
@@ -31,10 +47,3 @@ email:
     - <email address 1>
     - <email address 2>
 ```
-
-# The Setup Wizard
-Instead of creating your own configuration file, you can use the setup wizard to create one for you. To run the setup wizard, run the following command:
-```bash
-$ ./setupwizard
-```
-The setup wizard will ask you a series of questions, and then create a configuration file for you. You can then edit the configuration file to add any additional settings you need.
