@@ -41,7 +41,10 @@ class BasePage(object):
             return False
     
     def invalid_links(self) -> list:
-        """Return a list of invalid links on the page."""
+        """Return a list of invalid links on the page.
+        
+        This method is multi-threaded.
+        """
 
         def check_link(link) -> Optional[str]:
             """Check if a link is valid. Return the link if it is invalid, otherwise return None."""
