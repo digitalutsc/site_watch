@@ -22,8 +22,6 @@ output_csv_name = None
 def setup_outputs() -> None:
     """ Creates the logs and output_csvs directories if they do not already exist, and creates the time-named log and output csv files.
     Returns a dictionary containing the names of the log file and output csv file.
-
-    Additionally, delete old log and output CSV files that are older than the amount specified in the config file.
     """
     global log_file_name
     global output_csv_name
@@ -47,8 +45,13 @@ def setup_outputs() -> None:
     open(log_file_name, "w").close()
     open(output_csv_name, "w").close()
 
+
+def delete_stale_files(delete_stale_files_after: int) -> None:
+    """ Deletes files older than the specified number of days in the logs and output_csvs directories."""
+    # Get the current date and time
+    current_datetime = datetime.now()
     # Remove files older than 1 month in the logs directory
-    delete_files_before = current_datetime - timedelta(days=config["delete_stale_files_after"])
+    delete_files_before = current_datetime - timedelta(days=delete_stale_files_after)
     for filename in os.listdir("logs"):
         file_path = os.path.join("logs", filename)
         if os.path.isfile(file_path) and os.path.getmtime(file_path) < delete_files_before.timestamp():
@@ -63,7 +66,9 @@ def setup_outputs() -> None:
 def print_help() -> None:
     """Prints the help message to the console. """
     print("Usage: python3 site_watch.py <config_file>")
-    print("See the README for more information.")
+    print("This script monitors websites for changes and sends email notifications when changes are detected.")
+    print("The <config_file> argument is the path to a YAML configuration file that specifies the websites to monitor and other settings.")
+    print("For more information, see the documentation at https://digitalutsc.github.io/site_watch.")
 
 def display_logo() -> None:
     """Read the ASCII logo from the logo.txt file and prints it to the console in yellow. """
@@ -95,19 +100,21 @@ if __name__ == "__main__":
     output_file_names = setup_outputs()
     logging.basicConfig(filename=log_file_name, level=logging.INFO)
 
-    # Greetings to user
-    logging.info("SiteWatch has started.")
-    display_logo()
-
-    print(Fore.GREEN, "SiteWatch has started.")
-    print(Fore.MAGENTA, f"The output CSV will be written to {output_csv_name}")
-    print(Fore.MAGENTA, f"The log file will be written to {log_file_name}")
-
     # Parse command line arguments and extract the configuration file path
     config_file = parse_arguments(sys.argv)
 
+    # Greetings to user
+    display_logo()
+    print(Fore.GREEN, "SiteWatch has started.", Fore.RESET)
+    logging.info("SiteWatch has started.")
+    print(Fore.MAGENTA, f"The output CSV will be written to {output_csv_name}", Fore.RESET)
+    print(Fore.MAGENTA, f"The log file will be written to {log_file_name}", Fore.RESET)
+
     # Verify configuration file and produce a dictionary from it
     config = extract_config(config_file)
+
+    # Delete stale files
+    delete_stale_files(config['delete_stale_files_after'])
 
     # Get the DictReader from the data source
     try:
@@ -146,9 +153,9 @@ if __name__ == "__main__":
             csv_row_number += 1
         
     # Print a success message
-    print(Fore.GREEN, "All tests have finished running.")
+    print(Fore.GREEN, "All tests have finished running.", Fore.RESET)
     logging.info("All tests have finished running.")
-    print(Fore.GREEN, f"Results have been written to {output_csv_name}")
+    print(Fore.GREEN, f"Results have been written to {output_csv_name}", Fore.RESET)
     logging.info(f"Results have been written to {output_csv_name}")
             
     # Send an email if there were errors
