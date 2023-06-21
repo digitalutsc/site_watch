@@ -3,7 +3,7 @@ import csv
 import os
 import sys
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from colorama import Fore
 from rich.progress import track
@@ -22,6 +22,8 @@ output_csv_name = None
 def setup_outputs() -> None:
     """ Creates the logs and output_csvs directories if they do not already exist, and creates the time-named log and output csv files.
     Returns a dictionary containing the names of the log file and output csv file.
+
+    Additionally, delete old log and output CSV files that are older than the amount specified in the config file.
     """
     global log_file_name
     global output_csv_name
@@ -44,6 +46,19 @@ def setup_outputs() -> None:
     # Create the logfile and the output csv file
     open(log_file_name, "w").close()
     open(output_csv_name, "w").close()
+
+    # Remove files older than 1 month in the logs directory
+    delete_files_before = current_datetime - timedelta(days=config["delete_stale_files_after"])
+    for filename in os.listdir("logs"):
+        file_path = os.path.join("logs", filename)
+        if os.path.isfile(file_path) and os.path.getmtime(file_path) < delete_files_before.timestamp():
+            os.remove(file_path)
+
+    # Remove files older than 1 month in the output_csvs directory
+    for filename in os.listdir("output_csvs"):
+        file_path = os.path.join("output_csvs", filename)
+        if os.path.isfile(file_path) and os.path.getmtime(file_path) < delete_files_before.timestamp():
+            os.remove(file_path)
 
 def print_help() -> None:
     """Prints the help message to the console. """

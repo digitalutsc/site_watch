@@ -61,6 +61,16 @@ def check_config(config: dict) -> None:
                 print(Fore.RED, "There are errors in the configuration file. See log for more details.", Fore.RESET)
                 logging.error(f"The {key} key is missing or has an invalid value in the configuration file. The {key} key must be present under the email key and have a value of type {value_type}.")
                 exit(127)
+
+    # Next check if the key "delete_stale_files_after" is present and is an integer
+    if "delete_stale_files_after" in config:
+        if not isinstance(config["delete_stale_files_after"], int):
+            print(Fore.RED, "There are errors in the configuration file. See log for more details.", Fore.RESET)
+            logging.error("The delete_stale_files_after key must be an integer.")
+            exit(127)
+    else:
+        # If the key is not present, set the default value to 30 days
+        config["delete_stale_files_after"] = 30
     
 def extract_config(filename: str) -> dict:
     """Extracts the configuration from the YAML file at <filename> and returns it as a dictionary. """

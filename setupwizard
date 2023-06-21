@@ -47,6 +47,14 @@ def setup_wizard():
             "recipient_emails": recipient_emails
         }
 
+    # Ask the user after how long to delete stale files
+    delete_stale_files_after = input("After how many days should stored output CSV and log files be deleted? (default: 30): ")
+    if not delete_stale_files_after:
+        delete_stale_files_after = 30
+    else:
+        delete_stale_files_after = int(delete_stale_files_after)
+    config["delete_stale_files_after"] = delete_stale_files_after
+
     # Write the config file
     with open(config_file_name, "w") as f:
         yaml.dump(config, f)
