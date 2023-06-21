@@ -1,8 +1,9 @@
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.common.by import By
-from selenium.common.exceptions import NoSuchElementException, StaleElementReferenceException
+from selenium.common.exceptions import NoSuchElementException
 import requests
-import time
+from concurrent.futures import ThreadPoolExecutor
+from typing import Optional
 
 class BasePage(object):
     def __init__(self, driver: WebDriver, url: str) -> None:
@@ -41,12 +42,18 @@ class BasePage(object):
     
     def invalid_links(self) -> list:
         """Return a list of invalid links on the page."""
+
+        def check_link(link) -> Optional[str]:
+            """Check if a link is valid. Return the link if it is invalid, otherwise return None."""
+            page = BasePage(self.driver, link)
+            if not page.is_available():
+                return link
+            return None
+
         self.driver.get(self.url)
         invalid_links = []
         links = [link.get_attribute("href") for link in self.driver.find_elements(By.TAG_NAME, "a")]
-        for link in links:
-            if link and not link.startswith("mailto:"):
-                page = BasePage(self.driver, link)
-                if not page.is_available():
-                    invalid_links.append(link)
+        with ThreadPoolExecutor() as executor:
+            results = executor.map(check_link, links)
+        invalid_links = [link for link in results if link is not None]
         return invalid_links
