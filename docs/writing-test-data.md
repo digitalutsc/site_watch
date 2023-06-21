@@ -104,6 +104,8 @@ This test (non-recursively) tests all links present on the given URL to see if t
 url,test_type,input_data
 https://digital.utsc.utoronto.ca/basic-page/systems-and-software,invalid_links_test,
 ```
+!!! warning
+    This test can take a long time to run, depending on the number of links on the page, since it opens each link in a browser and waits for the page to load. As the implementation of this test is multi-threaded, it is recommended to run this test on a machine with a higher number of threads in its processor.
 
 ### `permalink_redirect_test`:
 This test checks to see if the ARK resolver correctly redirects the permalink on a collection page to the correct location. It requires the expected redirect URL to be passed as input. The test will then visit the collection page in a browser and check to see if the permalink redirects to the expected URL. Here is a sample test row for this test type:
