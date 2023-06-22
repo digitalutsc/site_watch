@@ -14,7 +14,7 @@ class BasePage(object):
     def is_available(self) -> bool:
         """Return whether the page is available."""
         response = requests.get(self.url)
-        if response.status_code in [200, 201] and "Page not found" not in response.text.lower():
+        if not (399 < response.status_code < 500) and "Page not found" not in response.text.lower():
             try:
                 self.driver.get(self.url)
                 return True
