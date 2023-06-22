@@ -99,13 +99,25 @@ https://tamil.digital.utsc.utoronto.ca/collection/2855,element_present_test,xpat
 ```
 
 ### `invalid_links_test`:
-This test (non-recursively) tests all links present on the given URL to see if they are broken. It does not require any input data. Here is a sample test row for this test type:
+This test (non-recursively) tests all links present on the given URL to see if they are broken. It does not require any input data. If the test fails, it will provide a list of broken links in the `.log` file. Here is a sample test row for this test type:
 ```csv
 url,test_type,input_data
 https://digital.utsc.utoronto.ca/basic-page/systems-and-software,invalid_links_test,
 ```
 !!! warning
     This test can take a long time to run, depending on the number of links on the page, since it opens each link in a browser and waits for the page to load. As the implementation of this test is multi-threaded, it is recommended to run this test on a machine with a higher number of threads in its processor.
+
+!!! note
+    You may get a warning in the `.log` file similar to the following:
+
+    ```text
+    WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 127.0.0.1. Connection pool size: 1
+    ```
+
+    This is normal, and you can safely discard it.
+
+!!! warning
+    If your page has links to specific pages (such as LinkedIn), this test will fail as Selenium is not authorized to access those pages. As of yet, there is no known workaround for this issue.
 
 ### `permalink_redirect_test`:
 This test checks to see if the ARK resolver correctly redirects the permalink on a collection page to the correct location. It requires the expected redirect URL to be passed as input. The test will then visit the collection page in a browser and check to see if the permalink redirects to the expected URL. Here is a sample test row for this test type:
