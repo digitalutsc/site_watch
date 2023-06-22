@@ -19,7 +19,7 @@ class ElementPresentTest(Test):
     selector.
     """
     driver: WebDriver  # The driver used to load the page
-    
+
     def run(self, url: str, method: str, selector: str) -> None:
         """ Run the element present test with <method> and <selector> on the page at <url>."""
         page = BasePage(self.driver, url)

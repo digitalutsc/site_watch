@@ -8,8 +8,8 @@ from pages.collection_page import CollectionPage
 
 
 class OpenSeaDragonLoadTest(Test):
-    """ 
-    A test to check that the openseadragon viewer loads on the collection page. 
+    """
+    A test to check that the openseadragon viewer loads on the collection page.
     """
     driver: WebDriver  # The driver used to load the page
 
@@ -20,8 +20,8 @@ class OpenSeaDragonLoadTest(Test):
 
 
 class MiradorLoadTest(Test):
-    """ 
-    A test to check that the mirador viewer loads on the collection page. 
+    """
+    A test to check that the mirador viewer loads on the collection page.
     """
     driver: WebDriver  # The driver used to load the page
 
@@ -32,7 +32,7 @@ class MiradorLoadTest(Test):
 
 
 class MiradorPageCountTest(Test):
-    """ 
+    """
     A test to check that the mirador viewer has the expected number of thumbnails.
     """
     driver: WebDriver  # The driver used to load the page
@@ -47,8 +47,8 @@ class MiradorPageCountTest(Test):
 
 
 class AblePlayerLoadTest(Test):
-    """ 
-    A test to check that the ableplayer viewer loads on the collection page. 
+    """
+    A test to check that the ableplayer viewer loads on the collection page.
     """
     driver: WebDriver  # The driver used to load the page
 
@@ -59,8 +59,8 @@ class AblePlayerLoadTest(Test):
 
 
 class AblePlayerTranscriptLoadTest(Test):
-    """ 
-    A test to check that the transcript of the ableplayer viewer loads on the collection page. 
+    """
+    A test to check that the transcript of the ableplayer viewer loads on the collection page.
     """
     driver: WebDriver  # The driver used to load the page
 

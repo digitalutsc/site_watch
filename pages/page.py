@@ -24,6 +24,7 @@ class BasePage(object):
     """
     driver: WebDriver  # The driver used to load the page
     url: str  # The URL of the page
+
     def __init__(self, driver: WebDriver, url: str) -> None:
         """Initialize the page with a driver and a URL. It is assumed that the URL is valid."""
         self.driver = driver

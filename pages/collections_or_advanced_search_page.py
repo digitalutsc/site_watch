@@ -15,6 +15,7 @@ from selenium.common.exceptions import NoSuchElementException
 
 from pages.page import BasePage
 
+
 class CollectionsOrAdvancedSearchPage(BasePage):
     """
     A class representing a page displaying collections or an advanced search page.

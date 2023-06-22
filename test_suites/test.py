@@ -6,7 +6,7 @@ from selenium.webdriver.remote.webdriver import WebDriver
 
 
 class Test():
-    """ 
+    """
     An Abstract Base Class for tests.
     """
     driver: WebDriver  # The driver used to load the page

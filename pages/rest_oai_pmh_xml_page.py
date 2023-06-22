@@ -20,6 +20,7 @@ class RestOAIPMHXMLPage(BasePage):
     """
     driver: WebDriver  # The driver used to load the page
     url: str  # The URL of the page
+
     def is_valid_xml(self) -> bool:
         """Return whether the XML on the page is valid."""
         # There are two things that would make it invalid.
