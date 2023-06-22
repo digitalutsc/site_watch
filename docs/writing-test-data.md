@@ -74,6 +74,7 @@ By default, the test will check to see if the Mirador viewer has the expected nu
 ### `ableplayer_load_test`:
 This test type checks to see if the AblePlayer viewer loads on an item page. It does not require any input data. The test will then visit the item page in a browser and check to see if the AblePlayer viewer loads. Here is a sample test row for this test type:
 ```csv
+url,test_type,input_data
 https://tamil.digital.utsc.utoronto.ca/61220/utsc34400,ableplayer_load_test,
 ```
 By default, the test will check to see if the AblePlayer viewer loads within 20 seconds.
@@ -81,6 +82,7 @@ By default, the test will check to see if the AblePlayer viewer loads within 20 
 ### `ableplayer_transcript_load_test`:
 This test type checks to see if the AblePlayer transcript loads on an item page. It does not require any input data. The test will then visit the item page in a browser and check to see if the AblePlayer transcript loads. Here is a sample test row for this test type:
 ```csv
+url,test_type,input_data
 https://tamil.digital.utsc.utoronto.ca/61220/utsc34400,ableplayer_transcript_load_test,
 ```
 By default, the test will check to see if the AblePlayer transcript loads within 20 seconds.
