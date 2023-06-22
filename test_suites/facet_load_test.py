@@ -1,9 +1,25 @@
+"""
+This module contains the FacetLoadTest class, which is a test to check whether a given facet is present on a collections page.
+
+The FacetLoadTest class inherits from the Test class and provides a method for running the test on a given URL and facet type.
+"""
+
+from selenium.webdriver.remote.webdriver import WebDriver
+
 from test_suites.test import Test
 from pages.collections_or_advanced_search_page import CollectionsOrAdvancedSearchPage
 
 
 class FacetLoadTest(Test):
+    """
+    A test to check whether a given facet is present on a collections page.
+
+    The FacetLoadTest class inherits from the Test class and provides a method for running the test on a given URL and facet type.
+    """
+    driver: WebDriver  # The driver used to load the page
+
     def run(self, url: str, facet_type: str) -> None:
+        """ Run the facet load test with <facet_type> on the page at <url>."""
         collection_page = CollectionsOrAdvancedSearchPage(self.driver, url)
         if facet_type == "subject":
             assert collection_page.is_subject_facet_present(), "Subject facet is not present on collections page."

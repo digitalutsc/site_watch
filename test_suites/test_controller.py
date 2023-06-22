@@ -1,19 +1,30 @@
-from selenium import webdriver
-from colorama import Fore
+"""
+This module contains the TestController class, which is a master controller for every type of test.
+
+The main method of this class is the run_test method.
+"""
+
 import logging
+
+from colorama import Fore
+from selenium import webdriver
+
 from test_suites.collection_count_test import *
-from test_suites.facet_load_test import *
-from test_suites.site_availibility_test import *
-from test_suites.viewer_tests import *
 from test_suites.element_present_test import *
+from test_suites.facet_load_test import *
 from test_suites.invalid_links_test import *
 from test_suites.permalink_redirect_test import *
 from test_suites.rest_oai_pmh_xml_validity_test import *
+from test_suites.site_availibility_test import *
+from test_suites.viewer_tests import *
 
 logging = logging.getLogger(__name__)
 
 
 class TestController():
+    """
+    A master controller for every type of test.
+    """
     def __init__(self):
         # Initialize the driver
         options = webdriver.ChromeOptions()

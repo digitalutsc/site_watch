@@ -1,12 +1,29 @@
+"""
+This module contains the BasePage class, which represents a generic website (not specific to Islandora).
+
+The BasePage class provides methods for checking whether a page is available, whether it contains an element with a given
+selector, and for finding invalid links on the page.
+"""
+
+from typing import Optional
+
+from concurrent.futures import ThreadPoolExecutor
+import requests
+
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
-import requests
-from concurrent.futures import ThreadPoolExecutor
-from typing import Optional
 
 
 class BasePage(object):
+    """
+    A class representing a web page.
+
+    The BasePage class provides methods for checking whether a page is available, whether it contains an element with a given
+    selector, and for finding invalid links on the page.
+    """
+    driver: WebDriver  # The driver used to load the page
+    url: str  # The URL of the page
     def __init__(self, driver: WebDriver, url: str) -> None:
         """Initialize the page with a driver and a URL. It is assumed that the URL is valid."""
         self.driver = driver
