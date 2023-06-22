@@ -42,7 +42,7 @@ class BasePage(object):
     
     def invalid_links(self) -> list:
         """Return a list of invalid links on the page.
-        
+
         This method is multi-threaded.
         """
 
@@ -55,7 +55,7 @@ class BasePage(object):
 
         self.driver.get(self.url)
         invalid_links = []  # Will contain the list of invalid links
-        links = [link.get_attribute("href") for link in self.driver.find_elements(By.TAG_NAME, "a")]  # Get all links on the page
+        links = [link.get_attribute("href") for link in self.driver.find_elements(By.TAG_NAME, "a") if link.get_attribute("href") is not None and link.get_attribute("href").startswith("http")]
         # Check each link. The below code is multi-threaded.
         with ThreadPoolExecutor() as executor:
             results = executor.map(check_link, links)
