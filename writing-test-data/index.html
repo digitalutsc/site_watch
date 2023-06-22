@@ -655,7 +655,7 @@ By default, the test will check to see if the AblePlayer transcript loads within
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>https://tamil.digital.utsc.utoronto.ca/collection/2855,element_present_test,xpath|/html/body/div/div[2]/div/div[2]/div/div/div/div/div/div[2]/div/aside/div[3]/h2
 </span></code></pre></div></p>
 <h3 id="invalid_links_test"><code>invalid_links_test</code>:</h3>
-<p>This test (non-recursively) tests all links present on the given URL to see if they are broken. It does not require any input data. Here is a sample test row for this test type:
+<p>This test (non-recursively) tests all links present on the given URL to see if they are broken. It does not require any input data. If the test fails, it will provide a list of broken links in the <code>.log</code> file. Here is a sample test row for this test type:
 <div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>url,test_type,input_data
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>https://digital.utsc.utoronto.ca/basic-page/systems-and-software,invalid_links_test,
 </span></code></pre></div></p>
@@ -663,15 +663,26 @@ By default, the test will check to see if the AblePlayer transcript loads within
 <p class="admonition-title">Warning</p>
 <p>This test can take a long time to run, depending on the number of links on the page, since it opens each link in a browser and waits for the page to load. As the implementation of this test is multi-threaded, it is recommended to run this test on a machine with a higher number of threads in its processor.</p>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You may get a warning in the <code>.log</code> file similar to the following:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 127.0.0.1. Connection pool size: 1
+</span></code></pre></div>
+<p>This is normal, and you can safely discard it.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If your page has links to specific pages (such as LinkedIn), this test will fail as Selenium is not authorized to access those pages. As of yet, there is no known workaround for this issue.</p>
+</div>
 <h3 id="permalink_redirect_test"><code>permalink_redirect_test</code>:</h3>
 <p>This test checks to see if the ARK resolver correctly redirects the permalink on a collection page to the correct location. It requires the expected redirect URL to be passed as input. The test will then visit the collection page in a browser and check to see if the permalink redirects to the expected URL. Here is a sample test row for this test type:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>url,test_type,input_data
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>https://ark.digital.utsc.utoronto.ca/ark:/61220/utsc11324,permalink_redirect_test,https://tamil.digital.utsc.utoronto.ca/61220/utsc11324
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>url,test_type,input_data
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>https://ark.digital.utsc.utoronto.ca/ark:/61220/utsc11324,permalink_redirect_test,https://tamil.digital.utsc.utoronto.ca/61220/utsc11324
 </span></code></pre></div></p>
 <h3 id="rest_oai_pmh_xml_validity_test"><code>rest_oai_pmh_xml_validity_test</code>:</h3>
 <p>This test checks if the XML on the OAI-PMH endpoint is valid. It does not require any input data. Here is a sample test row for this test type:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>url,test_type,input_data
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>https://memory.digital.utsc.utoronto.ca/oai/request?identifier=oai%3Amemory.digital.utsc.utoronto.ca%3Anode-10262&amp;metadataPrefix=mods&amp;verb=GetRecord,permalink_redirect_test,
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>url,test_type,input_data
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>https://memory.digital.utsc.utoronto.ca/oai/request?identifier=oai%3Amemory.digital.utsc.utoronto.ca%3Anode-10262&amp;metadataPrefix=mods&amp;verb=GetRecord,permalink_redirect_test,
 </span></code></pre></div></p>
 
 
