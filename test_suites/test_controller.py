@@ -12,6 +12,7 @@ from test_suites.rest_oai_pmh_xml_validity_test import *
 
 logging = logging.getLogger(__name__)
 
+
 class TestController():
     def __init__(self):
         # Initialize the driver
@@ -33,10 +34,10 @@ class TestController():
         self.ableplayer_load_test = AblePlayerLoadTest(self.driver)
         self.ableplayer_transcript_load_test = AblePlayerTranscriptLoadTest(self.driver)
         self.element_present_test = ElementPresentTest(self.driver)
-        self.invalid_links_test = InvalidLinksTest(self.driver) 
+        self.invalid_links_test = InvalidLinksTest(self.driver)
         self.permalink_redirect_test = PermalinkRedirectTest(self.driver)
         self.rest_oai_pmh_xml_validity_test = RestOAIPMHXMLValidityTest(self.driver)
-    
+
     def run_collection_count_test(self, csv_row: dict, csv_row_number: int) -> bool:
         """ Runs a Collection Count Test. """
         try:
@@ -59,7 +60,7 @@ class TestController():
             print(Fore.GREEN, f"Collection Count Test passed on row {csv_row_number + 1}.", Fore.RESET)
             logging.info(f"Collection Count Test passed on row {csv_row_number + 1}.")
             return True
-        
+
     def run_facet_load_test(self, csv_row: dict, csv_row_number: int) -> bool:
         """ Runs a Facet Load Test. """
         try:
@@ -140,7 +141,7 @@ class TestController():
             print(Fore.GREEN, f"Mirador Load Test passed on row {csv_row_number + 1}.", Fore.RESET)
             logging.info(f"Mirador Load Test passed on row {csv_row_number + 1}.")
             return True
-    
+
     def run_mirador_page_count_test(self, csv_row: dict, csv_row_number: int):
         """ Runs a Mirador Page Count Test. """
         try:
@@ -197,7 +198,7 @@ class TestController():
             print(Fore.GREEN, f"AblePlayer Transcript Load Test passed on row {csv_row_number + 1}.", Fore.RESET)
             logging.info(f"AblePlayer Transcript Load Test passed on row {csv_row_number + 1}.")
             return True
-    
+
     def run_element_present_test(self, csv_row: dict, csv_row_number: int):
         """ Runs an Element Present Test. """
         try:
@@ -222,7 +223,7 @@ class TestController():
             print(Fore.GREEN, f"Element Present Test passed on row {csv_row_number + 1}.", Fore.RESET)
             logging.info(f"Element Present Test passed on row {csv_row_number + 1}.")
             return True
-    
+
     def run_invalid_links_test(self, csv_row: dict, csv_row_number: int):
         """ Runs an Invalid Links Test. """
         try:
@@ -241,7 +242,7 @@ class TestController():
             print(Fore.GREEN, f"Invalid Links Test passed on row {csv_row_number + 1}.", Fore.RESET)
             logging.info(f"Invalid Links Test passed on row {csv_row_number + 1}.")
             return True
-    
+
     def run_permalink_redirect_test(self, csv_row: dict, csv_row_number: int):
         """ Runs a Permalink Redirect Test. """
         try:
@@ -260,7 +261,7 @@ class TestController():
             print(Fore.GREEN, f"Permalink Redirect Test passed on row {csv_row_number + 1}.", Fore.RESET)
             logging.info(f"Permalink Redirect Test passed on row {csv_row_number + 1}.")
             return True
-    
+
     def run_rest_oai_pmh_xml_validity_test(self, csv_row: dict, csv_row_number: int):
         """ Runs a REST OAI-PMH XML Validity Test. """
         try:
@@ -279,7 +280,7 @@ class TestController():
             print(Fore.GREEN, f"REST OAI-PMH XML Validity Test passed on row {csv_row_number + 1}.", Fore.RESET)
             logging.info(f"REST OAI-PMH XML Validity Test passed on row {csv_row_number + 1}.")
             return True
-    
+
     def run_test(self, csv_row: dict, csv_row_number: int) -> bool:
         """ Runs a test based on the test type specified in <csv_row>. """
         test_type = csv_row["test_type"]
@@ -303,7 +304,7 @@ class TestController():
             logging.error(f"Test type {test_type} on row {csv_row_number + 1} is not supported.")
             return False
         return test_method(csv_row, csv_row_number)
-    
+
     def tear_down(self):
         """ Tears down the test. """
         self.driver.quit()

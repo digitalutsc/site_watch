@@ -11,8 +11,9 @@ import sys
 
 logging = logging.getLogger(__name__)
 
+
 def format_config(config: dict) -> dict:
-    """ Return a formatted configuration dictionary with all keys and values lowercased, and all underscore- or hyphen-separated 
+    """ Return a formatted configuration dictionary with all keys and values lowercased, and all underscore- or hyphen-separated
     keys replaced with space-separated keys. """
     formatted_config = {}
     for key, value in config.items():
@@ -22,12 +23,13 @@ def format_config(config: dict) -> dict:
         key = key.replace(" ", "_") if isinstance(key, str) else key
         # Add the key-value pair to the formatted config
         formatted_config[key] = value
-    
+
     return formatted_config
+
 
 def check_config(config: dict) -> None:
     """ Validate the data in the configuration and exit the program if any errors are found."""
-    # The data input is mandatory. Data can come from a CSV file, an Excel file, or a Google Sheets URL. 
+    # The data input is mandatory. Data can come from a CSV file, an Excel file, or a Google Sheets URL.
     # So, one and only one of the following keys must be present in the configuration:
     #   - csv
     #   - excel
@@ -71,7 +73,8 @@ def check_config(config: dict) -> None:
     else:
         # If the key is not present, set the default value to 30 days
         config["delete_stale_files_after"] = 30
-    
+
+
 def extract_config(filename: str) -> dict:
     """Extracts the configuration from the YAML file at <filename> and returns it as a dictionary. """
     # First check if the file exists
@@ -79,7 +82,7 @@ def extract_config(filename: str) -> dict:
         print(Fore.RED, "Invalid configuration file path. Please see the log for more details.", Fore.RESET)
         logging.error(f"Invalid configuration file path: {filename}")
         sys.exit(127)
-    
+
     # Then check if the file is an yml/yaml file
     if not filename.lower().endswith(('.yml', '.yaml')):
         print(Fore.RED, "Invalid configuration file. Please see the log for more details.", Fore.RESET)
@@ -89,7 +92,7 @@ def extract_config(filename: str) -> dict:
     with open(filename, "r") as config_file:
         yaml = YAML(typ="safe")
         config = yaml.load(config_file)
-    
+
     if not isinstance(config, dict):
         print(Fore.RED, "The configuration file is not properly formatted.", Fore.RESET)
         logging.error("The configuration file is not properly formatted.")

@@ -1,6 +1,7 @@
 from test_suites.test import Test
 from pages.page import BasePage
 
+
 class InvalidLinksTest(Test):
     def run(self, url: str) -> None:
         invalid_links = BasePage(self.driver, url).invalid_links()

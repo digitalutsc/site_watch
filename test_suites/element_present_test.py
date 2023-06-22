@@ -1,6 +1,7 @@
 from test_suites.test import Test
 from pages.page import BasePage
 
+
 class ElementPresentTest(Test):
     def run(self, url: str, method: str, selector: str) -> None:
         page = BasePage(self.driver, url)

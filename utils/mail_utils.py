@@ -11,8 +11,9 @@ from email.mime.text import MIMEText
 from email.mime.application import MIMEApplication
 from colorama import Fore
 
-def send_email(sender_email: str, sender_name: str, recipient_emails: list, subject: str, body: str, attachment_paths: list=[]) -> bool:
-    """ Send an email from <sender_email> to <recipient_emails> with the given <subject> and <body> and optional 
+
+def send_email(sender_email: str, sender_name: str, recipient_emails: list, subject: str, body: str, attachment_paths: list = []) -> bool:
+    """ Send an email from <sender_email> to <recipient_emails> with the given <subject> and <body> and optional
     attachments located at <attachment_paths>."""
     try:
         # Create a multipart message object
@@ -45,6 +46,7 @@ def send_email(sender_email: str, sender_name: str, recipient_emails: list, subj
         print(Fore.RED, f"An error occurred while sending the email: {e}", Fore.RESET)
         return False
 
+
 def send_test_failure_email(config: dict, output_csv_name: str, output_log_name: str):
     """ Send an email to the recipients listed in the config file containing the output CSV and log files."""
     sender_email = config['email']['sender_email']
@@ -55,6 +57,7 @@ def send_test_failure_email(config: dict, output_csv_name: str, output_log_name:
     attachments = [output_csv_name, output_log_name]
     send_email(sender_email, sender_name, recipient_emails, subject, body, attachments)
     print(Fore.GREEN, "An email has been sent to the recipients listed in the config file as errors have been detected.")
+
 
 def send_invalid_csv_email(config: dict, output_log_name: str):
     """ Send an email to the recipients listed in the config file containing the log file."""

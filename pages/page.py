@@ -5,12 +5,13 @@ import requests
 from concurrent.futures import ThreadPoolExecutor
 from typing import Optional
 
+
 class BasePage(object):
     def __init__(self, driver: WebDriver, url: str) -> None:
         """Initialize the page with a driver and a URL. It is assumed that the URL is valid."""
         self.driver = driver
         self.url = url
-    
+
     def is_available(self) -> bool:
         """Return whether the page is available."""
         response = requests.get(self.url)
@@ -18,10 +19,10 @@ class BasePage(object):
             try:
                 self.driver.get(self.url)
                 return True
-            except:
+            except Exception:
                 return False
         return False
-    
+
     def is_contains_element(self, method: str, selector: str) -> bool:
         """Return whether the page contains an element with the given selector."""
         self.driver.get(self.url)
@@ -39,7 +40,7 @@ class BasePage(object):
             return True
         except NoSuchElementException:
             return False
-    
+
     def invalid_links(self) -> list:
         """Return a list of invalid links on the page.
 

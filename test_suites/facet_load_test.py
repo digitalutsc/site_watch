@@ -1,6 +1,7 @@
 from test_suites.test import Test
 from pages.collections_or_advanced_search_page import CollectionsOrAdvancedSearchPage
 
+
 class FacetLoadTest(Test):
     def run(self, url: str, facet_type: str) -> None:
         collection_page = CollectionsOrAdvancedSearchPage(self.driver, url)

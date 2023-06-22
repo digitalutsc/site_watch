@@ -2,8 +2,9 @@ from pages.collections_or_advanced_search_page import CollectionsOrAdvancedSearc
 from test_suites.test import Test
 from selenium.common.exceptions import NoSuchElementException
 
+
 class CollectionCountTest(Test):
-    """ A test to check that the number of collections on the collections page is correct. """    
+    """ A test to check that the number of collections on the collections page is correct. """
     def run(self, url: str, expected_value: str) -> None:
         """ Run the test on the page at <url> and compare the result to <expected_value>."""
         try:
