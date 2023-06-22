@@ -118,9 +118,6 @@ https://digital.utsc.utoronto.ca/basic-page/systems-and-software,invalid_links_t
 
     This is normal, and you can safely discard it.
 
-!!! warning
-    If your page has links to specific pages (such as LinkedIn), this test will fail as Selenium is not authorized to access those pages. As of yet, there is no known workaround for this issue.
-
 ### `permalink_redirect_test`:
 This test checks to see if the ARK resolver correctly redirects the permalink on a collection page to the correct location. It requires the expected redirect URL to be passed as input. The test will then visit the collection page in a browser and check to see if the permalink redirects to the expected URL. Here is a sample test row for this test type:
 ```csv
