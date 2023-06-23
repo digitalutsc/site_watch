@@ -1,5 +1,6 @@
 # Output In SiteWatch
 Sitewatch has the capability to convey the results of its tests in a variety of ways:
+
 * To the console (stdout)
 * To a log file
 * To a CSV file
@@ -32,7 +33,8 @@ INFO:root:Results have been written to output_csvs/site_watch-2023-06-14-13-02-2
 
 
 ## Output CSV
-SiteWatch writes a CSV file to the `output_csvs` directory. The name of the file is time-stamped to be unique. The name of the output CSV file is the same as the name of the log file (see above), but with a `.csv` extension. For example, if the log file is named `site_watch-2023-06-14-13-02-23.log`, the output CSV file will be named `site_watch-2023-06-14-13-02-23.csv`. The output CSV is a copy of the input test data file, but with two columns appended: 
+SiteWatch writes a CSV file to the `output_csvs` directory. The name of the file is time-stamped to be unique. The name of the output CSV file is the same as the name of the log file (see above), but with a `.csv` extension. For example, if the log file is named `site_watch-2023-06-14-13-02-23.log`, the output CSV file will be named `site_watch-2023-06-14-13-02-23.csv`. The output CSV is a copy of the input test data file, but with two columns appended:
+ 
 * `test_result`: The result of the test. This will be either `Passed` or `Failed`.
 * `total_time`: The total time it took to run the test, in seconds.
 For example, if the original input data file looked like

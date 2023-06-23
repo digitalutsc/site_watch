@@ -24,6 +24,7 @@ csv: /path/to/test/csv
 ### Input Source
 
 **Exactly one** of the following settings must be present in the configuration file to tell SiteWatch where to find the tests to run:
+
 * `csv`: A path to a CSV file containing the tests to run.
 * `excel`: A path to an Excel file containing the tests to run.
 * `google_sheets`: A URL to a Google Sheets file containing the tests to run.

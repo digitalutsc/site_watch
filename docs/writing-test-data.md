@@ -8,6 +8,7 @@ https://memory.digital.utsc.utoronto.ca/,site availability test,
 
 ## Required Test File Columns
 While the test file can contain any number of columns (for example, a description column), it must contain the following columns:
+
 * `url`: The URL to test.
 * `test_type`: The type of test to run. See [Test Types](#test-types) below for a list of valid test types.
 * `input_data`: For some test types, this column is required, and is used to provide more information about the tests. The format of this column depends on the test type. See [Test Types](#test-types) below for more information.
@@ -89,6 +90,7 @@ By default, the test will check to see if the AblePlayer transcript loads within
 
 ### `element_present_test`:
 This test takes allows the checking of the presence of any element on a page. It requires two inputs: the method to search by, and the search term. The method can be one of the following:
+
 * `id`: Search by element ID.
 * `class`: Search by element class.
 * `xpath`: Search by XPath.
