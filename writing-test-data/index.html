@@ -585,10 +585,12 @@
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>https://memory.digital.utsc.utoronto.ca/,site availability test,
 </span></code></pre></div></p>
 <h2 id="required-test-file-columns">Required Test File Columns</h2>
-<p>While the test file can contain any number of columns (for example, a description column), it must contain the following columns:
-* <code>url</code>: The URL to test.
-* <code>test_type</code>: The type of test to run. See <a href="#test-types">Test Types</a> below for a list of valid test types.
-* <code>input_data</code>: For some test types, this column is required, and is used to provide more information about the tests. The format of this column depends on the test type. See <a href="#test-types">Test Types</a> below for more information.</p>
+<p>While the test file can contain any number of columns (for example, a description column), it must contain the following columns:</p>
+<ul>
+<li><code>url</code>: The URL to test.</li>
+<li><code>test_type</code>: The type of test to run. See <a href="#test-types">Test Types</a> below for a list of valid test types.</li>
+<li><code>input_data</code>: For some test types, this column is required, and is used to provide more information about the tests. The format of this column depends on the test type. See <a href="#test-types">Test Types</a> below for more information.</li>
+</ul>
 <h2 id="test-types">Test Types</h2>
 <p>SiteWatch supports the following test types:</p>
 <h3 id="site_availability_test"><code>site_availability_test</code>:</h3>
@@ -647,11 +649,13 @@ By default, the test will check to see if the AblePlayer viewer loads within 20 
 </span></code></pre></div>
 By default, the test will check to see if the AblePlayer transcript loads within 20 seconds.</p>
 <h3 id="element_present_test"><code>element_present_test</code>:</h3>
-<p>This test takes allows the checking of the presence of any element on a page. It requires two inputs: the method to search by, and the search term. The method can be one of the following:
-* <code>id</code>: Search by element ID.
-* <code>class</code>: Search by element class.
-* <code>xpath</code>: Search by XPath.
-* <code>css</code>: Search by CSS selector.</p>
+<p>This test takes allows the checking of the presence of any element on a page. It requires two inputs: the method to search by, and the search term. The method can be one of the following:</p>
+<ul>
+<li><code>id</code>: Search by element ID.</li>
+<li><code>class</code>: Search by element class.</li>
+<li><code>xpath</code>: Search by XPath.</li>
+<li><code>css</code>: Search by CSS selector.</li>
+</ul>
 <p>The search term is the value to search for. The two inputs must be provided in the CSV file "test_input" column and be separated by a subdelimeter "|" (pipe). Here is a sample test row for this test type:
 <div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>url,test_type,test_input
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>https://tamil.digital.utsc.utoronto.ca/collection/2855,element_present_test,xpath|/html/body/div/div[2]/div/div[2]/div/div/div/div/div/div[2]/div/aside/div[3]/h2

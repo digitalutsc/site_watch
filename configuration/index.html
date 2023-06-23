@@ -507,10 +507,12 @@ The configuration file contains all the information SiteWatch needs to run. It c
 </span></code></pre></div></p>
 <h2 id="required-configuration-settings">Required Configuration Settings</h2>
 <h3 id="input-source">Input Source</h3>
-<p><strong>Exactly one</strong> of the following settings must be present in the configuration file to tell SiteWatch where to find the tests to run:
-* <code>csv</code>: A path to a CSV file containing the tests to run.
-* <code>excel</code>: A path to an Excel file containing the tests to run.
-* <code>google_sheets</code>: A URL to a Google Sheets file containing the tests to run.</p>
+<p><strong>Exactly one</strong> of the following settings must be present in the configuration file to tell SiteWatch where to find the tests to run:</p>
+<ul>
+<li><code>csv</code>: A path to a CSV file containing the tests to run.</li>
+<li><code>excel</code>: A path to an Excel file containing the tests to run.</li>
+<li><code>google_sheets</code>: A URL to a Google Sheets file containing the tests to run.</li>
+</ul>
 <h2 id="optional-configuration-settings">Optional Configuration Settings</h2>
 <h3 id="email-settings">Email Settings</h3>
 <p>SiteWatch can send email notifications to one or more recipients when it finishes running. To enable this feature, the configuration file must include the following

@@ -427,11 +427,13 @@
 
 
 <h1 id="output-in-sitewatch">Output In SiteWatch</h1>
-<p>Sitewatch has the capability to convey the results of its tests in a variety of ways:
-* To the console (stdout)
-* To a log file
-* To a CSV file
-* To email addresses</p>
+<p>Sitewatch has the capability to convey the results of its tests in a variety of ways:</p>
+<ul>
+<li>To the console (stdout)</li>
+<li>To a log file</li>
+<li>To a CSV file</li>
+<li>To email addresses</li>
+</ul>
 <p>The first three of these are by default enabled, and the last is up to the user to enable. The following sections describe each of these in detail.</p>
 <h2 id="console-output">Console Output</h2>
 <p>SiteWatch provides a nice, human-readable summary of its results to the console. Here is an example of what that looks like:</p>
@@ -452,9 +454,10 @@
 </span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>INFO:root:Results have been written to output_csvs/site_watch-2023-06-14-13-02-23.csv
 </span></code></pre></div></p>
 <h2 id="output-csv">Output CSV</h2>
-<p>SiteWatch writes a CSV file to the <code>output_csvs</code> directory. The name of the file is time-stamped to be unique. The name of the output CSV file is the same as the name of the log file (see above), but with a <code>.csv</code> extension. For example, if the log file is named <code>site_watch-2023-06-14-13-02-23.log</code>, the output CSV file will be named <code>site_watch-2023-06-14-13-02-23.csv</code>. The output CSV is a copy of the input test data file, but with two columns appended: 
-* <code>test_result</code>: The result of the test. This will be either <code>Passed</code> or <code>Failed</code>.
-* <code>total_time</code>: The total time it took to run the test, in seconds.
+<p>SiteWatch writes a CSV file to the <code>output_csvs</code> directory. The name of the file is time-stamped to be unique. The name of the output CSV file is the same as the name of the log file (see above), but with a <code>.csv</code> extension. For example, if the log file is named <code>site_watch-2023-06-14-13-02-23.log</code>, the output CSV file will be named <code>site_watch-2023-06-14-13-02-23.csv</code>. The output CSV is a copy of the input test data file, but with two columns appended:</p>
+<ul>
+<li><code>test_result</code>: The result of the test. This will be either <code>Passed</code> or <code>Failed</code>.</li>
+<li><code>total_time</code>: The total time it took to run the test, in seconds.
 For example, if the original input data file looked like
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>url,test_type,description,test_input
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>https://memory.digital.utsc.utoronto.ca/collection/33463,facet_load_test,test_subject_fact_exists,subject
@@ -462,7 +465,8 @@ For example, if the original input data file looked like
 the output CSV file would look like
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>url,test_type,description,test_input,test_result,total_time
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>https://memory.digital.utsc.utoronto.ca/collection/33463,facet_load_test,test_subject_fact_exists,subject,Passed,0.39168238639831543
-</span></code></pre></div></p>
+</span></code></pre></div></li>
+</ul>
 <h2 id="email">Email</h2>
 <p>SiteWatch has the capability to send an email to one or more email addresses when it finishes running, only in the event of error or failed test case. This is useful for notifying people when a test has failed. The email sent will contain a copy of the log and output CSV files. To enable this feature, see <a href="../configuration/#email-settings">Email Settings</a>.</p>
 
