@@ -11,7 +11,6 @@ from selenium import webdriver
 
 from test_suites.collection_count_test import *
 from test_suites.element_present_test import *
-from test_suites.facet_load_test import *
 from test_suites.invalid_links_test import *
 from test_suites.permalink_redirect_test import *
 from test_suites.rest_oai_pmh_xml_validity_test import *
@@ -37,7 +36,6 @@ class TestController():
 
         # Initialize the tests
         self.collection_count_test = CollectionCountTest(self.driver)
-        self.facet_load_test = FacetLoadTest(self.driver)
         self.site_availability_test = SiteAvailabilityTest(self.driver)
         self.openseadragon_load_test = OpenSeaDragonLoadTest(self.driver)
         self.mirador_load_test = MiradorLoadTest(self.driver)
@@ -70,30 +68,6 @@ class TestController():
         else:
             print(Fore.GREEN, f"Collection Count Test passed on row {csv_row_number + 1}.", Fore.RESET)
             logging.info(f"Collection Count Test passed on row {csv_row_number + 1}.")
-            return True
-
-    def run_facet_load_test(self, csv_row: dict, csv_row_number: int) -> bool:
-        """ Runs a Facet Load Test. """
-        try:
-            self.facet_load_test.run(csv_row["url"], csv_row["test_input"])
-        except ValueError:
-            # The facet type is invalid.
-            print(Fore.RED, f"Invalid test input on row {csv_row_number + 1}. Please see log for more details.", Fore.RESET)
-            logging.error(f"Invalid facet type {csv_row['test_input']} on row {csv_row_number + 1}. The test input must be a valid facet type.")
-            return False
-        except AssertionError as e:
-            # Get the assertion error message
-            error_message = str(e)
-            print(Fore.RED, f"Facet Load Test failed on row {csv_row_number + 1}. Please see log for more details.", Fore.RESET)
-            logging.error(f"Facet Load Test failed on row {csv_row_number + 1}. The facet did not load. {error_message}")
-            return False
-        except Exception as e:
-            print(Fore.RED, f"Facet Load Test failed on row {csv_row_number + 1}. Please see log for more details.", Fore.RESET)
-            logging.error(f"Facet Load Test failed on row {csv_row_number + 1}. {e}")
-            return False
-        else:
-            print(Fore.GREEN, f"Facet Load Test passed on row {csv_row_number + 1}.", Fore.RESET)
-            logging.info(f"Facet Load Test passed on row {csv_row_number + 1}.")
             return True
 
     def run_site_availibility_test(self, csv_row: dict, csv_row_number: int):
@@ -297,7 +271,6 @@ class TestController():
         test_type = csv_row["test_type"]
         test_methods = {
             'collection_count_test': self.run_collection_count_test,
-            'facet_load_test': self.run_facet_load_test,
             'site_availability_test': self.run_site_availibility_test,
             'openseadragon_load_test': self.run_openseadragon_load_test,
             'mirador_viewer_load_test': self.run_mirador_load_test,

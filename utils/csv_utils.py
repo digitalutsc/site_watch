@@ -147,7 +147,6 @@ def check_data(data: list) -> None:
 
     # Set of test types that are valid
     supported_test_types = {"site_availability_test",
-                            "facet_load_test",
                             "collection_count_test",
                             "openseadragon_load_test",
                             "mirador_viewer_load_test",
@@ -160,8 +159,7 @@ def check_data(data: list) -> None:
                             "rest_oai_pmh_xml_validity_test"}
 
     # Set of test types that require an input
-    test_types_with_input = {"facet_load_test",
-                             "collection_count_test",
+    test_types_with_input = {"collection_count_test",
                              "mirador_page_count_test",
                              "element_present_test",
                              "permalink_redirect_test"}
