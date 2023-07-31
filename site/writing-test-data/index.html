@@ -17,7 +17,7 @@
         <link rel="next" href="../output/">
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
+      <meta name="generator" content="mkdocs-1.5.1, mkdocs-material-9.1.21">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.26e3688c.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.eebd395e.min.css">
       
       
 
@@ -311,13 +311,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#facet_load_test" class="md-nav__link">
-    facet_load_test:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#collection_count_test" class="md-nav__link">
     collection_count_test:
   </a>
@@ -479,13 +472,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#facet_load_test" class="md-nav__link">
-    facet_load_test:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#collection_count_test" class="md-nav__link">
     collection_count_test:
   </a>
@@ -598,54 +584,41 @@
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>url,test_type,input_data
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>https://memory.digital.utsc.utoronto.ca/,site_availability_test,
 </span></code></pre></div>
-As you can see, the <code>input_data</code> column is empty, as this test type does not require any input data.</p>
-<h3 id="facet_load_test"><code>facet_load_test</code>:</h3>
-<p>This test type checks to see if a specific facet loads on a collection page. It requires the facet name to be passed as input. The supported facets are</p>
-<ul>
-<li>Subject</li>
-<li>Genre</li>
-<li>Publication Date</li>
-<li>Related Archival Fonds</li>
-</ul>
-<p>The test will then visit the page in a browser and check to see if the facet loads. Here is a sample test row for this test type that checks to see if the "Subject" facet loads on the page.
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>url,test_type,input_data
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>https://memory.digital.utsc.utoronto.ca/collection/33463,facet_load_test,Subject
-</span></code></pre></div>
-By default, the test will check to see if the facet loads within 20 seconds.</p>
+As shown above, the <code>input_data</code> column is empty, as this test type does not require any input data.</p>
 <h3 id="collection_count_test"><code>collection_count_test</code>:</h3>
 <p>This test type checks to see if the number of items in a collection matches the expected number of items. It requires the expected number of items to be passed as input. The test will then visit the collection page in a browser and check to see if the number of items matches the expected number of items. Here is a sample test row for this test type that checks to see if the collection has 23,591 items.
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>url,test_type,input_data
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>https://memory.digital.utsc.utoronto.ca/collection/33463,collection_count_test,23591
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>url,test_type,input_data
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>https://memory.digital.utsc.utoronto.ca/collection/33463,collection_count_test,23591
 </span></code></pre></div>
 By default, the test will check to see if the collection count matches the expected count within 20 seconds.</p>
 <h3 id="openseadragon_load_test"><code>openseadragon_load_test</code>:</h3>
 <p>This test type checks to see if the OpenSeadragon viewer loads on an item page. It does not require any input data. The test will then visit the item page in a browser and check to see if the OpenSeadragon viewer loads. Here is a sample test row for this test type:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>url,test_type,input_data
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>https://memory.digital.utsc.utoronto.ca/61220/utsc16185,openseadragon_load_test,
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>url,test_type,input_data
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>https://memory.digital.utsc.utoronto.ca/61220/utsc16185,openseadragon_load_test,
 </span></code></pre></div>
 By default, the test will check to see if the OpenSeadragon viewer loads within 20 seconds.</p>
 <h3 id="mirador_viewer_load_test"><code>mirador_viewer_load_test</code>:</h3>
 <p>This test type checks to see if the Mirador viewer loads on an item page. It does not require any input data. The test will then visit the item page in a browser and check to see if the Mirador viewer loads. Here is a sample test row for this test type:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>url,test_type,input_data
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>https://memory.digital.utsc.utoronto.ca/61220/utsc11802,mirador_viewer_load_test,4
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>url,test_type,input_data
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>https://memory.digital.utsc.utoronto.ca/61220/utsc11802,mirador_viewer_load_test,4
 </span></code></pre></div>
 By default, the test will check to see if the Mirador viewer loads within 40 seconds.</p>
 <h3 id="mirador_page_count_test"><code>mirador_page_count_test</code>:</h3>
 <p>This test type checks to see if the number of pages in a Mirador viewer matches the expected number of pages. It requires the expected number of pages to be passed as input. The test will then visit the item page in a browser and check to see if the number of pages matches the expected number of pages. Here is a sample test row for this test type that checks to see if the Mirador viewer has 1034 pages.
-<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>url,test_type,input_data
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>https://tamil.digital.utsc.utoronto.ca/61220/utsc34439,mirador_page_count_test,1034
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>url,test_type,input_data
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>https://tamil.digital.utsc.utoronto.ca/61220/utsc34439,mirador_page_count_test,1034
 </span></code></pre></div>
 By default, the test will check to see if the Mirador viewer has the expected number of pages within 40 seconds.</p>
 <h3 id="ableplayer_load_test"><code>ableplayer_load_test</code>:</h3>
 <p>This test type checks to see if the AblePlayer viewer loads on an item page. It does not require any input data. The test will then visit the item page in a browser and check to see if the AblePlayer viewer loads. Here is a sample test row for this test type:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>url,test_type,input_data
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>https://tamil.digital.utsc.utoronto.ca/61220/utsc34400,ableplayer_load_test,
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>url,test_type,input_data
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>https://tamil.digital.utsc.utoronto.ca/61220/utsc34400,ableplayer_load_test,
 </span></code></pre></div>
 By default, the test will check to see if the AblePlayer viewer loads within 20 seconds.</p>
 <h3 id="ableplayer_transcript_load_test"><code>ableplayer_transcript_load_test</code>:</h3>
 <p>This test type checks to see if the AblePlayer transcript loads on an item page. It does not require any input data. The test will then visit the item page in a browser and check to see if the AblePlayer transcript loads. Here is a sample test row for this test type:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>url,test_type,input_data
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>https://tamil.digital.utsc.utoronto.ca/61220/utsc34400,ableplayer_transcript_load_test,
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>url,test_type,input_data
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>https://tamil.digital.utsc.utoronto.ca/61220/utsc34400,ableplayer_transcript_load_test,
 </span></code></pre></div>
 By default, the test will check to see if the AblePlayer transcript loads within 20 seconds.</p>
 <h3 id="element_present_test"><code>element_present_test</code>:</h3>
@@ -657,13 +630,13 @@ By default, the test will check to see if the AblePlayer transcript loads within
 <li><code>css</code>: Search by CSS selector.</li>
 </ul>
 <p>The search term is the value to search for. The two inputs must be provided in the CSV file "test_input" column and be separated by a subdelimeter "|" (pipe). Here is a sample test row for this test type:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>url,test_type,test_input
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>https://tamil.digital.utsc.utoronto.ca/collection/2855,element_present_test,xpath|/html/body/div/div[2]/div/div[2]/div/div/div/div/div/div[2]/div/aside/div[3]/h2
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>url,test_type,test_input
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>https://tamil.digital.utsc.utoronto.ca/collection/2855,element_present_test,xpath|/html/body/div/div[2]/div/div[2]/div/div/div/div/div/div[2]/div/aside/div[3]/h2
 </span></code></pre></div></p>
 <h3 id="invalid_links_test"><code>invalid_links_test</code>:</h3>
 <p>This test (non-recursively) tests all links present on the given URL to see if they are broken. It does not require any input data. If the test fails, it will provide a list of broken links in the <code>.log</code> file. Here is a sample test row for this test type:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>url,test_type,input_data
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>https://digital.utsc.utoronto.ca/basic-page/systems-and-software,invalid_links_test,
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>url,test_type,input_data
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>https://digital.utsc.utoronto.ca/basic-page/systems-and-software,invalid_links_test,
 </span></code></pre></div></p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -672,19 +645,19 @@ By default, the test will check to see if the AblePlayer transcript loads within
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>You may get a warning in the <code>.log</code> file similar to the following:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 127.0.0.1. Connection pool size: 1
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 127.0.0.1. Connection pool size: 1
 </span></code></pre></div>
 <p>This is normal, and you can safely discard it.</p>
 </div>
 <h3 id="permalink_redirect_test"><code>permalink_redirect_test</code>:</h3>
 <p>This test checks to see if the ARK resolver correctly redirects the permalink on a collection page to the correct location. It requires the expected redirect URL to be passed as input. The test will then visit the collection page in a browser and check to see if the permalink redirects to the expected URL. Here is a sample test row for this test type:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>url,test_type,input_data
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>https://ark.digital.utsc.utoronto.ca/ark:/61220/utsc11324,permalink_redirect_test,https://tamil.digital.utsc.utoronto.ca/61220/utsc11324
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>url,test_type,input_data
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>https://ark.digital.utsc.utoronto.ca/ark:/61220/utsc11324,permalink_redirect_test,https://tamil.digital.utsc.utoronto.ca/61220/utsc11324
 </span></code></pre></div></p>
 <h3 id="rest_oai_pmh_xml_validity_test"><code>rest_oai_pmh_xml_validity_test</code>:</h3>
 <p>This test checks if the XML on the OAI-PMH endpoint is valid. It does not require any input data. Here is a sample test row for this test type:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>url,test_type,input_data
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>https://memory.digital.utsc.utoronto.ca/oai/request?identifier=oai%3Amemory.digital.utsc.utoronto.ca%3Anode-10262&amp;metadataPrefix=mods&amp;verb=GetRecord,permalink_redirect_test,
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>url,test_type,input_data
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>https://memory.digital.utsc.utoronto.ca/oai/request?identifier=oai%3Amemory.digital.utsc.utoronto.ca%3Anode-10262&amp;metadataPrefix=mods&amp;verb=GetRecord,permalink_redirect_test,
 </span></code></pre></div></p>
 
 
@@ -723,10 +696,10 @@ By default, the test will check to see if the AblePlayer transcript loads within
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "content.code.select", "content.code.annotate", "content.code.annotate", "meta.author"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "content.code.select", "content.code.annotate", "content.code.annotate", "meta.author"], "search": "../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.b4d07000.min.js"></script>
+      <script src="../assets/javascripts/bundle.220ee61c.min.js"></script>
       
     
   </body>
