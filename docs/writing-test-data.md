@@ -22,23 +22,7 @@ This test type checks to see if the site is available. It does not require any i
 url,test_type,input_data
 https://memory.digital.utsc.utoronto.ca/,site_availability_test,
 ```
-As you can see, the `input_data` column is empty, as this test type does not require any input data.
-
-### `facet_load_test`:
-This test type checks to see if a specific facet loads on a collection page. It requires the facet name to be passed as input. The supported facets are
-
-* Subject
-* Genre
-* Publication Date
-* Related Archival Fonds
-
-The test will then visit the page in a browser and check to see if the facet loads. Here is a sample test row for this test type that checks to see if the "Subject" facet loads on the page.
-```csv
-url,test_type,input_data
-https://memory.digital.utsc.utoronto.ca/collection/33463,facet_load_test,Subject
-```
-By default, the test will check to see if the facet loads within 20 seconds.
-
+As shown above, the `input_data` column is empty, as this test type does not require any input data.
 
 ### `collection_count_test`:
 This test type checks to see if the number of items in a collection matches the expected number of items. It requires the expected number of items to be passed as input. The test will then visit the collection page in a browser and check to see if the number of items matches the expected number of items. Here is a sample test row for this test type that checks to see if the collection has 23,591 items.

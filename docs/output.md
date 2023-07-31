@@ -20,13 +20,12 @@ SiteWatch writes a log file to the `logs` directory. The name of the file is tim
 INFO:root:SiteWatch has started.
 INFO:utils.csv_utils:CSV file is valid.
 INFO:test_suites.test_controller:Site Availability Test passed on row 2.
-INFO:test_suites.test_controller:Facet Load Test passed on row 3.
-INFO:test_suites.test_controller:Collection Count Test passed on row 4.
-INFO:test_suites.test_controller:OpenSeaDragon Load Test passed on row 5.
-INFO:test_suites.test_controller:Mirador Load Test passed on row 6.
-INFO:test_suites.test_controller:AblePlayer Transcript Load Test passed on row 7.
-INFO:test_suites.test_controller:Mirador Load Test passed on row 8.
-ERROR:test_suites.test_controller:Mirador Page Count Test failed on row 9. Mirador viewer does not have the expected number of thumbnails. Expected 1032, got 1034.
+INFO:test_suites.test_controller:Collection Count Test passed on row 3.
+INFO:test_suites.test_controller:OpenSeaDragon Load Test passed on row 4.
+INFO:test_suites.test_controller:Mirador Load Test passed on row 5.
+INFO:test_suites.test_controller:AblePlayer Transcript Load Test passed on row 6.
+INFO:test_suites.test_controller:Mirador Load Test passed on row 7.
+ERROR:test_suites.test_controller:Mirador Page Count Test failed on row 8. Mirador viewer does not have the expected number of thumbnails. Expected 1032, got 1034.
 INFO:root:All tests have finished running.
 INFO:root:Results have been written to output_csvs/site_watch-2023-06-14-13-02-23.csv
 ```
@@ -38,14 +37,14 @@ SiteWatch writes a CSV file to the `output_csvs` directory. The name of the file
 * `test_result`: The result of the test. This will be either `Passed` or `Failed`.
 * `total_time`: The total time it took to run the test, in seconds.
 For example, if the original input data file looked like
-```text
-url,test_type,description,test_input
-https://memory.digital.utsc.utoronto.ca/collection/33463,facet_load_test,test_subject_fact_exists,subject
+```csv
+url,test_type,input_data
+https://memory.digital.utsc.utoronto.ca/collection/33463,collection_count_test,23591
 ```
 the output CSV file would look like
-```text
-url,test_type,description,test_input,test_result,total_time
-https://memory.digital.utsc.utoronto.ca/collection/33463,facet_load_test,test_subject_fact_exists,subject,Passed,0.39168238639831543
+```csv
+url,test_type,input_data,test_result,total_time
+https://memory.digital.utsc.utoronto.ca/collection/33463,collection_count_test,23591,Passed,0.5
 ```
 
 
