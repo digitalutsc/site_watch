@@ -66,7 +66,6 @@ To install Google Chrome, run the following in a terminal:
 
 ```bash
 sudo apt-get update -y
-sudo apt-get upgrade -y
 sudo apt install wget -y
 sudo wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
@@ -78,7 +77,6 @@ To install Chromedriver, run the following in a terminal:
 
 ```bash
 sudo apt-get update -y
-sudo apt-get upgrade -y
 sudo apt-get install unzip -y
 sudo apt-get install curl -y
 latest_version=$(curl -sL https://chromedriver.chromium.org/downloads | grep -oP 'ChromeDriver \K([0-9]+.[0-9]+.[0-9]+.[0-9]+)' | head -n 1)
