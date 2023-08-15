@@ -44,7 +44,7 @@ By default, the test will check to see if the OpenSeadragon viewer loads within 
 This test type checks to see if the Mirador viewer loads on an item page. It does not require any input data. The test will then visit the item page in a browser and check to see if the Mirador viewer loads. Here is a sample test row for this test type:
 ```csv
 url,test_type,input_data
-https://memory.digital.utsc.utoronto.ca/61220/utsc11802,mirador_viewer_load_test,4
+https://memory.digital.utsc.utoronto.ca/61220/utsc11802,mirador_viewer_load_test,
 ```
 By default, the test will check to see if the Mirador viewer loads within 40 seconds.
 
