@@ -62,28 +62,27 @@ or if you originally installed the required Python libraries centrally, without 
 
 SiteWatch uses Google Chrome and Chromedriver to run tests. You will need to install both of these on the machine where you will be running SiteWatch. 
 
-To install Google Chrome, run the following in a terminal:
 
-```bash
-sudo apt-get update -y
-sudo apt install wget -y
-sudo wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo dpkg -i google-chrome-stable_current_amd64.deb
-sudo apt -f install
-sudo rm google-chrome-stable_current_amd64.deb
-```
-
-To install Chromedriver, run the following in a terminal:
+To install them, run the following in a terminal:
 
 ```bash
 sudo apt-get update -y
 sudo apt-get install unzip -y
 sudo apt-get install curl -y
+sudo apt install wget -y
+
 latest_version=$(curl -sL https://chromedriver.chromium.org/downloads | grep -oP 'ChromeDriver \K([0-9]+.[0-9]+.[0-9]+.[0-9]+)' | head -n 1)
-download_url="https://chromedriver.storage.googleapis.com/$latest_version/chromedriver_linux64.zip"
+
+chromedriver_download_url="https://chromedriver.storage.googleapis.com/$latest_version/chromedriver_linux64.zip"
 temp_dir=$(mktemp -d)
 sudo curl -sL "$download_url" -o "$temp_dir/chromedriver.zip"
 sudo unzip "$temp_dir/chromedriver.zip" -d "$temp_dir"
 sudo mv "$temp_dir/chromedriver" /usr/local/bin/
 sudo rm -rf "$temp_dir"
+
+chrome_download_url=https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_"$latest_version"-1_amd64.deb
+sudo wget $chrome_download_url
+sudo dpkg -i google-chrome-stable_"$latest_version"-1_amd64.deb
+sudo apt -f install
+sudo rm google-chrome-stable_"$latest_version"-1_amd64.deb
 ```
