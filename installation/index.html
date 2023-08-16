@@ -462,7 +462,7 @@
 
   <h1>Installation</h1>
 
-<h2 id="requirements">Requirements</h2>
+<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Python 3.7 or higher</li>
 <li>The latest Google Chrome and Chromedriver installed to the PATH (see <a href="#installing-chrome-and-chromedriver">Installing Chrome and Chromedriver on Linux</a> or visit the Google Chrome and Chromedriver websites for instructions on installing these on other operating systems)</li>
@@ -478,13 +478,13 @@
 </li>
 <li>Highly recommended: A Linux-based operating system (e.g. Ubuntu, Debian, Fedora, etc.)</li>
 </ul>
-<h2 id="installing-sitewatch">Installing SiteWatch</h2>
+<h2 id="installing-sitewatch">Installing SiteWatch<a class="headerlink" href="#installing-sitewatch" title="Permanent link">&para;</a></h2>
 <p>Installation involves three steps:</p>
 <ol>
 <li>cloning the SiteWatch Github repo</li>
 <li>running <code>setup.py</code> to install the required Python libraries (listed above)</li>
 </ol>
-<h3 id="step-1-cloning-the-sitewatch-repo">Step 1: Cloning the SiteWatch Repo</h3>
+<h3 id="step-1-cloning-the-sitewatch-repo">Step 1: Cloning the SiteWatch Repo<a class="headerlink" href="#step-1-cloning-the-sitewatch-repo" title="Permanent link">&para;</a></h3>
 <p>In a terminal, run:</p>
 <p><code>git clone https://github.com/digitalutsc/site_watch.git</code></p>
 <p>This will create a directory named <code>site_watch</code> where you will run the <code>./sitewatch</code> command. Change into this directory:
@@ -493,19 +493,19 @@
 and run the following command to make the <code>./sitewatch</code> and <code>./setupwizard</code> commands executable:
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>chmod<span class="w"> </span>+x<span class="w"> </span>sitewatch<span class="w"> </span>setupwizard
 </span></code></pre></div></p>
-<h3 id="step-2-running-setuppy-to-install-the-required-python-libraries">Step 2: Running setup.py to Install the Required Python Libraries</h3>
+<h3 id="step-2-running-setuppy-to-install-the-required-python-libraries">Step 2: Running setup.py to Install the Required Python Libraries<a class="headerlink" href="#step-2-running-setuppy-to-install-the-required-python-libraries" title="Permanent link">&para;</a></h3>
 <p>For most users, the preferred place to install Python libraries is in the user directory. To do this, change into the "site_watch" directory created by cloning the repo, and run the following command:</p>
 <p><code>python3 setup.py install --user</code></p>
 <p>A less common mehtod is to install the required Python libraries into your computer's central Python environment. To do this, omit the <code>--user</code> (note: you must have administrator privileges on the computer to do this):</p>
 <p><code>sudo python3 setup.py install</code></p>
-<h2 id="updating-sitewatch">Updating SiteWatch</h2>
+<h2 id="updating-sitewatch">Updating SiteWatch<a class="headerlink" href="#updating-sitewatch" title="Permanent link">&para;</a></h2>
 <p>Since SiteWatch is under development, you will want to update it often. To do this, within the <code>site_watch</code> directory, run the following <code>git</code> command:</p>
 <p><code>git pull origin main</code></p>
 <p>After you pull in the latest changes using <code>git</code>, it's a good idea to rerun the setup tools in case new Python libraries have been added since you last ran the setup tools (same command as above):</p>
 <p><code>python3 setup.py install --user</code></p>
 <p>or if you originally installed the required Python libraries centrally, without the <code>--user</code> option (again, you will need administrator privileges on the machine):</p>
 <p><code>sudo python3 setup.py install</code></p>
-<h2 id="installing-google-chrome-and-chromedriver-on-linux">Installing Google Chrome and Chromedriver on Linux</h2>
+<h2 id="installing-google-chrome-and-chromedriver-on-linux">Installing Google Chrome and Chromedriver on Linux<a class="headerlink" href="#installing-google-chrome-and-chromedriver-on-linux" title="Permanent link">&para;</a></h2>
 <p>SiteWatch uses Google Chrome and Chromedriver to run tests. You will need to install both of these on the machine where you will be running SiteWatch. </p>
 <p>To install them, run the following in a terminal:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span>-y

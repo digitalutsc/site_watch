@@ -588,19 +588,19 @@
   
 
 
-<h1 id="contributing-to-sitewatch">Contributing to SiteWatch</h1>
+<h1 id="contributing-to-sitewatch">Contributing to SiteWatch<a class="headerlink" href="#contributing-to-sitewatch" title="Permanent link">&para;</a></h1>
 <p>SiteWatch is an open-source tool, and we welcome contributions from the community. This document outlines the process for contributing to SiteWatch.</p>
-<h2 id="the-sitewatch-structure">The SiteWatch Structure</h2>
+<h2 id="the-sitewatch-structure">The SiteWatch Structure<a class="headerlink" href="#the-sitewatch-structure" title="Permanent link">&para;</a></h2>
 <p>SiteWatch is written in Python for readability and portability. The code structrue is as follows</p>
-<h3 id="the-sitewatch-file">The <code>sitewatch</code> file</h3>
+<h3 id="the-sitewatch-file">The <code>sitewatch</code> file<a class="headerlink" href="#the-sitewatch-file" title="Permanent link">&para;</a></h3>
 <p>This file is the entry point for the application. It contains the logic for greeting and parsing command line arguments, verifying the config and CSV files, and looping over each test and initiating it. It also contains the logic for writing the results to the output file and initiating the email process. This file is the only file that should be run directly, and it has been setup to be an executable file. As this file is relatively short (all other logic is packed into other files), it shouldn't need to be modified often.</p>
-<h3 id="the-utils-directory">The <code>utils</code> Directory</h3>
+<h3 id="the-utils-directory">The <code>utils</code> Directory<a class="headerlink" href="#the-utils-directory" title="Permanent link">&para;</a></h3>
 <p>This directory contains various useful files with many utility functions. The <code>config_utils.py</code> module contains the logic for reading the config file and verifying that it is valid. The <code>csv_utils.py</code> module contains the logic for reading the CSV file and verifying that it is valid. The <code>email_utils.py</code> module contains the logic for sending emails. The documentation for the functions contained in these files is contained in the docstrings of the functions themselves, which makes it easy to use if you are editing the code in an IDE.</p>
-<h3 id="the-test_suites-directory">The <code>test_suites</code> Directory</h3>
+<h3 id="the-test_suites-directory">The <code>test_suites</code> Directory<a class="headerlink" href="#the-test_suites-directory" title="Permanent link">&para;</a></h3>
 <p>This directory contains logic for running tests. The main file to make note of here is <code>test_controller.py</code>, as this is the module which contains the <code>TestController</code> class, which can run tests given the name of the test and a CSV row. </p>
-<h3 id="the-pages-directory">The <code>pages</code> Directory</h3>
+<h3 id="the-pages-directory">The <code>pages</code> Directory<a class="headerlink" href="#the-pages-directory" title="Permanent link">&para;</a></h3>
 <p>This directory contains logic for interacting with web pages. The main file to make note of here is <code>page.py</code>, as this is the module which contains the <code>BasePage</code> class, which is the base class for all pages (and it contains several useful functions applicable to all pages). When a page module is added to this directory, it should contain logic that is specific to that page. For example, the <code>collection_page.py</code> contains several functions that interact with viewers, which are specific to the collection page.</p>
-<h2 id="adding-a-new-test">Adding a New Test</h2>
+<h2 id="adding-a-new-test">Adding a New Test<a class="headerlink" href="#adding-a-new-test" title="Permanent link">&para;</a></h2>
 <p>To better illustrate the process of adding a new test, we will walk through the process of adding a test. Specifically, let's test the number of results when accessing a search page or a collections page. For example, on <a href="https://griot.digital.utsc.utoronto.ca/search-results?a%5B0%5D%5Bf%5D=all&amp;a%5B0%5D%5Bi%5D=IS&amp;a%5B0%5D%5Bv%5D=griot">this page</a>, there are 3 results, and on <a href="https://memory.digital.utsc.utoronto.ca/collection/33463">this page</a>, there are 23591 results. We want to design a test that compares the number of results on the page to the expected number of results that the user specifies in the CSV file, and fails if the numbers do not match.</p>
 <p>There are several steps involved in adding a new test:</p>
 <ul>
@@ -613,7 +613,7 @@
 <li>Whitelist the test in the CSV checks</li>
 <li>Add required test input checks to the CSV checks</li>
 </ul>
-<h3 id="find-an-appropriate-element-to-test">Find an Appropriate Element to Test</h3>
+<h3 id="find-an-appropriate-element-to-test">Find an Appropriate Element to Test<a class="headerlink" href="#find-an-appropriate-element-to-test" title="Permanent link">&para;</a></h3>
 <p>Let's consider the <a href="https://griot.digital.utsc.utoronto.ca/search-results?a%5B0%5D%5Bf%5D=all&amp;a%5B0%5D%5Bi%5D=IS&amp;a%5B0%5D%5Bv%5D=griot">first page</a> above. Here is a screenshot of the page</p>
 <p><img alt="Alt text" src="../assets/image.png" /></p>
 <p>We want to confirm that there are 3 results on the page. First, ask yourself: "How would I, as a human, confirm that there are 3 results on the page?" You would probably look for something that says the total number of results. Indeed, the element we are looking for is right in front of us!</p>
@@ -632,9 +632,9 @@
 <li>CSS Selector
 We can see that the element has a class name of <code>pager__summary</code>, and this is unique to this element, so we will use this to identify the element. That's all we need from the webpage! We can close the entire browser if we want now.</li>
 </ul>
-<h3 id="decide-if-you-need-a-new-page-module-and-create-one-if-necessary">Decide if You Need a New Page Module and Create One if Necessary</h3>
+<h3 id="decide-if-you-need-a-new-page-module-and-create-one-if-necessary">Decide if You Need a New Page Module and Create One if Necessary<a class="headerlink" href="#decide-if-you-need-a-new-page-module-and-create-one-if-necessary" title="Permanent link">&para;</a></h3>
 <p>At the time of writing, the only module in the <code>page</code> directory is <code>page.py</code>, and as that module contains logic for interacting with a general page, and this test pertains only to search and collections pages, we'll make a new module <code>collections_or_advanced_search_page.py</code>. </p>
-<h3 id="in-the-page-class-you-are-testing-create-logic-to-interact-with-the-element-you-are-testing">In the Page Class You Are Testing, Create Logic to Interact with the Element You Are Testing</h3>
+<h3 id="in-the-page-class-you-are-testing-create-logic-to-interact-with-the-element-you-are-testing">In the Page Class You Are Testing, Create Logic to Interact with the Element You Are Testing<a class="headerlink" href="#in-the-page-class-you-are-testing-create-logic-to-interact-with-the-element-you-are-testing" title="Permanent link">&para;</a></h3>
 <p>We'll cut to the chase and show the code we wrote straight away, and then explain it.</p>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span> <span class="nn">pages.page</span> <span class="kn">import</span> <span class="n">BasePage</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span> <span class="nn">selenium.common.exceptions</span> <span class="kn">import</span> <span class="n">NoSuchElementException</span>
@@ -664,9 +664,9 @@ We can see that the element has a class name of <code>pager__summary</code>, and
 <li>Converts the number of collections to an integer</li>
 <li>Returns the number of collections</li>
 </ul>
-<h3 id="decide-if-you-need-a-new-test-suite-and-create-one-if-necessary">Decide if You Need a New Test Suite and Create One if Necessary</h3>
+<h3 id="decide-if-you-need-a-new-test-suite-and-create-one-if-necessary">Decide if You Need a New Test Suite and Create One if Necessary<a class="headerlink" href="#decide-if-you-need-a-new-test-suite-and-create-one-if-necessary" title="Permanent link">&para;</a></h3>
 <p>At the time of writing, the only module in the <code>test_suites</code> directory is <code>test.py</code>, and as that module contains only the abstract <code>Test</code> class, we'll make a new module <code>collection_count_test.py</code>.</p>
-<h3 id="in-the-test-suite-create-a-new-test-function-with-assert-statements">In the Test Suite, Create a New Test Function with Assert Statements</h3>
+<h3 id="in-the-test-suite-create-a-new-test-function-with-assert-statements">In the Test Suite, Create a New Test Function with Assert Statements<a class="headerlink" href="#in-the-test-suite-create-a-new-test-function-with-assert-statements" title="Permanent link">&para;</a></h3>
 <p>We'll cut to the chase and show the code we wrote straight away, and then explain it.</p>
 <div class="language-py highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span> <span class="nn">pages.collections_or_advanced_search_page</span> <span class="kn">import</span> <span class="n">CollectionsOrAdvancedSearchPage</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">from</span> <span class="nn">test_suites.test</span> <span class="kn">import</span> <span class="n">Test</span>
@@ -694,7 +694,7 @@ We can see that the element has a class name of <code>pager__summary</code>, and
 <li>Tries to get the number of collections on the page</li>
 <li>Asserts that the actual value is equal to the expected value</li>
 </ul>
-<h3 id="add-the-test-to-the-test_controllerpy-file">Add the Test to the <code>test_controller.py</code> File</h3>
+<h3 id="add-the-test-to-the-test_controllerpy-file">Add the Test to the <code>test_controller.py</code> File<a class="headerlink" href="#add-the-test-to-the-test_controllerpy-file" title="Permanent link">&para;</a></h3>
 <p>This itself contains multiple steps:</p>
 <ul>
 <li>Import the test suite</li>
@@ -748,9 +748,9 @@ We must make sure that under no circumstances does the test suite crash, so we h
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="s1">&#39;collection_count_test&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">run_collection_count_test</span>
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="p">}</span>
 </span></code></pre></div></p>
-<h3 id="whitelist-the-test-in-the-csv-checks">Whitelist the Test in the CSV Checks</h3>
+<h3 id="whitelist-the-test-in-the-csv-checks">Whitelist the Test in the CSV Checks<a class="headerlink" href="#whitelist-the-test-in-the-csv-checks" title="Permanent link">&para;</a></h3>
 <p>Go to <code>csv_utils.py</code> and find the <code>check_data</code> function. There will be a variable <code>supported_test_types</code> that contains a list of all the test types that are supported. Add your test type to this list. We'll just add a new element `collection_count_test' to the list.</p>
-<h3 id="add-required-test-input-checks-to-the-csv-checks">Add Required Test Input Checks to the CSV Checks</h3>
+<h3 id="add-required-test-input-checks-to-the-csv-checks">Add Required Test Input Checks to the CSV Checks<a class="headerlink" href="#add-required-test-input-checks-to-the-csv-checks" title="Permanent link">&para;</a></h3>
 <p>As this test requires the user to input the expected number of results in the CSV, we must add it to the CSV checks. Go to <code>csv_utils.py</code> and find the <code>check_data</code> function. There will be a variable <code>test_types_with_input</code> that contains a dictionary of all the test types that require test input. Add your test type to this dictionary. We'll just add a new key-value pair <code>collection_count_test''</code> to the dictionary.
 <div class="language-py highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">test_types_with_input</span> <span class="o">=</span> <span class="p">{</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="o">...</span>
