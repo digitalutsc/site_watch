@@ -63,7 +63,7 @@ class CollectionPage(BasePage):
         """Return whether the ableplayer loads on the page."""
         self.driver.get(self.url)
         try:
-            self.driver.find_element(By.CLASS_NAME, "able").find_element(By.TAG_NAME, "video")
+            self.driver.find_element(By.CLASS_NAME, "able")
             return True
         except NoSuchElementException:
             return False

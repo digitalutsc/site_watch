@@ -56,7 +56,7 @@ def send_test_failure_email(config: dict, output_csv_name: str, output_log_name:
     body = "One or more erros have been detected in the most recent run of SiteWatch. Please check the attached CSV and log files for more information."
     attachments = [output_csv_name, output_log_name]
     send_email(sender_email, sender_name, recipient_emails, subject, body, attachments)
-    print(Fore.GREEN, "An email has been sent to the recipients listed in the config file as errors have been detected.")
+    print(Fore.GREEN, "An email has been sent to the recipients listed in the config file as errors have been detected.", Fore.RESET)
 
 
 def send_invalid_csv_email(config: dict, output_log_name: str):
@@ -68,4 +68,4 @@ def send_invalid_csv_email(config: dict, output_log_name: str):
     body = "The CSV file provided is invalid. Please check the attached log file for more information."
     attachments = [output_log_name]
     send_email(sender_email, sender_name, recipient_emails, subject, body, attachments)
-    print(Fore.GREEN, "An email has been sent to the recipients listed in the config file as the CSV file you provided is invalid.")
+    print(Fore.GREEN, "An email has been sent to the recipients listed in the config file as the CSV file you provided is invalid.", Fore.RESET)

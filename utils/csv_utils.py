@@ -194,7 +194,7 @@ def check_data(data: list) -> None:
         row_number += 1
 
     # If the CSV file is valid, print a success message
-    print(Fore.GREEN, "CSV file is valid.")
+    print(Fore.GREEN, "CSV file is valid.", Fore.RESET)
     logging.info("CSV file is valid.")
 
 
