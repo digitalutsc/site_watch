@@ -86,3 +86,13 @@ sudo dpkg -i google-chrome-stable_"$latest_version"-1_amd64.deb
 sudo apt -f install
 sudo rm google-chrome-stable_"$latest_version"-1_amd64.deb
 ```
+
+!!! warning
+    The script above downloads up to v114 of Google Chrome. Later versions require Chrome for Testing. Please see the following links:
+    1. Chrome Testing Dashboard: https://googlechromelabs.github.io/chrome-for-testing/
+    2. Chrome for Testing: reliable downloads for browser automation https://developer.chrome.com/blog/chrome-for-testing/#versioned-browser-binaries
+
+!!! note
+    You need not install the latest version of Google Chrome. To select a specific version of Google Chrome and Chromedriver, please refer to the following links
+    1. All Versions of Chrome: https://chromedriver.storage.googleapis.com/index.html
+    2. All Versions of Chromedriver: https://chromedriver.chromium.org/downloads
