@@ -96,6 +96,10 @@ def parse_arguments(arguments: list) -> str:
      
 
 if __name__ == "__main__":
+    # Change the working directory to the directory of this script
+    script_directory = os.path.dirname(os.path.abspath(__file__))
+    os.chdir(script_directory)
+
     # Setup the log file and output csv file
     output_file_names = setup_outputs()
     logging.basicConfig(filename=log_file_name, level=logging.INFO)
