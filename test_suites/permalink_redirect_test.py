@@ -6,7 +6,8 @@ The PermalinkRedirectTest class inherits from the Test class and provides a meth
 
 from selenium.webdriver.remote.webdriver import WebDriver
 
-from pages.collection_page import CollectionPage
+# from pages.collection_page import CollectionPage
+from pages.page import BasePage
 from test_suites.test import Test
 
 
@@ -20,6 +21,13 @@ class PermalinkRedirectTest(Test):
 
     def run(self, url: str, expected_url: str) -> None:
         """ Run the permalink redirect test on the page at <url>."""
-        collection_page = CollectionPage(self.driver, url)
-        actual_url = collection_page.get_permalink_redirect_url()
-        assert actual_url == expected_url, f"Expected {expected_url}, but got {actual_url}."
+        self.driver.get(url) # load page
+        redirect_url = self.driver.current_url # get the [new] url of the page that is loaded by webdriver
+
+        redirect_page = BasePage(self.driver, redirect_url) 
+        if redirect_page.is_available(): # check if the page loaded has 2xx response code (i.e. has properly loaded)
+            expected_url_revised = expected_url.rstrip("/") # remove unnecessary trailing backslash 
+            redirect_url_revised = redirect_url.rstrip("/") # remove unnecessary trailing backslash
+            assert redirect_url_revised == expected_url_revised, f"Expected {expected_url_revised}, but got {redirect_url_revised}." 
+        else:
+            assert redirect_page.is_available(), f"Permalink did not redirect with 2xx response code."
