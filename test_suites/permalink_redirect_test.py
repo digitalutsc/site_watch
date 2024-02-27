@@ -28,7 +28,6 @@ class PermalinkRedirectTest(Test):
         if redirect_page.is_available(): # check if the page loaded has 2xx response code (i.e. has properly loaded)
             expected_url_revised = expected_url.rstrip("/") 
             redirect_url_revised = redirect_url.rstrip("/") 
-            # NOTE: test fails if you remove the trailing / of the expected url
             assert redirect_url_revised == expected_url_revised, f"Expected {expected_url_revised}, but got {redirect_url_revised}." 
         else:
             assert redirect_page.is_available(), f"Permalink did not redirect with 2xx response code."
