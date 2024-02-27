@@ -26,8 +26,8 @@ class PermalinkRedirectTest(Test):
 
         redirect_page = BasePage(self.driver, redirect_url) 
         if redirect_page.is_available(): # check if the page loaded has 2xx response code (i.e. has properly loaded)
-            expected_url_revised = expected_url.rstrip("/") # remove unncessary trailing backslash 
-            redirect_url_revised = redirect_url.rstrip("/") # remove unncessary trailing backslash
+            expected_url_revised = expected_url.rstrip("/") # remove unnecessary trailing backslash 
+            redirect_url_revised = redirect_url.rstrip("/") # remove unnecessary trailing backslash
             assert redirect_url_revised == expected_url_revised, f"Expected {expected_url_revised}, but got {redirect_url_revised}." 
         else:
             assert redirect_page.is_available(), f"Permalink did not redirect with 2xx response code."
